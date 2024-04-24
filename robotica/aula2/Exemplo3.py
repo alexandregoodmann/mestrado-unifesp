@@ -11,42 +11,30 @@ import logging
 logging.basicConfig(level=logging.INFO, filename="programa.log", format="%(asctime)s - %(levelname)s - %(message)s")
 os.system('cls' if os.name == 'nt' else 'clear')
 
-def frente(eixo, distancia):
+def andar(eixo, distancia):
     
     # calcula o ponto final para o eixo informado
     r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
     origem = pos[eixo]
-    destino = origem + distancia 
+    destino = pos[eixo] + distancia 
 
     #faz o carro andar 
     sim.simxSetJointTargetVelocity(clientID, l_wheel, 3, sim.simx_opmode_streaming + 5)
     sim.simxSetJointTargetVelocity(clientID, r_wheel, 3, sim.simx_opmode_streaming + 5)
 
     posicao = origem
-    while (posicao < destino):
-        r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
-        posicao = pos[eixo]
-        print(pos)
-    
-    pararRobo()
 
-def voltar(eixo, distancia):
-    
-    # calcula o ponto final para o eixo informado
-    r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
-    origem = pos[eixo]
-    destino = origem + distancia 
+    if (posicao < destino):
+        while (posicao < destino):
+            r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
+            # print('vai', pos)
+            posicao = pos[eixo]
+    else:
+        while (posicao > destino):
+            r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
+            # print('volta', pos)
+            posicao = pos[eixo]
 
-    #faz o carro andar 
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 3, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, 3, sim.simx_opmode_streaming + 5)
-
-    posicao = origem
-    while (posicao > destino):
-        r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
-        posicao = pos[eixo]
-        print(pos)
-    
     pararRobo()
 
 def curvaDireita():
@@ -82,7 +70,7 @@ def curvaDireita3():
 def printPositionAndOrientation():
     returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
     a, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-    print('Position: ', [int(pos[0]), int(pos[1])], 'Orientation: ', int(math.degrees(orientation[0])), int(math.degrees(orientation[1])), int(math.degrees(orientation[2])))
+    print('Position: ', pos, 'Orientation: ', int(math.degrees(orientation[0])), int(math.degrees(orientation[1])), int(math.degrees(orientation[2])))
 
 def pararRobo():
     sim.simxSetJointTargetVelocity(clientID, r_wheel, 0, sim.simx_opmode_oneshot_wait)
@@ -128,22 +116,22 @@ if clientID!=-1:
     # Faz andar pra frente (vAngular, distancia, eixo)
     # trecho 1
     printPositionAndOrientation()
-    frente(1, 1)
+    andar(1, 1)
     curvaDireita()
 
     # trecho 2
     printPositionAndOrientation()
-    frente(0, 1)
+    andar(0, 1)
     curvaDireita2()
 
     # trecho 3
     printPositionAndOrientation()
-    voltar(1, -1)
+    andar(1, -1)
     curvaDireita3()
 
     # trecho 4
     printPositionAndOrientation()
-    voltar(0, -1)
+    andar(0, -1)
     # todo andar pra zero
 
     pararSimulacao()
