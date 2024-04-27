@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 import math
 import sim 
-import time
 import os
 import logging
 
@@ -21,7 +20,7 @@ def andar(eixo, distancia):
     #faz o carro andar 
     sim.simxSetJointTargetVelocity(clientID, l_wheel, 3, sim.simx_opmode_streaming + 5)
     sim.simxSetJointTargetVelocity(clientID, r_wheel, 3, sim.simx_opmode_streaming + 5)
-
+    print( 'roda', l_wheel)
     posicao = origem
 
     if (posicao < destino):
@@ -37,34 +36,17 @@ def andar(eixo, distancia):
 
     pararRobo()
 
-def curvaDireita():
+def curva(destino):
     sim.simxSetJointTargetVelocity(clientID, l_wheel, 1, sim.simx_opmode_streaming + 5)
     sim.simxSetJointTargetVelocity(clientID, r_wheel, -1, sim.simx_opmode_streaming + 5) 
     
-    graus = 90
-    while (graus > 0):
-        a, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-        graus = math.degrees(orientation[2])
-    pararRobo()
+    r, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
+    atual = math.degrees(orientation[2])
 
-def curvaDireita2():
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 1, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, -1, sim.simx_opmode_streaming + 5) 
-    
-    graus = 0
-    while (graus > -90):
-        a, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-        graus = math.degrees(orientation[2])
-    pararRobo()
+    while (atual > destino):
+        r, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
+        atual = math.degrees(orientation[2])
 
-def curvaDireita3():
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 1, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, -1, sim.simx_opmode_streaming + 5) 
-    
-    graus = -90
-    while (graus <= 0):
-        a, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-        graus = math.degrees(orientation[2])
     pararRobo()
 
 def printPositionAndOrientation():
@@ -115,23 +97,26 @@ if clientID!=-1:
 
     # Faz andar pra frente (vAngular, distancia, eixo)
     # trecho 1
+    print('--->>> Inicio da Simulacao <<<---')
     printPositionAndOrientation()
     andar(1, 1)
-    curvaDireita()
+    curva(0)
 
     # trecho 2
     printPositionAndOrientation()
     andar(0, 1)
-    curvaDireita2()
+    curva(-90)
 
     # trecho 3
     printPositionAndOrientation()
     andar(1, -1)
-    curvaDireita3()
+    curva(-179)
 
     # trecho 4
     printPositionAndOrientation()
     andar(0, -1)
+    printPositionAndOrientation()
+    print('--->>> Fim <<<---')
     # todo andar pra zero
 
     pararSimulacao()

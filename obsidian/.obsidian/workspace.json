@@ -11,15 +11,80 @@
             "id": "9a26e2e93b54b412",
             "type": "leaf",
             "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "ffeb0ab24b3c5a71",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Transformação Afim.md",
+                "file": "Processamento de Imagem.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "85c0f7c728a031c1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "intensidade de cada pixel.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7e5ea7d139946f84",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Processamento de Imagem.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "eb8281af9cb419b3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Imagem Integral.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "69acdccc694fde5a",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "6d3fd18f04dcaab5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Processamento de baixo nível.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -48,7 +113,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "normalidade",
+                "query": "implementa",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Transformação Afim.md",
+                "file": "Imagem Integral.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Transformação Afim.md",
+                "file": "Imagem Integral.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +191,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Transformação Afim.md"
+                "file": "Imagem Integral.md"
               }
             }
           }
@@ -139,21 +204,26 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "9a26e2e93b54b412",
+  "active": "eb8281af9cb419b3",
   "lastOpenFiles": [
+    "Processamento de Imagem.md",
+    "Imagem Integral.md",
+    "Limite de iluminação.md",
+    "intensidade de cada pixel.md",
+    "Untitled.canvas",
+    "Processamento de baixo nível.md",
+    "Transformação Afim.md",
     "Normalidade dos Dados.md",
     "Emprego Robótica.md",
-    "Transformação Afim.md",
     "Shapiro-Wilk.md",
-    "Untitled.canvas",
     "Python.md",
     "estatística.md",
     "Controle.md",

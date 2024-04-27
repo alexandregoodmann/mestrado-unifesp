@@ -1,0 +1,25 @@
+#Bibliotecas básicas e baixando imagem de teste.
+import cv2
+import numpy as np
+import io
+import os
+from matplotlib import pyplot as plt
+
+os.system('cls' if os.name == 'nt' else 'clear')
+
+# Carregar a imagem em tons de cinza
+image = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/imgs/Lenna.png', cv2.IMREAD_GRAYSCALE)
+
+# A intensidade e um pixel se da pela media da intensidade dos pixels de sua visinhança
+def getIntensidadePixel(image, x, y):
+    soma = 0
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            soma = soma + image[i, j]
+    return soma/9
+
+print(image[49:52, 29:32])
+print('intensidade', getIntensidadePixel(image, 50, 30))
+cv2.imshow('Imagem Original', image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
