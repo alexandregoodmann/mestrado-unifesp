@@ -18,11 +18,10 @@ def andar(eixo, distancia):
     destino = pos[eixo] + distancia 
 
     #faz o carro andar 
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 3, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, 3, sim.simx_opmode_streaming + 5)
-    print( 'roda', l_wheel)
-    posicao = origem
+    sim.simxSetJointTargetVelocity(clientID, 42, 3, sim.simx_opmode_streaming + 5)
+    sim.simxSetJointTargetVelocity(clientID, 42, 3, sim.simx_opmode_streaming + 5)
 
+    posicao = origem
     if (posicao < destino):
         while (posicao < destino):
             r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
@@ -37,8 +36,8 @@ def andar(eixo, distancia):
     pararRobo()
 
 def curva(destino):
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 1, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, -1, sim.simx_opmode_streaming + 5) 
+    sim.simxSetJointTargetVelocity(clientID, 42, 1, sim.simx_opmode_streaming + 5)
+    sim.simxSetJointTargetVelocity(clientID, 42, -1, sim.simx_opmode_streaming + 5) 
     
     r, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
     atual = math.degrees(orientation[2])
@@ -55,8 +54,8 @@ def printPositionAndOrientation():
     print('Position: ', pos, 'Orientation: ', int(math.degrees(orientation[0])), int(math.degrees(orientation[1])), int(math.degrees(orientation[2])))
 
 def pararRobo():
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, 0, sim.simx_opmode_oneshot_wait)
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 0, sim.simx_opmode_oneshot_wait)  
+    sim.simxSetJointTargetVelocity(clientID, 42, 0, sim.simx_opmode_oneshot_wait)  
+    sim.simxSetJointTargetVelocity(clientID, 42, 0, sim.simx_opmode_oneshot_wait)
 
 def pararSimulacao():
 

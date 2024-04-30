@@ -1,4 +1,3 @@
-
 ## Trabalho Final
 Utilizar as tecnicas que foram aprendidas
 Fazer muito laboratorio
@@ -22,7 +21,7 @@ O que é baixo, médio e alto nível?
 Intensidade. Função [[intensidade de cada pixel]] f(x,y)
 
 _______________________
-Aula 2
+## Aula 2
 
 Aquisição  - Se dá como adquirir uma imagem
 Quantização - Se dá pelo tamaho da imagem em bytes
@@ -47,3 +46,14 @@ Referência Bilbiográfica
 Maria Petrou, Costas Petrou, 2010 Image Processing The Fundamentals
 Rafael Gonzales, Richard Woods 2017 Digital Image Processing 
 Mohamed Elgendy 2020 Deep Learning for Vision Systems
+
+--------
+
+Aula 3
+Transformações
+	Translação - mover para uma outra posição, deslocar pixels
+	Rotação
+	Contração e dilatação
+	Cisalhamento - inclinar a imagem
+	Radiométrico - Não muda a posição dos pixels. Altera sua intensidade
+

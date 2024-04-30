@@ -1,8 +1,22 @@
+# --------------------------------------------------------------------------------------
+# Aluno: Alexandre Ferreira e Silva
+# Atividade 01
+#
+# Para rodar digitar como no comando abaixo:
+# python3 AlexandreFerreiraESilva_Atividade01.py '/home/alexandre/Documents/PI/imgs/Lenna.png' 10 50 20 70
+# --------------------------------------------------------------------------------------
+
 import cv2
 import numpy as np
 import io
 import os
 from matplotlib import pyplot as plt
+import sys
+
+x0 = int(sys.argv[2])
+xn = int(sys.argv[3])
+y0 = int(sys.argv[4])
+yn = int(sys.argv[5])
 
 # limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -38,10 +52,6 @@ print('Imagem Integral: ', I)
 # ------------------------------------------------------------------------------------
 # Calcular area do retangulo
 # ------------------------------------------------------------------------------------
-x0 = 200
-xn = 300
-y0 = 250
-yn = 300
 area = I[xn, yn] - I[x0-1, yn] - I[xn, y0-1] + I[x0-1, y0-1]
 print('Area do retangulo: ', area)
 
