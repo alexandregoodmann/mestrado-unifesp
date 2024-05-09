@@ -56,4 +56,5 @@ Transformações
 	Contração e dilatação
 	Cisalhamento - inclinar a imagem
 	Radiométrico - Não muda a posição dos pixels. Altera sua intensidade
+	[[Convolução]]
 

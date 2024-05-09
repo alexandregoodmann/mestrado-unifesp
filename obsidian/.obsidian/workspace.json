@@ -57,7 +57,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Imagem Integral.md",
+                "file": "Processamento de Imagem.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "db885842ca1971fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Emprego Robótica.md",
                 "mode": "source",
                 "source": false
               }
@@ -84,7 +96,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -113,7 +125,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "atividade",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -130,8 +142,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -151,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Imagem Integral.md",
+                "file": "Emprego Robótica.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -168,7 +179,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Imagem Integral.md",
+                "file": "Emprego Robótica.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -191,7 +202,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Imagem Integral.md"
+                "file": "Emprego Robótica.md"
               }
             }
           }
@@ -212,17 +223,21 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "eb8281af9cb419b3",
+  "active": "db885842ca1971fd",
   "lastOpenFiles": [
+    "Convolução.md",
+    "Transformação Afim.md",
+    "Untitled.canvas",
+    "Emprego Robótica.md",
+    "2024-05-08.md",
+    "2024-05-03.md",
+    "TinyML.md",
     "Processamento de Imagem.md",
     "Imagem Integral.md",
     "Limite de iluminação.md",
     "intensidade de cada pixel.md",
-    "Untitled.canvas",
     "Processamento de baixo nível.md",
-    "Transformação Afim.md",
     "Normalidade dos Dados.md",
-    "Emprego Robótica.md",
     "Shapiro-Wilk.md",
     "Python.md",
     "estatística.md",
