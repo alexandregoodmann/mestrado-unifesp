@@ -6,7 +6,7 @@ Implementação de Imagem integral
 ~~receber como entrada um arquivo contendo uma imagem e também as coordenadas x0,y0 e xn, yn de um retângulo totalmente contido na imagem. As coordenadas são números inteiros.~~
 
 ~~O programa deve abrir a imagem no modo monocromático (tons de cinza), mesmo que ela~~
-~~seja colorida e exibí-la. Depois, ele deve calcular a [[imagem integral]] dessa imagem em tons de cinza. A partir da imagem integral e das coordenadas de entrada, o programa deve calcular a área do retângulo e a média da intensidade dentro do triângulo dado, imprimindo o resultado.~~
+~~seja colorida e exibí-la. Depois, ele deve calcular a [[Imagem Integral]] dessa imagem em tons de cinza. A partir da imagem integral e das coordenadas de entrada, o programa deve calcular a área do retângulo e a média da intensidade dentro do triângulo dado, imprimindo o resultado.~~
 
 ~~Por fim, o programa deve criar uma imagem colorida com uma cópia do conteúdo da~~
 ~~imagem em tons de cinza (conversão de imagem em tons de cinza para colorida), pintar os lados do retângulo sobre a imagem (escolha a cor) e exigir a imagem com o retângulo sobreposto.~~

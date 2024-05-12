@@ -1,3 +1,17 @@
+---
+
+---
+------------------
+Tópicos
+[[Imagem Integral]]
+[[Transformação Afim]]
+[[Convolução]]
+Filtro de Imagem
+Bordas
+Filtro Passa Baixa
+
+------------------
+
 ## Trabalho Final
 Utilizar as tecnicas que foram aprendidas
 Fazer muito laboratorio
@@ -5,6 +19,7 @@ Ter embasamento Teorico
 Fazer pesquisa de artigos sobre o assunto e algoritimos
 Precisa ter alguma novidade
 Pesquisar diversas maneiras de processar imagens
+
 
 utilizar metdos classicos de de contagem de celulas
 como tratar a imagem pra deixar mais limpa e como identificar uma celular
@@ -29,7 +44,7 @@ Resolução de Imagem - Denotação matemática ou dpi (Estudar mais se necessá
 
 Dúvidas
 Intervalo de níveis de intensidade L = 2^k 
-[[Limite de iluminação]]
+[[Limite de Iluminação]]
 
 Resolução de intensidade
 A resolução de intensidade de uma imagem refere-se à quantidade de detalhes ou níveis de intensidade que podem ser representados em cada pixel da imagem. Em termos simples, é a capacidade da imagem de capturar e exibir variações finas de brilho ou cor.

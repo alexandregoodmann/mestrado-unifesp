@@ -4,99 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "e5ce44f394cccd7e",
+        "id": "875404bc6b290947",
         "type": "tabs",
         "children": [
           {
-            "id": "9a26e2e93b54b412",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "ffeb0ab24b3c5a71",
+            "id": "01953a076dea3399",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Processamento de Imagem.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "85c0f7c728a031c1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "intensidade de cada pixel.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7e5ea7d139946f84",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Processamento de Imagem.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "eb8281af9cb419b3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Processamento de Imagem.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "db885842ca1971fd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Emprego Robótica.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "69acdccc694fde5a",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "6d3fd18f04dcaab5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Processamento de baixo nível.md",
+                "file": "PI/Imagem Integral.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -146,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 247.5
   },
   "right": {
     "id": "8bc4d1d2fc21978b",
@@ -162,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Emprego Robótica.md",
+                "file": "PI/Imagem Integral.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -179,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Emprego Robótica.md",
+                "file": "PI/Imagem Integral.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -202,16 +125,36 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Emprego Robótica.md"
+                "file": "PI/Imagem Integral.md"
               }
             }
+          },
+          {
+            "id": "db885842ca1971fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PI/intensidade de cada pixel.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f62e9d88bbb1131f",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 419.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,25 +166,32 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "db885842ca1971fd",
+  "active": "01953a076dea3399",
   "lastOpenFiles": [
-    "Convolução.md",
-    "Transformação Afim.md",
+    "PI/Artigo.md",
+    "TinyML.md",
+    "PI/Processamento de Imagem.md",
+    "PI/Convolução.md",
+    "PI/Transformação Afim.md",
+    "PI/intensidade de cada pixel.md",
+    "Metodologia/Seminário de Estatística.md",
+    "Metodologia",
+    "Estatística.md",
+    "Sem título.canvas",
+    "Robótica/Controle.md",
+    "Robótica/Robótica.md",
+    "PI",
+    "Robótica/Emprego Robótica.md",
+    "Robótica",
+    "PI/Limite de Iluminação.md",
     "Untitled.canvas",
-    "Emprego Robótica.md",
     "2024-05-08.md",
     "2024-05-03.md",
-    "TinyML.md",
-    "Processamento de Imagem.md",
-    "Imagem Integral.md",
-    "Limite de iluminação.md",
-    "intensidade de cada pixel.md",
-    "Processamento de baixo nível.md",
+    "PI/Imagem Integral.md",
+    "PI/Processamento de baixo nível.md",
     "Normalidade dos Dados.md",
-    "Shapiro-Wilk.md",
+    "Metodologia/Shapiro-Wilk.md",
     "Python.md",
-    "estatística.md",
-    "Controle.md",
     "machine learning.md"
   ]
 }
