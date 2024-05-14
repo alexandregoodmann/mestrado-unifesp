@@ -13,33 +13,35 @@ import os
 from matplotlib import pyplot as plt
 import sys
 
+# limpar console
+os.system('cls' if os.name == 'nt' else 'clear')
+
+# Carregar a imagem em tons de cinza
+'''
 x0 = int(sys.argv[2])
 xn = int(sys.argv[3])
 y0 = int(sys.argv[4])
 yn = int(sys.argv[5])
 
-# limpar console
-os.system('cls' if os.name == 'nt' else 'clear')
-
-# Carregar a imagem em tons de cinza
 img = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/laboratorio1/Lenna.png')
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imshow('Imagem Preto e Branco', imgGray)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+'''
 
 #imagem para teste
-#img = np.matrix([[5, 8, 1, 2, 9], [10, 8 ,7, 6, 2], [4, 3, 1, 4, 5], [8, 9, 2, 3, 5], [6, 8, 7, 1, 3]])
+imgIntegral = np.matrix([[5, 8, 1, 2, 9], [10, 8 ,7, 6, 2], [4, 3, 1, 4, 5], [8, 9, 2, 3, 5], [6, 8, 7, 1, 3]])
 
 # ------------------------------------------------------------------------------------
 # Para calculo da imagem integral, cria-se uma matriz zero, adiciona uma linha e coluna
 # Coloca os dados da imagem original dentro dessa matriz zero
 # Calcula-se a imagem integral utilizando a formula
 # ------------------------------------------------------------------------------------
-M, N = imgGray.shape # linhas, colunas
+M, N = imgIntegral.shape # linhas, colunas
 I = np.zeros((M+1, N+1))
 i = I
-i[1:, 1:] = imgGray
+i[1:, 1:] = imgIntegral
 
 #calculo de imagem integral
 for x in range(1, M+1): 
