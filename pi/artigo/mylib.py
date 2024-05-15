@@ -16,6 +16,35 @@ imgIntegral = np.matrix([[5, 8, 1, 2, 9], [10, 8 ,7, 6, 2], [4, 3, 1, 4, 5], [8,
  [  0.  33.  69.  87. 103. 127.]]
 '''
 # ------------------------------------------------------------------------------------
+# Marca em preto um retangulo em uma imagem com base nas coordenadas
+# imgMarked = mylib.setQuadrado(img, 3, 3, 3)
+# Lembrando que a matriz começa com (0,0), logo o quarto pixel deverá ser (3,3)
+# ------------------------------------------------------------------------------------
+def setBordaQuadrada(isGray, img, x0, y0, size, color):
+
+    if (isGray==1):
+        color = 0
+    else:
+        h, w, r = img.shape
+
+    xn = x0 + size - 1
+    yn = y0 + size - 1
+    img[x0, y0:yn] = color
+    img[xn, y0:yn] = color
+    img[x0:xn, y0] = color
+    img[x0:xn, yn] = color
+    img[xn, yn] = color
+    return img
+
+# ------------------------------------------------------------------------------------
+# Pega intensidade mínima e máxima para uma região aplicando uma margem 
+# img[3:6, :] --> Esta notação é do tipo [a,b[, ou seja fechado no início e aberto no final.
+# ------------------------------------------------------------------------------------
+def getIntensidadeMinMax(img, x0, xn, y0, yn, margem):
+    min = img[x0:xn, y0:yn].min() - margem
+    max = img[x0:xn, y0:yn].max() + margem
+    return min, max
+
 
 def getImagemIntegral(imgGray):
     M, N = imgGray.shape # linhas, colunas
@@ -30,15 +59,6 @@ def getImagemIntegral(imgGray):
     #print(I)
     #I = I[1:, 1:]
     return I
-
-# ------------------------------------------------------------------------------------
-# Marca em preto um retangulo em uma imagem com base nas coordenadas
-# ------------------------------------------------------------------------------------
-def setRetangulo(img, x0, xn, y0, yn, cor):
-    img[x0, y0:yn] = cor
-    img[xn, y0:yn] = cor
-    img[x0:xn, y0] = cor
-    img[x0:xn, yn] = cor
 
 # ------------------------------------------------------------------------------------
 # Calcular area do retangulo a partir da imagem integral recebendo as coordenadas
@@ -57,11 +77,9 @@ def getIntensidadeMedia(I, x0, xn, y0, yn):
     media_intensidade = intensidade / num_pixels
     return media_intensidade
 
-# ------------------------------------------------------------------------------------
-# Pega intensidade mínima e máxima para uma região aplicando uma margem 
-# ------------------------------------------------------------------------------------
-def getIntensidadeMinMax(img, x0, xn, y0, yn, margem):
-    margem = 20
-    min = int((img[x0+1:xn-1, y0+1:yn-1].min()) - margem)
-    max = int(img[x0+1:xn-1, y0+1:yn-1].max() + margem)
-    return min, max
+def getIntensidadeMedia2(img, x0, xn, y0, yn):
+    soma = 0
+    for j in range(x0,xn):
+        for i in range(y0,yn):
+            soma = soma + img[j,i]
+    return soma/(25*25)

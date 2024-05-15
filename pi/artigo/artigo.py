@@ -9,114 +9,62 @@ import cv2
 import numpy as np
 import os
 from matplotlib import pyplot as plt
-
 import mylib
 
 # Limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
-
-# Carregar a imagem em tons de cinza
 dir = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/'
-img = cv2.imread(dir + 'sperm_3.png')
-#redimensionada = img[::2, ::2]
-height, width, r = img.shape
+fileName = 'sperm_3.png'
+
+# ----------------------------------------------------------------------------------------------------------------
+# Carregar a imagem original
+# ----------------------------------------------------------------------------------------------------------------
+def carregarImagem():
+    img = cv2.imread(dir + fileName)
+    cv2.imshow('Imagem', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    return img
+
+# ----------------------------------------------------------------------------------------------------------------
+# MAIN
+# ----------------------------------------------------------------------------------------------------------------
+img = carregarImagem()
+
+# ---------------------------------------------------------------------------------------------------
+# Pega intensidade min e max de um retangulo arbitrariamente escolhido
+# converte imagem em cinza e marca zona de intensidade para filtro
+# ---------------------------------------------------------------------------------------------------
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-# ---------------------------------------------------------------------------------------------------
-# Marca retangulo para poder remover o ruido
-# ---------------------------------------------------------------------------------------------------
-x0 = 45;
-y0 = 35;
-xn = x0 + 40;
-yn = y0 + 40;
-#mylib.setRetangulo(imgGray, x0, xn, y0, yn, 0)
-
-#cv2.imshow('Imagem GrayScale', imgGray)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
+min, max = mylib.getIntensidadeMinMax(imgGray, 30, 60, 40, 70, 20)
+print('min max da zona filtrada', min, max)
+imgMarked = mylib.setBordaQuadrada(1, imgGray, 30, 40, 40, 0)
+cv2.imshow('Imagem Gray', imgMarked)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 # ---------------------------------------------------------------------------------------------------
 # Filtrar imagem e remover fundo
 # ---------------------------------------------------------------------------------------------------
-
-# Pega intensidade mínima e máxima
-min, max = mylib.getIntensidadeMinMax(imgGray, x0, xn, y0, yn, 20)
-
 # varre toda a imagem e remove fundo cinza
 imgFiltrada = imgGray
-for j in range(0, width):
-    for i in range(0, height):
-        intensidade = int(imgFiltrada[i,j])
+width, height = imgGray.shape
+for j in range(0, width-1):
+    for i in range(0, height-1):
+        intensidade = imgFiltrada[j, i]
         if (intensidade >= min and intensidade <= max):
-            imgFiltrada[i, j] = 255
+            imgFiltrada[j, i] = 255
 
-#cv2.imshow('Imagem Filtrada', imgFiltrada)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
-
-# ---------------------------------------------------------------------------------------------------
-# Converter a imagem para Binario
-# ---------------------------------------------------------------------------------------------------
-#(threshold, imgBinaria) = cv2.threshold(imgFiltrada, 128, 255, cv2.THRESH_BINARY)
-#print('binaria', threshold, imgBinaria)
-#cv2.imshow('Imagem Binaria', imgBinaria)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
-
-# ---------------------------------------------------------------------------------------------------
-# Marcar celula
-# ---------------------------------------------------------------------------------------------------
-
-# Converte binaria para grayscale
-#imgGray2 = imgBinaria * (255 / imgBinaria.max())
-
-#mylib.marcarRetangulo(imgGray2, x1, x2, y1, y2, 0)
-#min1, max2 = mylib.getIntensidadeMinMax(imgGray2, x1, x2, y1, y2, 0)
-#print('intensidade', min1, max2)
-'''
-fit = 22
-x1 = 86
-x2 = x1 + fit
-y1 = 12
-y2 = y1 + fit
-
-I = mylib.getImagemIntegral(imgFiltrada)
-#mylib.setRetangulo(imgGray2, x1, x2, y1, y2, 0)
-i_media = mylib.getIntensidadeMedia(I, x1, x2, y1, y2)
-i_media_zero = mylib.getIntensidadeMedia(I, 0, 22, 0, 22)
-min1, max2 = mylib.getIntensidadeMinMax(imgFiltrada, x1, x2, y1, y2, 0)
-
-print('min max', min1, max2)
-print('i_media', i_media_zero, i_media)
-mylib.setRetangulo(imgFiltrada, x1, x2, y1, y2, 0)
-cv2.imshow('Imagem Final', imgFiltrada)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-exit()
-'''
-
-I = mylib.getImagemIntegral(imgFiltrada)
-fit = 22
-coordenadas = []
-intensidades = []
-for j in range(0, width): #coluna
-    for i in range(0, height): #linha
-        if (j < (width-fit) and i < (height-fit)):
-            x1 = j
-            x2 = x1 + fit
-            y1 = i
-            y2 = y1 + fit
-            i_media = mylib.getIntensidadeMedia(I, x1, x2, y1, y2)
-            if (i_media == 50):
-                intensidades.append(i_media)
-                #mylib.setRetangulo(imgGray2, x1, x2, y1, y2, 0)
-                coordenadas.append([j,i])
-print('coordenadas', coordenadas)
-# cv2.imwrite(dir + 'sperm_3_tratado.png', imgGray2)
-#color = cv2.cvtColor(imgGray2, cv2.COLOR_GRAY2BGR)
-plt.hist(intensidades)
-plt.show()
-cv2.imshow('Imagem Final', imgFiltrada)
+cv2.imshow('Imagem Filtrada', imgFiltrada)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
+# ---------------------------------------------------------------------------------------------------
+# Pega a intensidade media de uma celula
+# ---------------------------------------------------------------------------------------------------
+imgMarked = mylib.setBordaQuadrada(1, imgMarked, 85, 10, 30, 0)
+
+print('min max da celula', min, max)
+cv2.imshow('Imagem Filtrada', imgMarked)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

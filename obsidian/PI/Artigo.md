@@ -5,6 +5,22 @@ As partes técnicas do processamento da imagem (convolução, filtragem, outras)
 Gradiente
 Buscar laboratório em Porto Alegre
 
+--------------
+#### Processo de contagem das células
+
+**Preparação**
+- Gerar imagem com um spermatosoide para usar em todo processo, posteriormente a imagem do microscópio
+	- #redimensionada = img[::2, ::2]
+- Pegar uma cabeça de espermatosoide e obter um tamanho de exemplo (depois será usado uma margem de erro).
+- Obter a intensidade média de uma cabeça de espermatosoide de duas maneiras. Uma usando imagem GrayScale e outra usando Imagem Binária
+
+**Processo de contagem**
+- Abrir imagem colorida
+- Converter para GrayScale
+- Marcar zona de filtragem (ação manual)
+- Filtrar imagem GrayScale com base na média de intensidade da zona marcada
+
+
 ---------------
 ### An efficient method for automatic morphological abnormality detection from human sperm images
 https://www.sciencedirect.com/science/article/abs/pii/S0169260715002230

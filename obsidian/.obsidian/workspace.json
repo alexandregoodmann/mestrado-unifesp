@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PI/Imagem Integral.md",
+                "file": "PI/Artigo.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PI/Imagem Integral.md",
+                "file": "PI/Artigo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PI/Imagem Integral.md",
+                "file": "PI/Artigo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "PI/Imagem Integral.md"
+                "file": "PI/Artigo.md"
               }
             }
           },
@@ -168,6 +168,7 @@
   },
   "active": "01953a076dea3399",
   "lastOpenFiles": [
+    "PI/Imagem Integral.md",
     "PI/Artigo.md",
     "TinyML.md",
     "PI/Processamento de Imagem.md",
@@ -187,7 +188,6 @@
     "Untitled.canvas",
     "2024-05-08.md",
     "2024-05-03.md",
-    "PI/Imagem Integral.md",
     "PI/Processamento de baixo nível.md",
     "Normalidade dos Dados.md",
     "Metodologia/Shapiro-Wilk.md",
