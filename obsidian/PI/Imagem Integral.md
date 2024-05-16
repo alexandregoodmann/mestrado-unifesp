@@ -121,7 +121,8 @@ dos pixels dentro de um retângulo usando a imagem integral, você pode seguir u
 
 Aqui está a fórmula para calcular a média da intensidade:
 
-\[ \text{Média} = \frac{{S(x2, y2) - S(x1-1, y2) - S(x2, y1-1) + S(x1-1, y1-1)}}{{(x2 - x1 + 1) \times (y2 - y1 + 1)}} \]
+\[ \text{Média} = \frac{{S(x2, y2) - S(x1-1, y2) - S(x2, y1-1) + S(x1-1, y1-1)}}
+{{(x2 - x1 + 1) \times (y2 - y1 + 1)}} \]
 
 Onde:
 - \( S(x, y) \) é o valor na posição (x, y) na imagem integral.
@@ -129,32 +130,6 @@ Onde:
 - \( (x2, y2) \) são as coordenadas do canto inferior direito do retângulo.
 
 Essa fórmula calcula a soma das intensidades de todos os pixels dentro do retângulo e, em seguida, divide pelo número total de pixels no retângulo para obter a média da intensidade.
-
-Aqui está um exemplo de como você pode implementar isso em Python:
-
-```python
-def calcular_media_intensidade(imagem_integral, x1, y1, x2, y2):
-    # Calcular a soma das intensidades usando a imagem integral
-    soma_intensidades = imagem_integral[y2, x2] - imagem_integral[y1-1, x2] - \
-                        imagem_integral[y2, x1-1] + imagem_integral[y1-1, x1-1]
-    # Calcular o número total de pixels no retângulo
-    num_pixels = (x2 - x1 + 1) * (y2 - y1 + 1)
-    # Calcular a média da intensidade
-    media_intensidade = soma_intensidades / num_pixels
-    return media_intensidade
-
-# Exemplo de uso:
-# Suponha que você já tenha a imagem integral e as coordenadas do retângulo
-imagem_integral = ...  # Sua imagem integral
-x1, y1 = ...  # Coordenadas do canto superior esquerdo do retângulo
-x2, y2 = ...  # Coordenadas do canto inferior direito do retângulo
-
-# Calcular a média da intensidade dentro do retângulo
-media_intensidade = calcular_media_intensidade(imagem_integral, x1, y1, x2, y2)
-print("Média da intensidade:", media_intensidade)
-```
-
-Certifique-se de que as coordenadas do retângulo estão dentro dos limites da imagem e que a imagem integral foi calculada corretamente antes de usar essa função.
 
 ___________________
 

@@ -13,7 +13,7 @@ filename = 'quadrado_prova.png'
 # ------------------------------------------------------------------------------------
 def abrirImagemTeste():
     #imgGray = cv2.imread(dir + filename, cv2.COLOR_BGR2GRAY)
-    img = cv2.imread(dir + filename)
+    img = cv2.imread(dir + filename, cv2.COLOR_BGR2GRAY)
     img[:,:] = (255,255,255)
     print('Shape Imagem Test', img.shape)
     cv2.imshow('Imagem Test', img)
@@ -39,11 +39,17 @@ def bordaQuadradaTest():
 # -------------------
 # MAIN
 # -------------------
-img = abrirImagemTeste()
-imgMarked = bordaQuadradaTest()
-min, max = mylib.getIntensidadeMinMax(imgMarked, 3, 6, 3, 6, 0)
-print('min max', min, max)
+img = cv2.imread(dir + filename)
+imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+imgGray[:,:] = 255
+imgGray[1:3,1:3] = 180
+h, w = imgGray.shape
+#mylib.setBordaQuadrada(1, imgGray, 0, 0, 3, 0)
+media = mylib.getIntensidadeMedia(imgGray, 1, 3, 1, 3)
 
-
-
+print('media', media)
+cv2.imwrite(dir+filename, imgGray)
+cv2.imshow('Imagem Test', imgGray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 

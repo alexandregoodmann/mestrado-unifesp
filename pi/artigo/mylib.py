@@ -57,7 +57,7 @@ def getImagemIntegral(imgGray):
         for y in range(1, N+1):
             I[x,y] = i[x,y] + I[x, y-1] + I[x-1, y] - I[x-1, y-1]
     #print(I)
-    #I = I[1:, 1:]
+    I = I[1:, 1:]
     return I
 
 # ------------------------------------------------------------------------------------
@@ -69,17 +69,10 @@ def getAreaRegangulo(I, x0, xn, y0, yn):
 
 # ------------------------------------------------------------------------------------
 # Calcula a média de intensidade de um retângulo a partir da imagem integral
-# mylib.getIntensidadeMedia(I, 1, 25, 1, 25)
 # ------------------------------------------------------------------------------------
-def getIntensidadeMedia(I, x0, xn, y0, yn):
-    intensidade = I[yn, xn] - I[y0-1, xn] - I[yn, x0-1] + I[y0-1, x0-1]
-    num_pixels = (xn - x0 + 1) * (yn - y0 + 1)
-    media_intensidade = intensidade / num_pixels
-    return media_intensidade
-
-def getIntensidadeMedia2(img, x0, xn, y0, yn):
+def getIntensidadeMedia(imgGray, x0, xn, y0, yn):
     soma = 0
-    for j in range(x0,xn):
-        for i in range(y0,yn):
-            soma = soma + img[j,i]
-    return soma/(25*25)
+    for j in range(x0, xn):
+        for i in range (y0, yn):
+            soma = soma + imgGray[j,i]
+    return soma/((xn-x0)*(yn-y0))
