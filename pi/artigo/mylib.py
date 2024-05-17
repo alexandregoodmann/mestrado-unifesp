@@ -1,4 +1,6 @@
 import numpy as np
+import cv2
+from copy import copy
 
 # ------------------------------------------------------------------------------------
 # Para calculo da imagem integral, cria-se uma matriz zero, adiciona uma linha e coluna
@@ -76,3 +78,28 @@ def getIntensidadeMedia(imgGray, x0, xn, y0, yn):
         for i in range (y0, yn):
             soma = soma + imgGray[j,i]
     return soma/((xn-x0)*(yn-y0))
+
+def getConvolucao(imgGray, x, y, n):
+    return imgGray[x-n:x+n+1, y-n:y+n+1]
+
+def setConvolucao(imgGray, x, y, n):
+    imgGray[x-n:x+n+1, y-n:y+n+1] = 0
+
+def getMediaConvolucao(conv):
+    h, w = conv.shape
+    soma = 0
+    for j in range(0, h):
+        for i in range(0, w):
+            soma = soma + conv[j,i]
+    return soma/(h*w)
+
+def procuraCelula(imgFiltrada, n, valor, margem):
+    pontos = []
+    linhas, colunas = imgFiltrada.shape
+    for j in range(n, colunas-n): #colunas
+        for i in range(n, linhas-n): #linhas
+            conv = getConvolucao(imgFiltrada, i, j, n)
+            media = getMediaConvolucao(conv)
+            if (media >= valor-margem and media <= valor+margem):
+                pontos.append([i,j])
+    return pontos

@@ -5,8 +5,8 @@ import mylib
 # Limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
 
-dir = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/'
-filename = 'quadrado_prova.png'
+dir = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/'
+filename = 'sperm_3.png'
 
 # ------------------------------------------------------------------------------------
 # Cria uma imagem cinza no tamanha 9x9
@@ -39,6 +39,7 @@ def bordaQuadradaTest():
 # -------------------
 # MAIN
 # -------------------
+'''
 img = cv2.imread(dir + filename)
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgGray[:,:] = 255
@@ -48,6 +49,19 @@ h, w = imgGray.shape
 media = mylib.getIntensidadeMedia(imgGray, 1, 3, 1, 3)
 
 print('media', media)
+cv2.imwrite(dir+filename, imgGray)
+cv2.imshow('Imagem Test', imgGray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+'''
+img = cv2.imread(dir + filename)
+imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#imgGray[:,:] = 180
+#mylib.setConvolucao(imgGray, 4, 4, 1)
+pontos = mylib.procuraCelula(imgGray, 15, 195, 20)
+print('pontos', pontos)
+#conv = mylib.getConvolucao(imgGray, 4, 4, 1)
+#print('convolucao\n', conv)
 cv2.imwrite(dir+filename, imgGray)
 cv2.imshow('Imagem Test', imgGray)
 cv2.waitKey(0)
