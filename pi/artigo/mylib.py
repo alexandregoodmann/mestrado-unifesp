@@ -36,13 +36,14 @@ def setBordaQuadrada(isGray, img, x0, y0, size, color):
     img[x0:xn, y0] = color
     img[x0:xn, yn] = color
     img[xn, yn] = color
-    return img
 
 # ------------------------------------------------------------------------------------
 # Pega intensidade mínima e máxima para uma região aplicando uma margem 
 # img[3:6, :] --> Esta notação é do tipo [a,b[, ou seja fechado no início e aberto no final.
 # ------------------------------------------------------------------------------------
-def getIntensidadeMinMax(img, x0, xn, y0, yn, margem):
+def getIntensidadeMinMax(img, x0, y0, size, margem):
+    xn = x0 + size
+    yn = y0 + size
     min = img[x0:xn, y0:yn].min() - margem
     max = img[x0:xn, y0:yn].max() + margem
     return min, max
@@ -82,8 +83,8 @@ def getIntensidadeMedia(imgGray, x0, xn, y0, yn):
 def getConvolucao(imgGray, x, y, n):
     return imgGray[x-n:x+n+1, y-n:y+n+1]
 
-def setConvolucao(imgGray, x, y, n):
-    imgGray[x-n:x+n+1, y-n:y+n+1] = 0
+def setConvolucao(img, x, y, n, cor):
+    img[x-n:x+n+1, y-n:y+n+1] = cor
 
 def getMediaConvolucao(conv):
     h, w = conv.shape
@@ -101,5 +102,22 @@ def procuraCelula(imgFiltrada, n, valor, margem):
             conv = getConvolucao(imgFiltrada, i, j, n)
             media = getMediaConvolucao(conv)
             if (media >= valor-margem and media <= valor+margem):
-                pontos.append([i,j])
+                pontos.append([i,j, media])
     return pontos
+
+# --------------------------------------------------------------------------------------
+# Metodo para transformacao afim
+# --------------------------------------------------------------------------------------
+def transformacao_afim(imagem, matriz):
+    altura, largura, _ = imagem.shape
+    transformada = np.zeros_like(imagem)
+
+    for y in range(altura):
+        for x in range(largura):
+            coords = np.dot(matriz, [x, y, 1]).astype(int)
+            _x, _y = coords[0], coords[1]
+
+            if 0 <= _x < largura and 0 <= _y < altura:
+                transformada[_y, _x] = imagem[y, x]
+
+    return transformada
