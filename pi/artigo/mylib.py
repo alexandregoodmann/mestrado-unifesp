@@ -105,6 +105,32 @@ def procuraCelula(imgFiltrada, n, valor, margem):
                 pontos.append([i,j, media])
     return pontos
 
+def contaObjetos(imgBW, n):
+    linhas, colunas = imgBW.shape
+    for j in range(n, colunas-n): #colunas
+        for i in range(n, linhas-n): #linhas
+            # print('pixel', j, i, imgBW[j,i])
+            if (imgBW[j,i] == 0):
+                setBlank(imgBW, [i, j])
+    return imgBW
+
+def setBlank(imgBW, ponto):
+    pontos = []
+    pontos.append(ponto)
+    while (pontos.__len__() > 0):
+        p = pontos[0]
+        conv = getConvolucao(imgBW, p[0], p[1], 1)
+        w, h = conv.shape
+        for x in range(0, w):
+            #showImage('pixel', imgBW)
+            for y in range(0, h):
+                if (conv[x,y] == 0):
+                    conv[x,y] = 255
+                    pontos.append([x,y])
+                    del pontos[0]
+
+    return imgBW, pontos
+
 # --------------------------------------------------------------------------------------
 # Metodo para transformacao afim
 # --------------------------------------------------------------------------------------
@@ -121,3 +147,44 @@ def transformacao_afim(imagem, matriz):
                 transformada[_y, _x] = imagem[y, x]
 
     return transformada
+
+def detect_edges(image):
+    # Converte a imagem para tons de cinza
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    
+    # Aplica o operador Sobel nos eixos x e y
+    sobel_x = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=1)
+    sobel_y = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=1)
+    
+    # Calcula a magnitude do gradiente
+    magnitude = np.sqrt(sobel_x**2 + sobel_y**2)
+    
+    # Normaliza a magnitude para o intervalo [0, 255]
+    magnitude = np.uint8(magnitude)
+    
+    return magnitude
+
+def detect_circles(image):
+    # Converte a imagem para tons de cinza
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    
+    # Aplica um desfoque para reduzir o ruído
+    blurred = cv2.GaussianBlur(gray, (9, 9), 2)
+    
+    # Detecta os círculos usando a transformada de Hough
+    circles = cv2.HoughCircles(blurred, cv2.HOUGH_GRADIENT, dp=1, minDist=50,
+                               param1=100, param2=30, minRadius=10, maxRadius=200)
+    
+    if circles is not None:
+        circles = np.round(circles[0, :]).astype("int")
+        for (x, y, r) in circles:
+            # Desenha o círculo detectado
+            cv2.circle(image, (x, y), r, (0, 255, 0), 4)
+    
+    return image
+
+def showImage(msg, img):
+    cv2.imshow(msg, img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    

@@ -5,21 +5,8 @@ import mylib
 # Limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
 
-dir = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/'
-filename = 'sperm_3.png'
-
-# ------------------------------------------------------------------------------------
-# Cria uma imagem cinza no tamanha 9x9
-# ------------------------------------------------------------------------------------
-def abrirImagemTeste():
-    #imgGray = cv2.imread(dir + filename, cv2.COLOR_BGR2GRAY)
-    img = cv2.imread(dir + filename, cv2.COLOR_BGR2GRAY)
-    img[:,:] = (255,255,255)
-    print('Shape Imagem Test', img.shape)
-    cv2.imshow('Imagem Test', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    return img
+dir = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/'
+filename = 'quadrado_prova.png'
 
 # ------------------------------------------------------------------------------------
 # Manipular cor em quadro especifico
@@ -56,14 +43,16 @@ cv2.destroyAllWindows()
 '''
 img = cv2.imread(dir + filename)
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-#imgGray[:,:] = 180
-#mylib.setConvolucao(imgGray, 4, 4, 1)
-pontos = mylib.procuraCelula(imgGray, 15, 195, 20)
-print('pontos', pontos)
-#conv = mylib.getConvolucao(imgGray, 4, 4, 1)
-#print('convolucao\n', conv)
-cv2.imwrite(dir+filename, imgGray)
+imgGray[:,:] = 180
+imgGray[3, 2:5] = 0
+imgGray[2,3] = 0
+imgGray[2,2] = 0
+#cv2.imwrite(dir+filename, imgGray)
 cv2.imshow('Imagem Test', imgGray)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+ret, imgBW = cv2.threshold(imgGray, 127, 255, cv2.THRESH_BINARY)
+#imgBW = mylib.contaObjetos(imgBW,1)
+imgBW, pontos = mylib.setBlank(imgBW, [2,2])
 

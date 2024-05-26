@@ -7,7 +7,8 @@ Tópicos
 [[Transformação Afim]]
 [[Convolução]]
 Filtro de Imagem
-Bordas
+[[Detecção de Bordas]]
+[[Detecção de Círculos]]
 Filtro Passa Baixa
 
 ------------------

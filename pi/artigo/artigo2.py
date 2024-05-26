@@ -28,7 +28,7 @@ imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 imgMarked = copy(imgGray)
 mylib.setBordaQuadrada(1, imgMarked, 50, 25, 40, 0) #marca1
-mylib.setBordaQuadrada(1, imgMarked, 23, 21, 15, 0) #marca2
+mylib.setBordaQuadrada(1, imgMarked, 25, 23, 13, 0) #marca2
 
 # min max marca1 para usar no filtro
 min, max = mylib.getIntensidadeMinMax(imgGray, 50, 25, 40, 20) 
@@ -60,31 +60,43 @@ cv2.destroyAllWindows()
 # Pega a intensidade media de uma celula
 # ---------------------------------------------------------------------------------------------------
 
-ret, bw_img = cv2.threshold(imgGray, 127, 255, cv2.THRESH_BINARY) 
-bw_img = cv2.cvtColor(bw_img, cv2.COLOR_BGR2RGB)
-bw_img = cv2.cvtColor(bw_img, cv2.COLOR_BGR2GRAY)
+ret, imgBW = cv2.threshold(imgGray, 127, 255, cv2.THRESH_BINARY) 
+media2 = mylib.getIntensidadeMedia(imgBW, 23, 38, 21, 36)
+print('media2', media2)
+cv2.imshow("Binary", imgBW) 
+cv2.waitKey(0) 
+cv2.destroyAllWindows()
 
-# Carrega a imagem
-edges = mylib.detect_edges()
+bordas = mylib.detect_edges(img)
 
-# Mostra a imagem original e a imagem com as bordas detectadas
-cv2.imshow('Original', image)
-cv2.imshow('Bordas', edges)
+cv2.imshow('Imagem Filtrada', bordas)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-print('shape bw', bw_img.shape)
-cv2.imshow("Binary", bw_img) 
-cv2.waitKey(0) 
+# --------------------------------------------------------------------------
+# Detecta os círculos na imagem
+circles_detected = mylib.detect_circles(img)
+
+# Mostra a imagem original e a imagem com os círculos detectados
+cv2.imshow('Original', circles_detected)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
+exit()
+
+# x, y, size, 23, 21, 15
+#a, b, c = plt.hist(imgBW[23:38,21:36])
+#plt.show()
+
+#print('media np', np.mean(imgBW[23:38,21:36]))
+#print('hist', a, b, c)
 
 size = 15 #inteiro impar
 n = (size-1)/2
 
-pontos = mylib.procuraCelula(bw_img, int(n), media, 2)
+pontos = mylib.procuraCelula(imgBW, int(n), media2, 4)
 print('pontos', pontos.__len__())
 
-imgMarked2 = cv2.cvtColor(imgGray, cv2.COLOR_BGR2RGB)
+imgMarked2 = cv2.cvtColor(imgBW, cv2.COLOR_BGR2RGB)
 for p in pontos:
     mylib.setConvolucao(imgMarked2, p[0], p[1], 1, (0, 255, 0))
 
