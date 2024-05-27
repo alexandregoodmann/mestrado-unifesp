@@ -53,6 +53,9 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 ret, imgBW = cv2.threshold(imgGray, 127, 255, cv2.THRESH_BINARY)
-#imgBW = mylib.contaObjetos(imgBW,1)
-imgBW, pontos = mylib.setBlank(imgBW, [2,2])
-
+qtd = mylib.varrerImagem(imgBW)
+print('objetos', qtd)
+cv2.imshow('Imagem Test', imgBW)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+exit()

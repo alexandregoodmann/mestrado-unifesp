@@ -104,43 +104,43 @@ def procuraCelula(imgFiltrada, n, valor, margem):
             if (media >= valor-margem and media <= valor+margem):
                 pontos.append([i,j, media])
     return pontos
-# 1 ------------------------------------------------------------------
-# --------------------------------------------------------------------
-# --------------------------------------------------------------------
-def varrerImagem(imgBW):
-    qtd = 0
+
+def contaObjetos(imgBW, n):
     linhas, colunas = imgBW.shape
-    for i in range(0, linhas): #linhas
-        for j in range(0, colunas): #colunas
-            if (imgBW[i,j] == 0):
-                qtd = qtd + 1
-                removeObjeto(imgBW, i, j)
-    return qtd
-# 2 ------------------------------------------------------------------
-# --------------------------------------------------------------------
-# --------------------------------------------------------------------
-def removeObjeto(imgBW, x, y):
+    for j in range(n, colunas-n): #colunas
+        for i in range(n, linhas-n): #linhas
+            # print('pixel', j, i, imgBW[j,i])
+            if (imgBW[j,i] == 0):
+                setBlank(imgBW, [i, j])
+    return imgBW
+
+def setBlank(imgBW, ponto):
     pontos = []
-    pontos.append([x,y])
-    imgBW[x, y] = 255
+    pontos.append(ponto)
     while (pontos.__len__() > 0):
-        P = pontos[0]
-        del pontos[0]
-        vizinhos = getVizinhos(imgBW, x, y)
-        if (vizinhos.__len__() > 0):
-            pontos.append(vizinhos)
+        p = pontos[0]
+        conv = getConvolucao(imgBW, p[0], p[1], 1)
+        w, h = conv.shape
+        for x in range(0, w):
+            #showImage('pixel', imgBW)
+            for y in range(0, h):
+                if (conv[x,y] == 0):
+                    conv[x,y] = 255
+                    pontos.append([x,y])
+                    del pontos[0]
 
-def getVizinhos(imgBW, x, y):
-    vizinhos = []
-    for i in range(x-1, x+2):
-        for j in range(y-1, y+2):
-            if (imgBW[i, j] == 0):
-                print('vizinho', i, j)
-                imgBW[i,j] = 255
-                vizinhos.append(imgBW[i,j])
-    return vizinhos
-        
+    return imgBW, pontos
 
+def setConvBlank(imgBW, ponto):
+    pontos = []
+    conv = getConvolucao(imgBW, ponto[0], ponto[1], 1)
+    w, h = conv.shape
+    for x in range(0, w):
+        for y in range(0, h):
+            if (conv[x,y] == 0):
+                conv[x,y] = 255
+                pontos.append([x,y])
+    return pontos
 
 # --------------------------------------------------------------------------------------
 # Metodo para transformacao afim
