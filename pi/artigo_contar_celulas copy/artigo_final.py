@@ -7,7 +7,7 @@ import os
 os.system('cls' if os.name == 'nt' else 'clear')
 
 #---------------------------------------------------------
-# Metodos
+# Metodos para varrer imagem e contar o numero de pontos
 #---------------------------------------------------------
 marcados = []
 def varrerImagem():

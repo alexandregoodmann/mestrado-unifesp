@@ -34,10 +34,11 @@ https://www.sciencedirect.com/science/article/abs/pii/S0169260716304023
 
 ______________
 
-Característica da análise:
-Remover ruído
-Tamanho da celula
-Célula clara
-Célula escura
-Detecção de borda
+### Estudar
+- [ ] Remover ruído
+- [ ] Tamanho da celula
+- [ ] Célula clara
+- [ ] Célula escura
+- [ ] Detecção de borda
+- [ ] Filtros (passa baixa, passa alta, outros)
 	
