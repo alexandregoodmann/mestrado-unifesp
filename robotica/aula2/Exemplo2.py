@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import math
-import sim 
+import atividade_1.sim as sim 
 import time
 
 print('------->>>>>>>Iniciando o robozinho')
