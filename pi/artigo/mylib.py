@@ -33,3 +33,36 @@ def getIntensidadeMinMax(img, x0, y0, size, margem):
     max = img[x0:xn, y0:yn].max() + margem
     return min, max
 
+# ------------------------------------------------------------------------------------------
+# Contagem das celulas
+# ------------------------------------------------------------------------------------------
+marcados = []
+objetos = []
+def contarCelulas(imgBW):
+    w, h = imgBW.shape
+    obj = 0
+    for i in range (1, w-1):
+        for j in range(1, h-1):
+            if (imgBW[i,j] == 0):
+                marcados.append([i,j])
+                setPixelBlank(imgBW)
+                obj += 1
+    print(objetos.__len__(), objetos)
+    return obj
+
+def setPixelBlank(imgBW):
+    vizinhos = []
+    w, h = imgBW.shape
+    while (marcados.__len__() > 0):
+        x = marcados[0][0]
+        y = marcados[0][1]
+        imgBW[x,y] = 180
+        del marcados[0]
+        if ((x+2)<= w and (y+2) <= h):
+            for i in range(x-1, x+2):
+                for j in range(y-1, y+2):
+                    if (imgBW[i,j] == 0):
+                        imgBW[i,j] = 180
+                        vizinhos.append([i,j])
+                        marcados.append([i,j])
+    objetos.append(vizinhos)

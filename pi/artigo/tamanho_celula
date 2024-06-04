@@ -1,0 +1,16 @@
+import os
+import cv2
+import mylib
+from copy import copy
+from matplotlib import pyplot as plt
+
+# Limpar console
+os.system('cls' if os.name == 'nt' else 'clear')
+imgBW = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo_contar_celulas copy/quadrado_prova.png', cv2.IMREAD_GRAYSCALE)
+(thresh, imgBW) = cv2.threshold(imgBW, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+
+cells = mylib.contarCelulas(imgBW)
+print('celulas', cells)
+cv2.imshow('Imagem Binaria', imgBW)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
