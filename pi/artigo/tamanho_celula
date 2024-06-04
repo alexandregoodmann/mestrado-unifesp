@@ -3,14 +3,31 @@ import cv2
 import mylib
 from copy import copy
 from matplotlib import pyplot as plt
+import statistics
 
 # Limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
-imgBW = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo_contar_celulas copy/quadrado_prova.png', cv2.IMREAD_GRAYSCALE)
+imgBW = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/seccao_1_BW.jpg', cv2.IMREAD_GRAYSCALE)
 (thresh, imgBW) = cv2.threshold(imgBW, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 
-cells = mylib.contarCelulas(imgBW)
-print('celulas', cells)
+mylib.marcados = []
+mylib.objetos = []
+objetos = mylib.contarCelulas(imgBW)
+tamanhos = []
+for o in objetos:
+    if (o.__len__() > 55 and o.__len__() < 120):
+        tamanhos.append(o.__len__())
+
+tamanhos = sorted(tamanhos)
+
+print('objetos', tamanhos)
+print('Qtd objetos', tamanhos.__len__())
+print('min max media moda', min(tamanhos), max(tamanhos), int(statistics.mean(tamanhos)), int(statistics.mode(tamanhos)))
+
+a, b, c = plt.hist(sorted(tamanhos))
+plt.show()
+
 cv2.imshow('Imagem Binaria', imgBW)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+exit()

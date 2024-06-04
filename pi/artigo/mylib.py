@@ -40,18 +40,16 @@ marcados = []
 objetos = []
 def contarCelulas(imgBW):
     w, h = imgBW.shape
-    obj = 0
     for i in range (1, w-1):
         for j in range(1, h-1):
             if (imgBW[i,j] == 0):
                 marcados.append([i,j])
-                setPixelBlank(imgBW)
-                obj += 1
-    print(objetos.__len__(), objetos)
-    return obj
+                setPixelBlank(imgBW, [i,j])
+    return objetos
 
-def setPixelBlank(imgBW):
+def setPixelBlank(imgBW, coor):
     vizinhos = []
+    vizinhos.append(coor)
     w, h = imgBW.shape
     while (marcados.__len__() > 0):
         x = marcados[0][0]
