@@ -1,6 +1,15 @@
 import numpy as np
 import cv2
 from copy import copy
+from typing import Final
+
+# ------------------------------------------------------------------------------------
+# Constantes
+# ------------------------------------------------------------------------------------
+tamanho_min_celula: Final = 56
+tamanho_max_celula: Final = 120
+intensidade_celula_marcada: Final = 180
+intensidade_grupo: Final = 80
 
 # ------------------------------------------------------------------------------------
 # Marca em preto um retangulo em uma imagem com base nas coordenadas
@@ -37,30 +46,56 @@ def getIntensidadeMinMax(img, x0, y0, size, margem):
 # Contagem das celulas
 # ------------------------------------------------------------------------------------------
 marcados = []
-objetos = []
+celulas = []
+grupos = []
 def contarCelulas(imgBW):
     w, h = imgBW.shape
     for i in range (1, w-1):
         for j in range(1, h-1):
             if (imgBW[i,j] == 0):
                 marcados.append([i,j])
-                setPixelBlank(imgBW, [i,j])
-    return objetos
+                __setPixelBlank(imgBW, [i,j])
+    qtd = __calcularCelulasAgrupadas(imgBW)
+    return celulas.__len__() + qtd
 
-def setPixelBlank(imgBW, coor):
-    vizinhos = []
-    vizinhos.append(coor)
+def __setPixelBlank(imgBW, coor):
+    item = []
+    item.append(coor)
     w, h = imgBW.shape
     while (marcados.__len__() > 0):
         x = marcados[0][0]
         y = marcados[0][1]
-        imgBW[x,y] = 180
+        imgBW[x,y] = intensidade_celula_marcada
         del marcados[0]
         if ((x+2)<= w and (y+2) <= h):
             for i in range(x-1, x+2):
                 for j in range(y-1, y+2):
                     if (imgBW[i,j] == 0):
-                        imgBW[i,j] = 180
-                        vizinhos.append([i,j])
+                        imgBW[i,j] = intensidade_celula_marcada
+                        item.append([i,j])
                         marcados.append([i,j])
-    objetos.append(vizinhos)
+    if (item.__len__() >= tamanho_min_celula and item.__len__() <= tamanho_max_celula):
+        celulas.append(item)
+    if (item.__len__() > tamanho_max_celula):
+        grupos.append(item)
+
+def __calcularCelulasAgrupadas(imgBW):
+    qtd = 0
+    for grupo in grupos:
+        qtd += int(grupo.__len__()/tamanho_min_celula)
+        for coordenada in grupo:
+            imgBW[coordenada[0], coordenada[1]] = intensidade_grupo
+    return qtd
+# ------------------------------------------------------------------------------------------
+# Cortar imagem de 3 canais
+# Parametros: imagem, fatiar linhas, fatilar colunas
+# ------------------------------------------------------------------------------------------
+def cortarImagem(img, linhas, colunas):
+    partes = []
+    largura, altura, canais = img.shape
+    passo_a = int(largura/colunas)
+    passo_b = int(altura/linhas)
+    for i in range(0, largura, passo_a):
+        for j in range(0, altura, passo_b):
+            partes.append(img[i:i+passo_a, j:j+passo_b])
+    return partes

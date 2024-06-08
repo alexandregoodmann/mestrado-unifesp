@@ -1,25 +1,3 @@
----
--------------------------------:
----
-----
-## Metodologia Científica
-#### Atividades
-- [ ] Atividade 4 - Falta completar. Escrever mais a Introdução. Fazer no artigo e depoipassar para atividade
-- [ ] Atividade 5 - 2 Dia
-	- [ ] Métodos baselines. Estudar sobre o assunto. Pesquisar outras monografias
-	- [ ] Datasets
-- [ ] Atividade 7 - 1 Dia
-	- [ ] Pesquisar Artigo e responder como resumo
-- [ ] Atividade 8 - 1 Dia
-	- [ ] Fazer pesquisa sobre Revistas e publicações
-- [ ] Atividade 9 - 1 Dia
-	- [ ] Pesquisar artigo e fazer Resumo. Usar um de PI
-
-#### Ações
-- ~~Decidir a linha de pesquisa dentro da [[Robótica]]~~
-- Adotar uma monografia como referência. Se possivelmente da Unifesp
-- Separar conjunto de artigos sobre o tema
-
 Processo de pesquisa de referências
 [Teses da capes](https://catalogodeteses.capes.gov.br/catalogo-teses/#!/)
 	file:///home/alexandre/Downloads/2019%20Disserta%C3%A7%C3%A3o%20Alexandre%20Guimar%C3%A3es%20Soares.pdf
@@ -38,3 +16,11 @@ Periódicos Capes
 https://www-periodicos-capes-gov-br.ezl.periodicos.capes.gov.br/index.php/buscador-primo.html
 
 
+Tese Capes aprentação disciplina
+https://sucupira-v2.capes.gov.br/sucupira4/observatorio/detalhamento/producoes/36189837?ano-base=2022&search=rob%C3%B4&size=20&page=0
+https://sucupira-v2.capes.gov.br/sucupira4/observatorio/detalhamento/producoes/37039774?ano-base=2022&search=rob%C3%B4&size=20&page=0
+https://sucupira-v2.capes.gov.br/sucupira4/observatorio/detalhamento/producoes/36564079?ano-base=2022|2020|2021|2019&search=robo+colaborativo&size=20&page=0
+
+Duas entregas finais para Robotica:
+1. Escolher um artigo, estudar e preparar apresentação em slides. É um seminário
+2. Fazer as atividades que estão colocadas como projeto final e gravar vídeo funcionando; Escrever um artigo em formato IEEE até duas páginas descrevendo o que foi feito na atividade. 

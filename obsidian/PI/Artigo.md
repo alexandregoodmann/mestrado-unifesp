@@ -1,9 +1,14 @@
 Buscar artigos
+Buscar artigos do professor
 Teses na base capes
 Compreender os processos de análise da Imagem
 As partes técnicas do processamento da imagem (convolução, filtragem, outras)
 Gradiente
 Buscar laboratório em Porto Alegre
+
+flood fill
+olhar pra cor da celula e identificar sobreposicao e focar no formato
+extrair elipses hough
 
 --------------
 #### Processo de contagem das células

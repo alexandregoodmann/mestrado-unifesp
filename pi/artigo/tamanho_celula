@@ -7,27 +7,19 @@ import statistics
 
 # Limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
-imgBW = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/seccao_1_BW.jpg', cv2.IMREAD_GRAYSCALE)
-(thresh, imgBW) = cv2.threshold(imgBW, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 
-mylib.marcados = []
-mylib.objetos = []
-objetos = mylib.contarCelulas(imgBW)
-tamanhos = []
-for o in objetos:
-    if (o.__len__() > 55 and o.__len__() < 120):
-        tamanhos.append(o.__len__())
+# Listar partes da imagem
+diretorio = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/parts'
+for file in os.listdir(diretorio):
+    print(file)
 
-tamanhos = sorted(tamanhos)
+imgGray = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/seccao_1_BW.jpg', cv2.IMREAD_GRAYSCALE)
+#imgGray = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/seccao_1_BW_nao_aglomeradas.jpg', cv2.IMREAD_GRAYSCALE)
+(thresh, imgBW) = cv2.threshold(imgGray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 
-print('objetos', tamanhos)
-print('Qtd objetos', tamanhos.__len__())
-print('min max media moda', min(tamanhos), max(tamanhos), int(statistics.mean(tamanhos)), int(statistics.mode(tamanhos)))
-
-a, b, c = plt.hist(sorted(tamanhos))
-plt.show()
+qtd = mylib.contarCelulas(imgBW)
+print('Quantidade de Celulas', qtd)
 
 cv2.imshow('Imagem Binaria', imgBW)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-exit()
