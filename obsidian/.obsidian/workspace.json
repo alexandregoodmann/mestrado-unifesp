@@ -56,6 +56,30 @@
             }
           },
           {
+            "id": "3f3e6db1ec70d7e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pessoal/Financeiro.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0f7c4ef2917dd669",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PI/Sem título.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "24badf99f62e22b0",
             "type": "leaf",
             "state": {
@@ -64,7 +88,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -130,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PI/Artigo.md",
+                "file": "PI/Sem título.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PI/Artigo.md",
+                "file": "PI/Sem título.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "PI/Artigo.md"
+                "file": "PI/Sem título.md"
               }
             }
           },
@@ -212,8 +236,12 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "dcfbacfb95f5df35",
+  "active": "0f7c4ef2917dd669",
   "lastOpenFiles": [
+    "Robótica.md",
+    "PI/Sem título.md",
+    "Pessoal/Financeiro.md",
+    "Pessoal",
     "Atividades Mestrado Unifesp.md",
     "PI/Artigo.md",
     "Robótica/Robótica.md",
