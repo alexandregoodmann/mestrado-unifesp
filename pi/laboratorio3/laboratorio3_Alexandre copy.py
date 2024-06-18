@@ -2,7 +2,7 @@
 # Aluno: Alexandre Ferreira e Silva
 # Atividade 03
 #
-# Morfologia - para rodar o arquivo copiar a linha abaixo e mudar o diretorio
+# Morfologia
 # python3 laboratorio3.py '/home/alexandre/projetos/mestrado-unifesp/pi/laboratorio3/muros.png' 1 5 '/home/alexandre/projetos/mestrado-unifesp/pi/laboratorio3/muros_saida.png'
 # 1-erosão; 2-dilatação; 3-abertura; 4-fechamento.
 # --------------------------------------------------------------------------------------
@@ -17,12 +17,19 @@ import sys
 os.system('cls' if os.name == 'nt' else 'clear')
 
 # parametros de entrada
+'''
 arquivo = sys.argv[1]
 operacao = int(sys.argv[2])
 tamanho = int(sys.argv[3])
 arquivo_saida = sys.argv[4]
+'''
 elemento = []
 parte = 1
+
+arquivo = '/home/alexandre/projetos/mestrado-unifesp/pi/laboratorio3/muros.png'
+arquivo_saida = '/home/alexandre/projetos/mestrado-unifesp/pi/laboratorio3/muros_saida.png'
+operacao = 4
+tamanho = 5
 
 # Exibe a imagem preto e branco
 imgGray = cv2.imread(arquivo, cv2.IMREAD_GRAYSCALE)
@@ -39,7 +46,6 @@ def getParte():
     if (tamanho > 3):
         parte = int(tamanho/2)
     return parte
-
 # --------------------------------------------------------------------------------------------
 # Cria o elemento estruturante com o tamanho de entrada
 # --------------------------------------------------------------------------------------------
@@ -115,3 +121,15 @@ cv2.imwrite(arquivo_saida, imgSaida)
 cv2.imshow('Imagem Saida', imgSaida)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+ero = erosao(imgBW)
+dila = dilatacao(imgBW)
+abertura = dilatacao(ero)
+fechamento = erosao(dila)
+
+plt.subplot(151),plt.imshow(imgBW, cmap='gray'),plt.title('Oritinal')
+plt.subplot(152),plt.imshow(ero, cmap='gray'),plt.title('Erosao')
+plt.subplot(153),plt.imshow(dila, cmap='gray'),plt.title('Dilatacao')
+plt.subplot(154),plt.imshow(abertura, cmap='gray'),plt.title('Abertura')
+plt.subplot(155),plt.imshow(fechamento, cmap='gray'),plt.title('Fechamento')
+plt.show()
