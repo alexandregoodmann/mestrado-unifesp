@@ -22,7 +22,6 @@ operacao = int(sys.argv[2])
 tamanho = int(sys.argv[3])
 arquivo_saida = sys.argv[4]
 elemento = []
-parte = 1
 
 # Exibe a imagem preto e branco
 imgGray = cv2.imread(arquivo, cv2.IMREAD_GRAYSCALE)
@@ -30,15 +29,6 @@ imgGray = cv2.imread(arquivo, cv2.IMREAD_GRAYSCALE)
 cv2.imshow('Imagem Preto e Branco', imgBW)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
-# --------------------------------------------------------------------------------------------
-# Cria o elemento estruturante com o tamanho de entrada
-# --------------------------------------------------------------------------------------------
-def getParte():
-    parte = 1
-    if (tamanho > 3):
-        parte = int(tamanho/2)
-    return parte
 
 # --------------------------------------------------------------------------------------------
 # Cria o elemento estruturante com o tamanho de entrada
@@ -54,6 +44,7 @@ def criarElementoEstruturante():
 # d - dimensao da convolucao
 # --------------------------------------------------------------------------------------------
 def isInside(imagem, i, j):
+    parte = int(tamanho/2)
     segmento = imagem[(i-parte):(i+parte+1), (j-parte):(j+parte+1)]
     return np.array_equal(segmento, elemento)
 
@@ -68,6 +59,7 @@ def erosao(imagem):
     imgErosao[:,:] = 255
 
     # Com base na imagem original, cria a imagem com erosao
+    parte = int(tamanho/2)
     for i in range(parte, linhas-parte):
         for j in range(parte, colunas-parte):
             if (imagem[i,j] == 0 and isInside(imagem, i, j)):
@@ -78,6 +70,7 @@ def erosao(imagem):
 # DILATACAO
 # --------------------------------------------------------------------------------------------
 def dilatacao(imagem):
+    parte = int(tamanho/2)
     imgDilatacao = np.copy(imagem)
     linhas, colunas = imagem.shape
     for i in range(parte, linhas-parte):
@@ -89,9 +82,6 @@ def dilatacao(imagem):
 # --------------------------------------------------------------------------------------------
 # PRINCIPAL
 # --------------------------------------------------------------------------------------------  
-
-# Parte foi considerado como a metade do tamanho informado para o elemento estruturante. Sera sempre impar, pois considera o pixel central
-parte = getParte()
 
 # Cria elemento estruturante com base no tamanho informado
 elemento = criarElementoEstruturante()            
