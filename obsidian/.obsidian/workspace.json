@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atividades Mestrado Unifesp.md",
+                "file": "Mestrado/Atividades Mestrado Unifesp.md",
                 "mode": "source",
                 "source": false
               }
@@ -73,7 +73,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PI/Sem título.md",
+                "file": "Pessoal/Financeiro.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,9 +86,21 @@
               "type": "graph",
               "state": {}
             }
+          },
+          {
+            "id": "1dbd5452dcbea425",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Deep Learning.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -154,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PI/Sem título.md",
+                "file": "Deep Learning.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +183,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PI/Sem título.md",
+                "file": "Deep Learning.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +206,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "PI/Sem título.md"
+                "file": "Deep Learning.md"
               }
             }
           },
@@ -236,15 +248,24 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "0f7c4ef2917dd669",
+  "active": "1dbd5452dcbea425",
   "lastOpenFiles": [
-    "Robótica.md",
-    "PI/Sem título.md",
+    "Deep Learning.md",
     "Pessoal/Financeiro.md",
-    "Pessoal",
-    "Atividades Mestrado Unifesp.md",
-    "PI/Artigo.md",
+    "IA",
+    "Robótica/TinyML.md",
+    "Robótica/Seminário.md",
+    "Sem título.canvas",
     "Robótica/Robótica.md",
+    "Mestrado/Normalidade dos Dados.md",
+    "Python.md",
+    "Mestrado/Estatística.md",
+    "machine learning.md",
+    "Mestrado/Atividades Mestrado Unifesp.md",
+    "Mestrado",
+    "PI/Sem título.md",
+    "Pessoal",
+    "PI/Artigo.md",
     "Robótica/Controle.md",
     "Metodologia/Shapiro-Wilk.md",
     "Metodologia/Seminário de Estatística.md",
@@ -252,23 +273,16 @@
     "PI/Hough.md",
     "PI/Processamento de Imagem.md",
     "PI/Detecção de Bordas.md",
-    "Sem título.canvas",
     "PI/Imagem Integral.md",
-    "TinyML.md",
     "PI/Convolução.md",
     "PI/Transformação Afim.md",
     "PI/intensidade de cada pixel.md",
     "Metodologia",
-    "Estatística.md",
     "PI",
     "Robótica",
     "PI/Limite de Iluminação.md",
     "Untitled.canvas",
     "2024-05-08.md",
-    "2024-05-03.md",
-    "PI/Processamento de baixo nível.md",
-    "Normalidade dos Dados.md",
-    "Python.md",
-    "machine learning.md"
+    "2024-05-03.md"
   ]
 }

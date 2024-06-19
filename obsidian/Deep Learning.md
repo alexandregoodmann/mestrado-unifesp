@@ -1,0 +1,6 @@
+
+Regressão
+
+Classificação
+
+Não
