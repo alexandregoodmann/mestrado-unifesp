@@ -7,8 +7,13 @@ import sim
 import os
 import logging
 
-logging.basicConfig(level=logging.INFO, filename="/home/alexandre/projetos/mestrado-unifesp/robotica/atividade_1/programa.log", format="%(asctime)s - %(levelname)s - %(message)s")
+# limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
+
+# configurar log
+dir = os.getcwd()
+log_file = 'atividade_2.log'
+logging.basicConfig(level=logging.INFO, filename=(dir+log_file), format="%(asctime)s - %(levelname)s - %(message)s")
 
 def andar(eixo, distancia):
     
@@ -18,8 +23,8 @@ def andar(eixo, distancia):
     destino = pos[eixo] + distancia 
 
     #faz o carro andar 
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 3, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, 3, sim.simx_opmode_streaming + 5)
+    sim.simxSetJointTargetVelocity(clientID, l_wheel, 2, sim.simx_opmode_streaming + 5)
+    sim.simxSetJointTargetVelocity(clientID, r_wheel, 2, sim.simx_opmode_streaming + 5)
 
     posicao = origem
     if (posicao < destino):
@@ -27,12 +32,24 @@ def andar(eixo, distancia):
             laser_data = readSensorData(clientID, laser_range_data, laser_angle_data)
             logging.info(laser_data)
             r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
+            print('pos', pos)
+            if (pos[0] < 0):
+                sim.simxSetJointTargetVelocity(clientID, l_wheel, 2, sim.simx_opmode_streaming + 5)
+                sim.simxSetJointTargetVelocity(clientID, r_wheel, 1.5, sim.simx_opmode_streaming + 5)
+            elif (pos[0] > 0):
+                sim.simxSetJointTargetVelocity(clientID, l_wheel, 1.5, sim.simx_opmode_streaming + 5)
+                sim.simxSetJointTargetVelocity(clientID, r_wheel, 2, sim.simx_opmode_streaming + 5)
+            else:
+                sim.simxSetJointTargetVelocity(clientID, l_wheel, 2, sim.simx_opmode_streaming + 5)
+                sim.simxSetJointTargetVelocity(clientID, r_wheel, 2, sim.simx_opmode_streaming + 5)
+
             posicao = pos[eixo]
     else:
         while (posicao > destino):
             laser_data = readSensorData(clientID, laser_range_data, laser_angle_data)
             logging.info(laser_data)
             r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
+            print('pos', pos)
             posicao = pos[eixo]
 
     pararRobo()
@@ -130,7 +147,9 @@ if clientID!=-1:
     print('--->>> Inicio da Simulacao <<<---')
     # trecho 1
     printPositionAndOrientation()
-    andar(1, 1)
+    andar(1, 4)
+    pararSimulacao()
+    exit()
     curva(0)
 
     # trecho 2
