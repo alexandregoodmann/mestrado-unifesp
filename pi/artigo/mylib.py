@@ -6,10 +6,10 @@ from typing import Final
 # ------------------------------------------------------------------------------------
 # Constantes
 # ------------------------------------------------------------------------------------
-tamanho_min_celula: Final = 56
-tamanho_max_celula: Final = 120
-intensidade_celula_marcada: Final = 180
-intensidade_grupo: Final = 80
+TAMANHO_MIN_CELULA: Final = 56
+TAMANHO_MAXIMO_CELULA: Final = 120
+INTENSIDADE_CELULA_MARCADA: Final = 180
+INTENSIDADE_GRUPO: Final = 80
 
 # ------------------------------------------------------------------------------------
 # Marca em preto um retangulo em uma imagem com base nas coordenadas
@@ -65,27 +65,28 @@ def __setPixelBlank(imgBW, coor):
     while (marcados.__len__() > 0):
         x = marcados[0][0]
         y = marcados[0][1]
-        imgBW[x,y] = intensidade_celula_marcada
+        imgBW[x,y] = INTENSIDADE_CELULA_MARCADA
         del marcados[0]
         if ((x+2)<= w and (y+2) <= h):
             for i in range(x-1, x+2):
                 for j in range(y-1, y+2):
                     if (imgBW[i,j] == 0):
-                        imgBW[i,j] = intensidade_celula_marcada
+                        imgBW[i,j] = INTENSIDADE_CELULA_MARCADA
                         item.append([i,j])
                         marcados.append([i,j])
-    if (item.__len__() >= tamanho_min_celula and item.__len__() <= tamanho_max_celula):
+    if (item.__len__() >= TAMANHO_MIN_CELULA and item.__len__() <= TAMANHO_MAXIMO_CELULA):
         celulas.append(item)
-    if (item.__len__() > tamanho_max_celula):
+    if (item.__len__() > TAMANHO_MAXIMO_CELULA):
         grupos.append(item)
 
 def __calcularCelulasAgrupadas(imgBW):
     qtd = 0
     for grupo in grupos:
-        qtd += int(grupo.__len__()/tamanho_min_celula)
+        qtd += int(grupo.__len__()/TAMANHO_MIN_CELULA)
         for coordenada in grupo:
-            imgBW[coordenada[0], coordenada[1]] = intensidade_grupo
+            imgBW[coordenada[0], coordenada[1]] = INTENSIDADE_GRUPO
     return qtd
+
 # ------------------------------------------------------------------------------------------
 # Cortar imagem de 3 canais
 # Parametros: imagem, fatiar linhas, fatilar colunas
@@ -99,3 +100,17 @@ def cortarImagem(img, linhas, colunas):
         for j in range(0, altura, passo_b):
             partes.append(img[i:i+passo_a, j:j+passo_b])
     return partes
+
+# ------------------------------------------------------------------------------------------
+# Converte imagem para binario
+# ------------------------------------------------------------------------------------------
+def converterBinario(imgGray, T):
+    imgBW = copy(imgGray)
+    width, height = imgBW.shape
+    for i in range(0, width):
+        for j in range(0, height):
+            if (imgGray[i,j] <= T):
+                imgBW[i,j] = 0
+            else:
+                imgBW[i,j] = 255
+    return imgBW

@@ -13,18 +13,32 @@ extrair elipses hough
 --------------
 #### Processo de contagem das células
 
+**Processo de contagem**
+- Abrir imagem colorida
+- Converter para GrayScale e reduzir tamanho pela metade
+- Marcar zona de filtragem (ação manual)
+- A partir da zona filtrada pegar min e max, varrer a imagem e remover ruido do fundo (poderia usar convolucao?)
+- Convert a imagem para binario
+- Tamanho de Células. As células possuem um tamanho mínimo e máximo. Foi criado uma imagem com uma amostra de celulas individuais, não agrupadas. Com a ciência do número de células, fez-se um histograma da área das células. Decidindo um tamanho mínimo e máximo. Para os grupos de células. Logo, para os grupos de células, divide-se o tamanho do grupo pelo menor tamanho de células, para se obter um número aproximado de células em cada grupo.
+- Conta as celulas (aqui é um tópico a parte para explicar como se faz isso)
+	- Neste momento considera-se a imagem com células individuais, agrupadas e ruídos (pequenas marcas pretas)
+	- Algorítimo
+		- Cria uma lista vazia de marcados
+		- Encontra o primeiro pixel preto e adiciona na lista
+		- Para o primeiro pixel, faz convolução e adiciona à lista os vizinhos sem intensidade
+		- Faz os dois passos anteriores enquanto houver pixel na lista, senão continua a varrer a imagem
+		- Com estas técnicas foi possível objter 97% de acertos no número de células
+			
+
+Parametros de entrada
+filename
+reduzir - porcentamgem que vai reduzir
+
 **Preparação**
 - Gerar imagem com um spermatosoide para usar em todo processo, posteriormente a imagem do microscópio
 	- #redimensionada = img[::2, ::2]
 - Pegar uma cabeça de espermatosoide e obter um tamanho de exemplo (depois será usado uma margem de erro).
 - Obter a intensidade média de uma cabeça de espermatosoide de duas maneiras. Uma usando imagem GrayScale e outra usando Imagem Binária
-
-**Processo de contagem**
-- Abrir imagem colorida
-- Converter para GrayScale
-- Marcar zona de filtragem (ação manual)
-- Filtrar imagem GrayScale com base na média de intensidade da zona marcada
-
 
 ---------------
 ### An efficient method for automatic morphological abnormality detection from human sperm images

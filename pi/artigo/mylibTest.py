@@ -26,4 +26,7 @@ def cortarImagemTest():
 # ------------------------------------------------------------------------------------
 # MAIN
 # ------------------------------------------------------------------------------------
-cortarImagemTest()
+# cortarImagemTest()
+
+img = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/imagem_original.png')
+nova = cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/imagem_reduzida.png', img[::2,::2])
