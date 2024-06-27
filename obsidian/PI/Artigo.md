@@ -19,7 +19,10 @@ extrair elipses hough
 - Marcar zona de filtragem (ação manual)
 - A partir da zona filtrada pegar min e max, varrer a imagem e remover ruido do fundo (poderia usar convolucao?)
 - Convert a imagem para binario
-- Tamanho de Células. As células possuem um tamanho mínimo e máximo. Foi criado uma imagem com uma amostra de celulas individuais, não agrupadas. Com a ciência do número de células, fez-se um histograma da área das células. Decidindo um tamanho mínimo e máximo. Para os grupos de células. Logo, para os grupos de células, divide-se o tamanho do grupo pelo menor tamanho de células, para se obter um número aproximado de células em cada grupo.
+- Ajustar Parâmetros
+	- Filtrar Fundo:
+	- Tamanho de Células:
+		- As células possuem um tamanho mínimo e máximo. Foi criado uma imagem com uma amostra de celulas individuais, não agrupadas. Com a ciência do número de células, fez-se um histograma da área das células. Decidindo um tamanho mínimo e máximo. Para os grupos de células. Logo, para os grupos de células, divide-se o tamanho do grupo pelo menor tamanho de células, para se obter um número aproximado de células em cada grupo.
 - Conta as celulas (aqui é um tópico a parte para explicar como se faz isso)
 	- Neste momento considera-se a imagem com células individuais, agrupadas e ruídos (pequenas marcas pretas)
 	- Algorítimo

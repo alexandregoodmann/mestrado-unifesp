@@ -11,7 +11,6 @@ os.system('cls' if os.name == 'nt' else 'clear')
 # ------------------------------------------------------------------------------------------
 # Abrir imagem original
 # ------------------------------------------------------------------------------------------
-#path = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/imagem_reduzida.png'
 path = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/seccao_1.jpg'
 contagem = '/home/alexandre/projetos/mestrado-unifesp/pi/artigo/imgs/seccao_1_counted.jpg'
 
@@ -28,7 +27,7 @@ mylib.setBordaQuadrada(1, imgMarcado, 50, 25, 40, 0) #marca1
 # Transforma a imagem em Binaria 
 # ------------------------------------------------------------------------------------------
 MIN, MAX = mylib.getIntensidadeMinMax(imgGray, 50, 25, 40, 20) 
-print('min max da zona filtrada', MIN, MAX)
+print('Mínimo e Máximo de intensidade da zona filtrada:', MIN, MAX)
 
 # varre toda a imagem e remove fundo cinza
 imgFiltrado = copy(imgGray)
@@ -39,7 +38,6 @@ for j in range(0, width-1):
         if (intensidade >= MIN and intensidade <= MAX):
             imgFiltrado[j, i] = 255
 
-
 # ------------------------------------------------------------------------------------------
 # Converte imagem para binario
 # ------------------------------------------------------------------------------------------
@@ -48,13 +46,38 @@ imgBW = mylib.converterBinario(imgFiltrado, 162)
 # ------------------------------------------------------------------------------------------
 # Contagem das celulas
 # ------------------------------------------------------------------------------------------
-celula = copy(imgBW)
-celulas = mylib.contarCelulas(celula)
-print('Numero de celulas encontradas', celulas)
+qtd, imgBW, celulas, grupos = mylib.contarCelulas(imgBW)
+
+# ------------------------------------------------------------------------------------------
+# Análise numérica das células e grupo
+# Definição de tamanho para uso na contagem de células
+# ------------------------------------------------------------------------------------------
+arrayCelulas = []
+for c in celulas:
+    arrayCelulas.append(c.__len__())
+
+arrayCelulas = sorted(arrayCelulas)
+print('Quantidade de Celulas Únicas:', celulas.__len__())
+print('Tamanho das Células Únicas:', arrayCelulas)
+print('Quantidade de Grupo:', grupos.__len__())
+print('Numero de celulas encontradas:', qtd)
+
+# ------------------------------------------------------------------------------------------
+# Plotar Histograma das Células Únicas
+# ------------------------------------------------------------------------------------------
+'''
+# Criar o histograma
+plt.hist(arrayCelulas, bins=30, color='blue', alpha=0.7)
+plt.title('Histograma Células Únicas')
+plt.xlabel('Pixels')
+plt.ylabel('Ocorrências')
+plt.show()
+exit()
+'''
 
 plt.subplot(231),plt.imshow(img),plt.title('ORIGINAL')
 plt.subplot(232),plt.imshow(imgContagem),plt.title('CONTAGEM')
 plt.subplot(234),plt.imshow(imgMarcado, cmap='gray'),plt.title('MARCADO')
 plt.subplot(235),plt.imshow(imgFiltrado, cmap='gray'),plt.title('FILTRADO')
-plt.subplot(236),plt.imshow(imgBW, cmap='gray'),plt.title('CONTAGEM - ' + str(celulas))
+plt.subplot(236),plt.imshow(imgBW, cmap='gray'),plt.title('CONTAGEM - ' + str(qtd))
 plt.show()

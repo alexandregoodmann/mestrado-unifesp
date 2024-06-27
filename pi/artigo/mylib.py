@@ -2,12 +2,13 @@ import numpy as np
 import cv2
 from copy import copy
 from typing import Final
+from matplotlib import pyplot as plt
 
 # ------------------------------------------------------------------------------------
 # Constantes
 # ------------------------------------------------------------------------------------
-TAMANHO_MIN_CELULA: Final = 56
-TAMANHO_MAXIMO_CELULA: Final = 120
+TAMANHO_MIN_CELULA: Final = 60
+TAMANHO_MAXIMO_CELULA: Final = 108
 INTENSIDADE_CELULA_MARCADA: Final = 180
 INTENSIDADE_GRUPO: Final = 80
 
@@ -55,8 +56,9 @@ def contarCelulas(imgBW):
             if (imgBW[i,j] == 0):
                 marcados.append([i,j])
                 __setPixelBlank(imgBW, [i,j])
-    qtd = __calcularCelulasAgrupadas(imgBW)
-    return celulas.__len__() + qtd
+    agrupadas = __calcularCelulasAgrupadas(imgBW)
+    qtd = celulas.__len__() + agrupadas
+    return qtd, imgBW, celulas, grupos
 
 def __setPixelBlank(imgBW, coor):
     item = []
