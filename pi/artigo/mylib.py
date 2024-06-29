@@ -7,8 +7,8 @@ from matplotlib import pyplot as plt
 # ------------------------------------------------------------------------------------
 # Constantes
 # ------------------------------------------------------------------------------------
-TAMANHO_MIN_CELULA: Final = 60
-TAMANHO_MAXIMO_CELULA: Final = 108
+TAMANHO_MIN_CELULA: Final = 56
+TAMANHO_MAXIMO_CELULA: Final = 120
 INTENSIDADE_CELULA_MARCADA: Final = 180
 INTENSIDADE_GRUPO: Final = 80
 
@@ -88,20 +88,6 @@ def __calcularCelulasAgrupadas(imgBW):
         for coordenada in grupo:
             imgBW[coordenada[0], coordenada[1]] = INTENSIDADE_GRUPO
     return qtd
-
-# ------------------------------------------------------------------------------------------
-# Cortar imagem de 3 canais
-# Parametros: imagem, fatiar linhas, fatilar colunas
-# ------------------------------------------------------------------------------------------
-def cortarImagem(img, linhas, colunas):
-    partes = []
-    largura, altura, canais = img.shape
-    passo_a = int(largura/colunas)
-    passo_b = int(altura/linhas)
-    for i in range(0, largura, passo_a):
-        for j in range(0, altura, passo_b):
-            partes.append(img[i:i+passo_a, j:j+passo_b])
-    return partes
 
 # ------------------------------------------------------------------------------------------
 # Converte imagem para binario

@@ -198,4 +198,19 @@ def showImage(msg, img):
     cv2.imshow(msg, img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    
+
+# ------------------------------------------------------------------------------------------
+# Cortar imagem de 3 canais
+# Parametros: imagem, fatiar linhas, fatilar colunas
+# ------------------------------------------------------------------------------------------
+def cortarImagem(img, linhas, colunas):
+    partes = []
+    largura, altura, canais = img.shape
+    print(img.shape)
+    passo_a = int(largura/colunas)
+    passo_b = int(altura/linhas)
+    for i in range(0, largura, passo_a):
+        for j in range(0, altura, passo_b):
+            print(i, passo_a, j, passo_b)
+            partes.append(img[i:i+passo_a, j:j+passo_b])
+    return partes
