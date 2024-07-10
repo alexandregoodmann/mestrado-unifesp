@@ -24,3 +24,6 @@
 - Como se dão esses ataques e o que fazer para previní-los?
 - Considerando que um aparelho autônomo é o servidor dos próprios softwares que vai usar. Quais seriam as medidas básicas e prioritárias para evitar um ataque externo.
 - Colocou as suas considerações finais sobre o artigo.
+
+
+https://learn.microsoft.com/pt-br/azure/kinect-dk/about-azure-kinect-dk

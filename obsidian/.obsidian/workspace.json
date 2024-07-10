@@ -90,9 +90,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "6e94e944706bdd7f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PI/Artigo.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -240,14 +252,14 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "2ee9b27497e7c0ad",
+  "active": "6e94e944706bdd7f",
   "lastOpenFiles": [
     "Pós Graduação.md",
+    "Robótica/Seminário.md",
     "Deep Learning.md",
     "Pessoal/Financeiro.md",
     "IA",
     "Robótica/TinyML.md",
-    "Robótica/Seminário.md",
     "Sem título.canvas",
     "Robótica/Robótica.md",
     "Mestrado/Normalidade dos Dados.md",
