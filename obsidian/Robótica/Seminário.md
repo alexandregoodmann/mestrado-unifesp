@@ -27,3 +27,9 @@
 
 
 https://learn.microsoft.com/pt-br/azure/kinect-dk/about-azure-kinect-dk
+
+1. Introdução - ok
+2. Arquitetura - ok
+3. Implementação - 
+4. Caso de Estudo
+5. Conclusão - ok
