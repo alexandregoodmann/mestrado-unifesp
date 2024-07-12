@@ -1,3 +1,9 @@
+####################################################################################
+#                                                                                  #
+#                 LEMBRE-SE QUE A SIMULAÇÃO DEVE ESTAR EM EXECUÇÃO!                #
+#                                                                                  #
+####################################################################################
+
 from turtle import clear
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,172 +12,121 @@ import math
 import sim 
 import os
 import logging
+import time
 
 # limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
 
-# configurar log
-dir = os.getcwd()
-log_file = 'atividade_2.log'
-logging.basicConfig(level=logging.INFO, filename=(dir+log_file), format="%(asctime)s - %(levelname)s - %(message)s")
-
-def andar(eixo, distancia):
-    
-    # calcula o ponto final para o eixo informado
-    r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
-    origem = pos[eixo]
-    destino = pos[eixo] + distancia 
-
-    #faz o carro andar 
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 2, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, 2, sim.simx_opmode_streaming + 5)
-
-    posicao = origem
-    if (posicao < destino):
-        while (posicao < destino):
-            laser_data = readSensorData(clientID, laser_range_data, laser_angle_data)
-            logging.info(laser_data)
-            r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait) 
-            print('pos', pos)
-            if (pos[0] < 0):
-                sim.simxSetJointTargetVelocity(clientID, l_wheel, 2, sim.simx_opmode_streaming + 5)
-                sim.simxSetJointTargetVelocity(clientID, r_wheel, 1.5, sim.simx_opmode_streaming + 5)
-            elif (pos[0] > 0):
-                sim.simxSetJointTargetVelocity(clientID, l_wheel, 1.5, sim.simx_opmode_streaming + 5)
-                sim.simxSetJointTargetVelocity(clientID, r_wheel, 2, sim.simx_opmode_streaming + 5)
-            else:
-                sim.simxSetJointTargetVelocity(clientID, l_wheel, 2, sim.simx_opmode_streaming + 5)
-                sim.simxSetJointTargetVelocity(clientID, r_wheel, 2, sim.simx_opmode_streaming + 5)
-
-            posicao = pos[eixo]
-    else:
-        while (posicao > destino):
-            laser_data = readSensorData(clientID, laser_range_data, laser_angle_data)
-            logging.info(laser_data)
-            r, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
-            print('pos', pos)
-            posicao = pos[eixo]
-
-    pararRobo()
-
-def curva(destino):
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 1, sim.simx_opmode_streaming + 5)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, -1, sim.simx_opmode_streaming + 5) 
-    
-    r, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-    atual = math.degrees(orientation[2])
-
-    while (atual > destino):
-        laser_data = readSensorData(clientID, laser_range_data, laser_angle_data)
-        logging.info(laser_data)
-        #print(math.degrees(orientation[0]), math.degrees(orientation[1]), math.degrees(orientation[2]))
-        r, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-        atual = math.degrees(orientation[2])
-    pararRobo()
-
-def printPositionAndOrientation():
-    returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
-    a, orientation = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-    print('Position: ', pos, 'Orientation: ', int(math.degrees(orientation[0])), int(math.degrees(orientation[1])), int(math.degrees(orientation[2])))
-
-def pararRobo():
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, 0, sim.simx_opmode_oneshot_wait)  
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, 0, sim.simx_opmode_oneshot_wait)
-
+# ---------------------------------------------------------------------------------------
+def Rz(theta):
+    return np.array([[ np.cos(theta), -np.sin(theta), 0 ],
+                      [ np.sin(theta), np.cos(theta) , 0 ],
+                      [ 0            , 0             , 1 ]])
+# ---------------------------------------------------------------------------------------
 def pararSimulacao():
+    
     # Parando a simulação     
     stop = sim.simxStopSimulation(clientID,sim.simx_opmode_blocking)         
-    # Now close the connection to CoppeliaSim:
+    
+    # Finaliza conexao com CoppeliaSim:
     finish = sim.simxFinish(clientID)
     print('stop', stop, finish)
 
-def readSensorData(clientId=-1, range_data_signal_id="hokuyo_range_data", angle_data_signal_id="hokuyo_angle_data"):
+    # Now close the connection to CoppeliaSim:
+    sim.simxFinish(clientID)
+# ---------------------------------------------------------------------------------------
+def pararRobo():
+    sim.simxSetJointTargetVelocity(clientID, wheel1, 0, sim.simx_opmode_oneshot_wait)
+    sim.simxSetJointTargetVelocity(clientID, wheel2, 0, sim.simx_opmode_oneshot_wait)
+    sim.simxSetJointTargetVelocity(clientID, wheel3, 0, sim.simx_opmode_oneshot_wait)
+# ---------------------------------------------------------------------------------------
+def setFrameGoal(qgoal):
+    # Goal configuration (x, y, theta)    
+    # qgoal = np.array([2, 2, np.deg2rad(90)])
+    # Frame que representa o Goal
+    returnCode, goalFrame = sim.simxGetObjectHandle(clientID, 'Goal', sim.simx_opmode_oneshot_wait)     
+    returnCode = sim.simxSetObjectPosition(clientID, goalFrame, -1, [qgoal[0], qgoal[1], 0], sim.simx_opmode_oneshot_wait)
+    returnCode = sim.simxSetObjectOrientation(clientID, goalFrame, -1, [0, 0, qgoal[2]], sim.simx_opmode_oneshot_wait)
+# ---------------------------------------------------------------------------------------
+def printPositionAndOrientation():
+    returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
+    returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
+    print('Position: ', pos, 'Orientation: ', int(math.degrees(ori[0])), int(math.degrees(ori[1])), int(math.degrees(ori[2])))
+# ---------------------------------------------------------------------------------------
 
-    laser_data = []
-    # the first call should be non-blocking to avoid getting out-of-sync angle data
-    returnCodeRanges, string_range_data = sim.simxGetStringSignal(clientId, range_data_signal_id, sim.simx_opmode_streaming)
-
-    # the second call should block to avoid out-of-sync scenarios
-    # between your python script and the simulator's main loop
-    # (your script may be slower than the simulator's main loop, thus
-    # slowing down data processing)
-    returnCodeAngles, string_angle_data = sim.simxGetStringSignal(clientId, angle_data_signal_id, sim.simx_opmode_blocking)
-
-    # check the if both data were obtained correctly
-    if returnCodeRanges == 0 and returnCodeAngles == 0:
-        # unpack data from range and sensor messages
-        raw_range_data = sim.simxUnpackFloats(string_range_data)
-        raw_angle_data = sim.simxUnpackFloats(string_angle_data)
-        laser_data = np.array([raw_angle_data, raw_range_data]).T
-    return laser_data
-
+print ('Program started')
 sim.simxFinish(-1) # just in case, close all opened connections
-clientID=sim.simxStart('127.0.0.1',19997,True,True,5000,5) # Connect to CoppeliaSim
+clientID=sim.simxStart('127.0.0.1',19999,True,True,5000,5) # Connect to CoppeliaSim
+
+# Goal
+goals = []
+qgoal_1 = np.array([3, 0, np.deg2rad(90)])
+qgoal_2 = np.array([3, 3, np.deg2rad(180)])
+qgoal_3 = np.array([0, 3, np.deg2rad(180)])
+qgoal_4 = np.array([0, 0, np.deg2rad(0)])
+goals.append(qgoal_1)
+goals.append(qgoal_2)
+goals.append(qgoal_3)
+goals.append(qgoal_4)
 
 if clientID!=-1:
+
     print ('Connected to remote API server')
-    
-    # Iniciando a simulação
-    # Deve usar a porta do 'continuous remote API server services' (remoteApiConnections.txt)
-    # e = sim.simxStartSimulation(clientID,sim.simx_opmode_blocking)
 
-    # Handle para o ROBÔ    
-    robotname = 'Pioneer_p3dx'
+    robotname = 'robotino'
     returnCode, robotHandle = sim.simxGetObjectHandle(clientID, robotname, sim.simx_opmode_oneshot_wait)     
-
-    # Handle para as juntas das RODAS
-    returnCode, l_wheel = sim.simxGetObjectHandle(clientID, robotname + '_leftMotor', sim.simx_opmode_oneshot_wait)
-    returnCode, r_wheel = sim.simxGetObjectHandle(clientID, robotname + '_rightMotor', sim.simx_opmode_oneshot_wait)    
+                 
+    returnCode, wheel1 = sim.simxGetObjectHandle(clientID, 'wheel0_joint', sim.simx_opmode_oneshot_wait)
+    returnCode, wheel2 = sim.simxGetObjectHandle(clientID, 'wheel1_joint', sim.simx_opmode_oneshot_wait)
+    returnCode, wheel3 = sim.simxGetObjectHandle(clientID, 'wheel2_joint', sim.simx_opmode_oneshot_wait)
+               
+    # Robotino
+    L = 0.135   # Metros
+    r = 0.040   # Metros
+               
+    # Cinemática Direta
+    Mdir = np.array([[-r/np.sqrt(3), 0, r/np.sqrt(3)], [r/3, (-2*r)/3, r/3], [r/(3*L), r/(3*L), r/(3*L)]])
+    gain = np.array([[0.2, 0, 0], [0, 0.2, 0], [0, 0, 0.2]])
     
-    returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)   
-    
-    # Dados do Pioneer
-    larguraRobo = 0.381   # Metros
-    raioRoda = 0.0975  # Metros
-    v_TangencialRoda = 0.3
-    v_AngularRoda = np.deg2rad(0)  
-    vAngular_esquerda = 3 #v_TangencialRoda/raioRoda - (v_AngularRoda*larguraRobo)/(2*raioRoda)
-    vAngular_direita = 3 #v_TangencialRoda/raioRoda + (v_AngularRoda*larguraRobo)/(2*raioRoda)
-    t = 0
-
-    # Faz andar pra frente (vAngular, distancia, eixo)
-    # trecho 1
-
-    #pararRobo()
-    #sim.simxSetObjectPosition(clientID, robotHandle, -1, [0,0,0], sim.simx_opmode_oneshot_wait)
-    #sim.simxSetObjectOrientation(clientID, robotHandle, -1, [0,0,1.57], sim.simx_opmode_oneshot_wait)
-
-    laser_range_data = "hokuyo_range_data"
-    laser_angle_data = "hokuyo_angle_data"
-    
-    print('--->>> Inicio da Simulacao <<<---')
-    # trecho 1
     printPositionAndOrientation()
-    andar(1, 4)
+    inicio = time.time()
+    errors = []
+    for goal in goals:
+        # Lembrar de habilitar o 'Real-time mode'
+        while True:
+                    
+            returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
+            returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
+            # print('pos', pos)
+            # print('ori', ori)
+            q = np.array([pos[0], pos[1], ori[2]])
+            
+            error = goal - q
+            #print('error', error)
+            
+            # Margem aceitável de distância
+            if (np.linalg.norm(error[:2]) < 0.05):
+                break
+
+            # Controllere
+            qdot = gain @ error
+            
+            # Cinemática Inversa
+            # w1, w2, w3
+            Minv = np.linalg.inv(Rz(q[2]) @ Mdir)
+            u = Minv @ qdot
+            
+            # Enviando velocidades
+            sim.simxSetJointTargetVelocity(clientID, wheel1, u[0], sim.simx_opmode_streaming)
+            sim.simxSetJointTargetVelocity(clientID, wheel2, u[1], sim.simx_opmode_streaming)
+            sim.simxSetJointTargetVelocity(clientID, wheel3, u[2], sim.simx_opmode_streaming)          
+
+        printPositionAndOrientation()   
+    final = time.time()
+    print('tempo', final - inicio) 
     pararSimulacao()
-    exit()
-    curva(0)
 
-    # trecho 2
-    printPositionAndOrientation()
-    andar(0, 1)
-    curva(-90)
-
-    # trecho 3
-    readSensorData(clientID, laser_range_data, laser_angle_data)
-    printPositionAndOrientation()
-    andar(1, -1)
-    curva(-179)
-
-    # trecho 4
-    readSensorData(clientID, laser_range_data, laser_angle_data)
-    printPositionAndOrientation()
-    andar(0, -1)
-    curva(90)
-
-    printPositionAndOrientation()
-    print('--->>> Fim <<<---')
-    # todo andar pra zero
-
-    pararSimulacao()
-    exit()
+else:
+    print ('Failed connecting to remote API server')
+    
+print ('Program ended')
