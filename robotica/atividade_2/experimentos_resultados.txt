@@ -1,0 +1,26 @@
+dt 0.1
+Distancia percorrida:  1467.3671301711545
+Tempo percurso: 59.198779582977295
+
+dt 0.5
+Distancia percorrida:  966.3582406057809
+Tempo percurso: 39.008389711380005
+
+dt 0.05
+Distancia percorrida:  1687.7556457563476
+Tempo percurso: 68.0020706653595
+
+------------somente P
+dt 0.05
+Distancia percorrida:  2052.2456256982746
+Tempo percurso: 82.41119718551636
+
+------------ P + D
+dt 0.05
+Distancia percorrida:  2133.3019829668137
+Tempo percurso: 85.60131621360779
+
+------------ P + D + I
+dt 0.05
+Distancia percorrida:  1687.7556457563476
+Tempo percurso: 67.9942352771759
