@@ -2,15 +2,16 @@ from turtle import clear
 import numpy as np
 import matplotlib.pyplot as plt
 
-import math
 import sim 
 import os
 import logging
 import time
 
+logging.basicConfig(level=logging.INFO, filename="/home/alexandre/projetos/mestrado-unifesp/robotica/atividade_2/pid.log", format="%(asctime)s - %(levelname)s - %(message)s")
+
 # limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
-
+p_controlador = ['P', 'PD', 'PID']
 # ---------------------------------------------------------------------------------------
 def Rz(theta):
     return np.array([[ np.cos(theta), -np.sin(theta), 0 ],
@@ -45,10 +46,11 @@ def setFrameGoal(qgoal):
 # ---------------------------------------------------------------------------------------
 # CONTROLADORES
 # ---------------------------------------------------------------------------------------
-Kp = np.array([[0.2, 0, 0], [0, 0.2, 0], [0, 0, 0.2]])
-Kd = np.array([[0.02, 0, 0], [0, 0.02, 0], [0, 0, 0.02]])
-Ki = np.array([[0.002, 0, 0], [0, 0.002, 0], [0, 0, 0.002]])
-dt = 0.05
+v = 0.2
+dt = 0.2
+Kp = np.array([[v, 0, 0], [0, v, 0], [0, 0, v]])
+Kd = np.array([[v/10, 0, 0], [0, v/10, 0], [0, 0, v/10]])
+Ki = np.array([[v/100, 0, 0], [0, v/100, 0], [0, 0, v/100]])
 
 # CONTROLADOR P - u(t) = Kp * e(t)
 def controlador_P(erro):
@@ -98,44 +100,58 @@ if clientID!=-1:
     # Cinemática Direta
     Mdir = np.array([[-r/np.sqrt(3), 0, r/np.sqrt(3)], [r/3, (-2*r)/3, r/3], [r/(3*L), r/(3*L), r/(3*L)]])
     
-    tempo_inicial = time.time()
-    for goal in goals:
-        erro_anterior = np.array([0, 0, 0])
-        erro_acumulado = np.array([0, 0, 0])
-        # Lembrar de habilitar o 'Real-time mode'
-        while True:
-                    
-            returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
-            returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-            position = np.array([pos[0], pos[1], ori[2]])
+    for tipo_controle in p_controlador:
+        
+        tempo_inicial = time.time()
+        
+        for goal in goals:
 
-            # Controlador
-            erro = goal - position
-            erro_acumulado = erro_acumulado + (erro * dt)
-            p = controlador_P(erro)
-            d = controlador_D(erro, erro_anterior)
-            i = controlador_I(erro_acumulado)
-            controle = p + d + i
-            erro_anterior = erro
+            erro_anterior = np.array([0, 0, 0])
+            erro_acumulado = np.array([0, 0, 0])
 
-            # Margem aceitável de distância
-            if (np.linalg.norm(erro[:2]) < 0.05):
-                break
+            # Lembrar de habilitar o 'Real-time mode'
+            while True:
+                        
+                returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
+                returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
+                posicao_atual = np.array([pos[0], pos[1], ori[2]])
+
+                # Margem aceitável de distância
+                erro = goal - posicao_atual
+                if (np.linalg.norm(erro[:2]) < 0.03):
+                    break
+
+                # Controlador
+                erro_acumulado = erro_acumulado + (erro * dt)
+                if (tipo_controle == 'P'):
+                    controle = controlador_P(erro)
+                elif (tipo_controle == 'PD'):
+                    controle = controlador_P(erro) + controlador_D(erro, erro_anterior)
+                elif (tipo_controle == 'PID'):
+                    controle = controlador_P(erro) + controlador_D(erro, erro_anterior) + controlador_I(erro_acumulado)
+                erro_anterior = erro
+
+                # Cinemática Inversa
+                # w1, w2, w3
+                Minv = np.linalg.inv(Rz(posicao_atual[2]) @ Mdir)
+                u = Minv @ controle
+                
+                # Enviando velocidades
+                sim.simxSetJointTargetVelocity(clientID, wheel1, u[0], sim.simx_opmode_streaming)
+                sim.simxSetJointTargetVelocity(clientID, wheel2, u[1], sim.simx_opmode_streaming)
+                sim.simxSetJointTargetVelocity(clientID, wheel3, u[2], sim.simx_opmode_streaming) 
             
-            # Cinemática Inversa
-            # w1, w2, w3
-            Minv = np.linalg.inv(Rz(position[2]) @ Mdir)
-            u = Minv @ controle
-            
-            # Enviando velocidades
-            sim.simxSetJointTargetVelocity(clientID, wheel1, u[0], sim.simx_opmode_streaming)
-            sim.simxSetJointTargetVelocity(clientID, wheel2, u[1], sim.simx_opmode_streaming)
-            sim.simxSetJointTargetVelocity(clientID, wheel3, u[2], sim.simx_opmode_streaming)          
+            print('Posicao Final:', pos[:2])         
 
-    tempo_final = time.time()
+        tempo_final = time.time()
+        print('dt:', dt)
+        print('Kp:', Kp[0][0])
+        print('Kd:', Kd[0][0])
+        print('Kd:', Ki[0][0])
+        print('Tempo percurso:', tempo_final - tempo_inicial)
+        logging.info('-----------------------SIMULACAO-----------------------')
+        logging.info('Controle: ' + tipo_controle + ', dt: ' + str(dt) + ', Kp: ' + str(Kp[0][0]) + ', Kd: ' + str(Kd[0][0]) + ', Ki: ' + str(Ki[0][0]) + ', Tempo: ' + str(tempo_final - tempo_inicial))
 
-    print('dt', dt)
-    print('Tempo percurso:', tempo_final - tempo_inicial) 
     pararSimulacao()
 
 else:
