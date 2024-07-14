@@ -56,7 +56,7 @@ def printPositionAndOrientation():
 
 print ('Program started')
 sim.simxFinish(-1) # just in case, close all opened connections
-clientID=sim.simxStart('127.0.0.1',19997,True,True,5000,5) # Connect to CoppeliaSim
+clientID=sim.simxStart('127.0.0.1',19999,True,True,5000,5) # Connect to CoppeliaSim
 
 # Goal
 goals = []
@@ -86,7 +86,7 @@ if clientID!=-1:
                
     # Cinemática Direta
     Mdir = np.array([[-r/np.sqrt(3), 0, r/np.sqrt(3)], [r/3, (-2*r)/3, r/3], [r/(3*L), r/(3*L), r/(3*L)]])
-    Kp = np.array([[0.2, 0, 0], [0, 0.2, 0], [0, 0, 0.2]])
+    gain = np.array([[0.2, 0, 0], [0, 0.2, 0], [0, 0, 0.2]])
     
     printPositionAndOrientation()
     inicio = time.time()
@@ -98,21 +98,21 @@ if clientID!=-1:
             returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
             # print('pos', pos)
             # print('ori', ori)
-            position = np.array([pos[0], pos[1], ori[2]])
+            q = np.array([pos[0], pos[1], ori[2]])
             
-            erro = goal - position
+            error = goal - q
             #print('error', error)
             
             # Margem aceitável de distância
-            if (np.linalg.norm(erro[:2]) < 0.05):
+            if (np.linalg.norm(error[:2]) < 0.05):
                 break
 
             # Controllere
-            qdot = Kp @ erro
+            qdot = gain @ error
             
             # Cinemática Inversa
             # w1, w2, w3
-            Minv = np.linalg.inv(Rz(position[2]) @ Mdir)
+            Minv = np.linalg.inv(Rz(q[2]) @ Mdir)
             u = Minv @ qdot
             
             # Enviando velocidades

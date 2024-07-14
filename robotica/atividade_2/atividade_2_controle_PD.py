@@ -1,9 +1,3 @@
-####################################################################################
-#                                                                                  #
-#                 LEMBRE-SE QUE A SIMULAÇÃO DEVE ESTAR EM EXECUÇÃO!                #
-#                                                                                  #
-####################################################################################
-
 from turtle import clear
 import numpy as np
 import matplotlib.pyplot as plt
@@ -47,11 +41,28 @@ def setFrameGoal(qgoal):
     returnCode, goalFrame = sim.simxGetObjectHandle(clientID, 'Goal', sim.simx_opmode_oneshot_wait)     
     returnCode = sim.simxSetObjectPosition(clientID, goalFrame, -1, [qgoal[0], qgoal[1], 0], sim.simx_opmode_oneshot_wait)
     returnCode = sim.simxSetObjectOrientation(clientID, goalFrame, -1, [0, 0, qgoal[2]], sim.simx_opmode_oneshot_wait)
+
 # ---------------------------------------------------------------------------------------
-def printPositionAndOrientation():
-    returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
-    returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-    print('Position: ', pos, 'Orientation: ', int(math.degrees(ori[0])), int(math.degrees(ori[1])), int(math.degrees(ori[2])))
+# CONTROLADORES
+# ---------------------------------------------------------------------------------------
+Kp = np.array([[0.2, 0, 0], [0, 0.2, 0], [0, 0, 0.2]])
+Kd = np.array([[0.02, 0, 0], [0, 0.02, 0], [0, 0, 0.02]])
+Ki = np.array([[0.002, 0, 0], [0, 0.002, 0], [0, 0, 0.002]])
+dt = 0.05
+
+# CONTROLADOR P - u(t) = Kp * e(t)
+def controlador_P(erro):
+    controle = Kp @ erro
+    return controle
+
+# CONTROLADOR D - u(t) = Kd * de(t)/dt
+def controlador_D(erro, erro_anterior):
+    derivada_erro = (erro - erro_anterior) / dt
+    controle = Kd @ derivada_erro
+    return controle
+
+def controlador_I(erro_acumulado):
+    return Ki @ erro_acumulado
 # ---------------------------------------------------------------------------------------
 
 print ('Program started')
@@ -86,43 +97,45 @@ if clientID!=-1:
                
     # Cinemática Direta
     Mdir = np.array([[-r/np.sqrt(3), 0, r/np.sqrt(3)], [r/3, (-2*r)/3, r/3], [r/(3*L), r/(3*L), r/(3*L)]])
-    Kp = np.array([[0.2, 0, 0], [0, 0.2, 0], [0, 0, 0.2]])
     
-    printPositionAndOrientation()
-    inicio = time.time()
+    tempo_inicial = time.time()
     for goal in goals:
+        erro_anterior = np.array([0, 0, 0])
+        erro_acumulado = np.array([0, 0, 0])
         # Lembrar de habilitar o 'Real-time mode'
         while True:
                     
             returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
             returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
-            # print('pos', pos)
-            # print('ori', ori)
             position = np.array([pos[0], pos[1], ori[2]])
-            
+
+            # Controlador
             erro = goal - position
-            #print('error', error)
-            
+            erro_acumulado = erro_acumulado + (erro * dt)
+            p = controlador_P(erro)
+            d = controlador_D(erro, erro_anterior)
+            i = controlador_I(erro_acumulado)
+            controle = p + d + i
+            erro_anterior = erro
+
             # Margem aceitável de distância
             if (np.linalg.norm(erro[:2]) < 0.05):
                 break
-
-            # Controllere
-            qdot = Kp @ erro
             
             # Cinemática Inversa
             # w1, w2, w3
             Minv = np.linalg.inv(Rz(position[2]) @ Mdir)
-            u = Minv @ qdot
+            u = Minv @ controle
             
             # Enviando velocidades
             sim.simxSetJointTargetVelocity(clientID, wheel1, u[0], sim.simx_opmode_streaming)
             sim.simxSetJointTargetVelocity(clientID, wheel2, u[1], sim.simx_opmode_streaming)
             sim.simxSetJointTargetVelocity(clientID, wheel3, u[2], sim.simx_opmode_streaming)          
 
-        printPositionAndOrientation()   
-    final = time.time()
-    print('tempo', final - inicio) 
+    tempo_final = time.time()
+
+    print('dt', dt)
+    print('Tempo percurso:', tempo_final - tempo_inicial) 
     pararSimulacao()
 
 else:

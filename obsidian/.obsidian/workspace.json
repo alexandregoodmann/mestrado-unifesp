@@ -97,7 +97,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pessoal/Pós Graduação.md",
+                "file": "Robótica/Controle.md",
                 "mode": "source",
                 "source": false
               }
@@ -170,7 +170,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pessoal/Pós Graduação.md",
+                "file": "Robótica/Controle.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +187,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Pessoal/Pós Graduação.md",
+                "file": "Robótica/Controle.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -210,7 +210,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pessoal/Pós Graduação.md"
+                "file": "Robótica/Controle.md"
               }
             }
           },
@@ -252,8 +252,11 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "2558966ec6297d2a",
+  "active": "6e94e944706bdd7f",
   "lastOpenFiles": [
+    "Robótica/Robótica.md",
+    "Robótica/Controle.md",
+    "PI/Detecção de Círculos.md",
     "Robótica/Seminário.md",
     "PI/Artigo.md",
     "Pessoal/Pós Graduação.md",
@@ -262,7 +265,6 @@
     "IA",
     "Robótica/TinyML.md",
     "Sem título.canvas",
-    "Robótica/Robótica.md",
     "Mestrado/Normalidade dos Dados.md",
     "Python.md",
     "Mestrado/Estatística.md",
@@ -271,10 +273,8 @@
     "Mestrado",
     "PI/Sem título.md",
     "Pessoal",
-    "Robótica/Controle.md",
     "Metodologia/Shapiro-Wilk.md",
     "Metodologia/Seminário de Estatística.md",
-    "PI/Detecção de Círculos.md",
     "PI/Hough.md",
     "PI/Processamento de Imagem.md",
     "PI/Detecção de Bordas.md",
