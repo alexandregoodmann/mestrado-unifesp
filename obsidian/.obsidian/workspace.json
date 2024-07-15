@@ -97,14 +97,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Robótica/Controle.md",
+                "file": "Robótica/Projeto Final.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0c00ac4154a12776",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Robótica/Robótica.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c97117c2e61dc3a1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Robótica/Projeto Final.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -170,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Robótica/Controle.md",
+                "file": "Robótica/Projeto Final.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Robótica/Controle.md",
+                "file": "Robótica/Projeto Final.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -210,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Robótica/Controle.md"
+                "file": "Robótica/Projeto Final.md"
               }
             }
           },
@@ -252,10 +276,14 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "6e94e944706bdd7f",
+  "active": "c97117c2e61dc3a1",
   "lastOpenFiles": [
+    "Robótica/Filtro de Kalman.md",
     "Robótica/Robótica.md",
-    "Robótica/Controle.md",
+    "Robótica/Bug Algorithm.md",
+    "Robótica/Projeto Final.md",
+    "Robótica/Sem título.md",
+    "Robótica/Controle PID.md",
     "PI/Detecção de Círculos.md",
     "Robótica/Seminário.md",
     "PI/Artigo.md",
@@ -280,13 +308,9 @@
     "PI/Detecção de Bordas.md",
     "PI/Imagem Integral.md",
     "PI/Convolução.md",
-    "PI/Transformação Afim.md",
-    "PI/intensidade de cada pixel.md",
     "Metodologia",
     "PI",
     "Robótica",
-    "PI/Limite de Iluminação.md",
-    "Untitled.canvas",
-    "2024-05-08.md"
+    "Untitled.canvas"
   ]
 }

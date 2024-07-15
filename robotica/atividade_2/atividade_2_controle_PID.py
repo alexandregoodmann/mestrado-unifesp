@@ -12,6 +12,7 @@ logging.basicConfig(level=logging.INFO, filename="/home/alexandre/projetos/mestr
 # limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
 p_controlador = ['P', 'PD', 'PID']
+
 # ---------------------------------------------------------------------------------------
 def Rz(theta):
     return np.array([[ np.cos(theta), -np.sin(theta), 0 ],
@@ -47,7 +48,7 @@ def setFrameGoal(qgoal):
 # CONTROLADORES
 # ---------------------------------------------------------------------------------------
 v = 0.2
-dt = 0.2
+dt = 0.05
 Kp = np.array([[v, 0, 0], [0, v, 0], [0, 0, v]])
 Kd = np.array([[v/10, 0, 0], [0, v/10, 0], [0, 0, v/10]])
 Ki = np.array([[v/100, 0, 0], [0, v/100, 0], [0, 0, v/100]])
@@ -75,7 +76,7 @@ clientID=sim.simxStart('127.0.0.1',19997,True,True,5000,5) # Connect to Coppelia
 goals = []
 qgoal_1 = np.array([3, 0, np.deg2rad(90)])
 qgoal_2 = np.array([3, 3, np.deg2rad(180)])
-qgoal_3 = np.array([0, 3, np.deg2rad(180)])
+qgoal_3 = np.array([0, 3, np.deg2rad(270)])
 qgoal_4 = np.array([0, 0, np.deg2rad(0)])
 goals.append(qgoal_1)
 goals.append(qgoal_2)
@@ -101,26 +102,36 @@ if clientID!=-1:
     Mdir = np.array([[-r/np.sqrt(3), 0, r/np.sqrt(3)], [r/3, (-2*r)/3, r/3], [r/(3*L), r/(3*L), r/(3*L)]])
     
     for tipo_controle in p_controlador:
-        
         tempo_inicial = time.time()
-        
-        for goal in goals:
+        logging.info('-----------------------SIMULACAO-----------------------')
 
+        for n_goal in range(0, goals.__len__()):
             erro_anterior = np.array([0, 0, 0])
             erro_acumulado = np.array([0, 0, 0])
+            desvio_x = 0
+            desvio_y = 0
+            print('n_goal', n_goal, tipo_controle)
 
             # Lembrar de habilitar o 'Real-time mode'
             while True:
-                        
                 returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)        
                 returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
                 posicao_atual = np.array([pos[0], pos[1], ori[2]])
 
                 # Margem aceitável de distância
-                erro = goal - posicao_atual
+                erro = goals[n_goal] - posicao_atual
                 if (np.linalg.norm(erro[:2]) < 0.03):
                     break
 
+                if (n_goal == 0 or n_goal == 2):
+                    desvio = abs(pos[1])
+                    if (desvio > desvio_x):
+                        desvio_x = desvio
+                if (n_goal == 1 or n_goal == 3):
+                    desvio = abs(pos[0])
+                    if (desvio > desvio_y):
+                        desvio_y = desvio
+                        
                 # Controlador
                 erro_acumulado = erro_acumulado + (erro * dt)
                 if (tipo_controle == 'P'):
@@ -142,16 +153,16 @@ if clientID!=-1:
                 sim.simxSetJointTargetVelocity(clientID, wheel3, u[2], sim.simx_opmode_streaming) 
             
             print('Posicao Final:', pos[:2])         
+            logging.info('Controle: ' + tipo_controle + ', dt: ' + str(dt) + ', Kp: ' + str(Kp[0][0]) + ', Kd: ' + str(Kd[0][0]) + ', Ki: ' + str(Ki[0][0]) + ', Desvio X: ' + str(desvio_x) + ', Desvio Y: ' + str(desvio_y))
 
         tempo_final = time.time()
+        logging.info('Tempo da volta:' + str(tempo_final - tempo_inicial))
+
         print('dt:', dt)
         print('Kp:', Kp[0][0])
         print('Kd:', Kd[0][0])
         print('Kd:', Ki[0][0])
         print('Tempo percurso:', tempo_final - tempo_inicial)
-        logging.info('-----------------------SIMULACAO-----------------------')
-        logging.info('Controle: ' + tipo_controle + ', dt: ' + str(dt) + ', Kp: ' + str(Kp[0][0]) + ', Kd: ' + str(Kd[0][0]) + ', Ki: ' + str(Ki[0][0]) + ', Tempo: ' + str(tempo_final - tempo_inicial))
-
     pararSimulacao()
 
 else:

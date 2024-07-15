@@ -28,6 +28,7 @@ https://testepgeas.paginas.ufsc.br/files/2023/06/Revista6.pdf
 - Robótica Móvel
 - Visão Computacional
 - ~~Visualização de Dados~~
+- [[Filtro de Kalman]]
 -------------------
 
 -Technical degree, technician qualification, or equivalent training
@@ -46,7 +47,7 @@ Direct entry is possible after studying/training (even without professional expe
 
 **ESSENTIAL SKILLS**
 
-- [x] Robotics and Automation, Industrial Computer Science or [[Controle]] Engineering background- 
+- [x] Robotics and Automation, Industrial Computer Science or [[Controle PID]] Engineering background- 
 - [ ] Min. 2 years of experience working in Asia-
 - [ ] Fluent [[C++]] and [[Python]] skills- 
 - [ ] Knowledge of [[machine learning]] and [[computer vision]] techniques for robotic applications.

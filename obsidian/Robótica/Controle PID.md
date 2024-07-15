@@ -1,19 +1,3 @@
-método de ziegler nichols
-tuning pid controller
-non holonomic kinematic control
-non linear robotic control
-dead zone
-saturation
-non linearity
-linearization feedback
-
-Buscar artigos com algoritimos de robotica 
-no homomonic google control (google escola)
-Revisar todos os slides
-___________________________
-
-# Controle P D e PID
-
 13 de julho de 2024
 
 Esta conversa pode refletir os dados personalizados do criador do link, que não são compartilhados e podem alterar significativamente a forma como o modelo responde.
