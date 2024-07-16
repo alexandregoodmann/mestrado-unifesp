@@ -31,40 +31,68 @@ returnCode, sonar_left = sim.simxGetObjectHandle(clientID, robotname + '_ultraso
 # Específico do robô   
 L = 0.331
 r = 0.09751
+# -------------------------------------------------------------------------------------------------------------------------------------
+# Pega Posicao
+# -------------------------------------------------------------------------------------------------------------------------------------
+def getPosition():
+    returnCode, ori = sim.simxGetObjectOrientation(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)  
+    returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
+    return np.array([pos[0], pos[1], ori[2]])
+
+# -------------------------------------------------------------------------------------------------------------------------------------
+# Normalize angle to the range [-pi,pi)
+# -------------------------------------------------------------------------------------------------------------------------------------
+def normalizeAngle(angle):
+    return np.mod(angle+np.pi, 2*np.pi) - np.pi
+# -------------------------------------------------------------------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------------------
 # IDENTIFICAR UM OBSTACULO
 # ---------------------------------------------------------------------------------------
 def getObstacle():
-    return
-# ----------------------------------------------------------------------------------------------
-# BLOCO IMPLEMENTAÇÃO BUT ALGORITHM
-# ----------------------------------------------------------------------------------------------
-
-following = False
-t = 0
-# Lembrar de habilitar o 'Real-time mode'
-startTime=time.time()
-lastTime = startTime
-while t < 30:
-    
-    now = time.time()
-    dt = now - lastTime
-    
     # Fazendo leitura dos sensores
     returnCode, detected_front, point_front, *_ = sim.simxReadProximitySensor(clientID, sonar_front, sim.simx_opmode_oneshot_wait)
     returnCode, detected_right, point_right, *_ = sim.simxReadProximitySensor(clientID, sonar_right, sim.simx_opmode_oneshot_wait)
     returnCode, detected_left, point_left, *_ = sim.simxReadProximitySensor(clientID, sonar_left, sim.simx_opmode_oneshot_wait)
-
-    # Velocidades iniciais
-    v = .4
-    w = 0
-
     obstacle_in_front = (detected_front and np.linalg.norm(point_front) < .5)
     obstacle_in_right = (detected_right and np.linalg.norm(point_right) < .5)
     obstacle_in_left = (detected_left and np.linalg.norm(point_left) < .5)
+    return obstacle_in_front, obstacle_in_right, obstacle_in_left
 
-    # Controle
+# ----------------------------------------------------------------------------------------------
+# BLOCO IMPLEMENTAÇÃO BUT ALGORITHM
+# ----------------------------------------------------------------------------------------------
+goal_1 = np.array([-2.75, 3.25, np.deg2rad(0)])
+following = False
+v = .4
+w = 0
+maxv = 0.4
+maxw = np.deg2rad(45)
+distancia = np.inf
+
+while distancia > .05:
+    
+    # Busca pelo destino
+    position = getPosition()
+    dx, dy, dth = goal_1 - position
+    distancia = np.sqrt(dx**2 + dy**2)
+    alpha = normalizeAngle(-position[2] + np.arctan2(dy,dx))
+    beta = normalizeAngle(goal_1[2] - np.arctan2(dy,dx))
+    kr = 4 / 20
+    ka = 8 / 20
+    kb = -1.5 / 20
+    v = kr*distancia
+    w = ka*alpha + kb*beta
+    
+    # Limit v,w to +/- max
+    v = max(min(v, maxv), -maxv)
+    w = max(min(w, maxw), -maxw)        
+
+    # ----------------------------------------------------------------------
+    # Identifica Obstaculos
+    obstacle_in_front, obstacle_in_right, obstacle_in_left = getObstacle()
+
+    # Desvia dos obstaculos
     if obstacle_in_front:
         v = 0
         w = np.deg2rad(30)
@@ -73,27 +101,20 @@ while t < 30:
     else: 
         if obstacle_in_right:
             w = np.deg2rad(10)
-            print('rigt', v, w, following)
+            print('right', v, w, following)
         elif following:
             v = .1
             w = np.deg2rad(-30)
             print('none', v, w, following)
-
-    # Controle 2
-
-    # Cinemática Inversa
+    # ----------------------------------------------------------------------
+    
     wr = ((2.0*v) + (w*L))/(2.0*r)
-    wl = ((2.0*v) - (w*L))/(2.0*r)    
-    
-    # Enviando velocidades
-    sim.simxSetJointTargetVelocity(clientID, l_wheel, wl, sim.simx_opmode_oneshot_wait)
-    sim.simxSetJointTargetVelocity(clientID, r_wheel, wr, sim.simx_opmode_oneshot_wait)
-    
-    t = t + dt        
-    lastTime = now
+    wl = ((2.0*v) - (w*L))/(2.0*r)
 
-# ----------------------------------------------------------------------------------------------
-# Finalizar programa
-# ----------------------------------------------------------------------------------------------
+    sim.simxSetJointTargetVelocity(clientID, r_wheel, wr, sim.simx_opmode_oneshot_wait)
+    sim.simxSetJointTargetVelocity(clientID, l_wheel, wl, sim.simx_opmode_oneshot_wait)
+
+# --- Fim Bloco execucao------------------------------------------------------------------------
+
 mylib.pararSimulacao(clientID)
 exit()
