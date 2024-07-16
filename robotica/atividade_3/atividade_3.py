@@ -69,12 +69,17 @@ while t < 30:
         v = 0
         w = np.deg2rad(30)
         following = True
+        print('front', v, w, following)
     else: 
         if obstacle_in_right:
             w = np.deg2rad(10)
+            print('rigt', v, w, following)
         elif following:
             v = .1
             w = np.deg2rad(-30)
+            print('none', v, w, following)
+
+    # Controle 2
 
     # Cinemática Inversa
     wr = ((2.0*v) + (w*L))/(2.0*r)

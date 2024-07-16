@@ -22,6 +22,7 @@ def getPosition():
     returnCode, pos = sim.simxGetObjectPosition(clientID, robotHandle, -1, sim.simx_opmode_oneshot_wait)
     return np.array([pos[0], pos[1], ori[2]])
 # -------------------------------------------------------------------------------------------------------------------------------------
+
 print ('Program started')
 sim.simxFinish(-1) # just in case, close all opened connections
 clientID=sim.simxStart('127.0.0.1',19999,True,True,5000,5) # Connect to CoppeliaSim
@@ -38,12 +39,12 @@ if clientID!=-1:
     returnCode, robotRightMotorHandle = sim.simxGetObjectHandle(clientID, robotname + '_rightMotor', sim.simx_opmode_oneshot_wait)
         
     # Goal configuration (x, y, theta)
-    goal_1 = np.array([-0.5, -0.5, np.deg2rad(0)])
+    goal_1 = np.array([3.25, 3, np.deg2rad(0)])
     '''
-    goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
+    goal_1 = np.array([3.75, -3.75, np.deg2rad(90)])
+    goal_1 = np.array([1, 1, np.deg2rad(180)])
     goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
     goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
-    goal_4 = np.array([3.25, 3, np.deg2rad(0)])
     # Frame que representa o Goal
     returnCode, goalFrame = sim.simxGetObjectHandle(clientID, 'Goal', sim.simx_opmode_oneshot_wait)     
     returnCode = sim.simxSetObjectPosition(clientID, goalFrame, -1, [qgoal[0], qgoal[1], 0], sim.simx_opmode_oneshot_wait)
@@ -53,7 +54,7 @@ if clientID!=-1:
     # Específico do robô
     L = 0.331
     r = 0.09751
-    maxv = 0.2
+    maxv = 0.4
     maxw = np.deg2rad(45)
     
     distancia = np.inf
@@ -73,7 +74,6 @@ if clientID!=-1:
         # Alvo na parte de trás
         if abs(alpha) > np.pi/2:
             kr = -kr       
-            
             # Se não ajustar a direção muda
             alpha = normalizeAngle(alpha-np.pi)
             beta = normalizeAngle(beta-np.pi)
@@ -91,6 +91,7 @@ if clientID!=-1:
         sim.simxSetJointTargetVelocity(clientID, robotRightMotorHandle, wr, sim.simx_opmode_oneshot_wait)
         sim.simxSetJointTargetVelocity(clientID, robotLeftMotorHandle, wl, sim.simx_opmode_oneshot_wait)
 
+    print(position[:2], np.rad2deg(position[2]))    
     mylib.pararSimulacao(clientID)
     
 else:

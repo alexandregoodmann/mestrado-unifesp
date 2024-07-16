@@ -11,11 +11,15 @@ Existem diferentes versões dos algoritmos BUG, como o BUG1, BUG2 e o Algoritmo 
 1. **Fase de Navegação Direta**: Semelhante ao BUG1, o robô se move diretamente em direção ao destino até encontrar um obstáculo.
 2. **Linha Direta para o Destino**: Ao encontrar um obstáculo, o robô segue o contorno do obstáculo até cruzar a linha direta entre o ponto inicial e o destino.
 3. **Retorno à Navegação Direta**: Depois de cruzar a linha direta para o destino, o robô retoma a navegação direta em direção ao destino.
-
 ### Tangent BUG
 1. **Sensoriamento e Navegação**: O robô utiliza sensores para detectar obstáculos à sua frente e calcula uma trajetória tangente ao obstáculo.
 2. **Desvio e Navegação Direta**: O robô se desvia do obstáculo seguindo a trajetória tangente até que esteja novamente em uma linha direta para o destino.
 
+Algoritimo
+1. Siga em direção à posição goal
+2. Caso um obstáculo seja encontrado
+	1. Contorne o obstáculo até que o segmento de reta que liga os pontos inicial e final (m-line) seja novamente encontrado em um ponto mais próximo ao goal
+3. Retorne ao passo inicial*
 ### Comparação dos Algoritmos
 - **BUG1**: Pode levar mais tempo para completar a tarefa, pois o robô pode precisar contornar o obstáculo inteiro.
 - **BUG2**: Mais eficiente em termos de tempo e distância percorrida, pois o robô não precisa contornar completamente o obstáculo.

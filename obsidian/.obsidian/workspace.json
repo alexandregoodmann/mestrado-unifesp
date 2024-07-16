@@ -8,90 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "01953a076dea3399",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PI/Detecção de Círculos.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9ac98e72a4824a9f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Metodologia/Shapiro-Wilk.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8d42541a8c2f15d9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mestrado/Atividades Mestrado Unifesp.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "dcfbacfb95f5df35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PI/Artigo.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3f3e6db1ec70d7e4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pessoal/Financeiro.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0f7c4ef2917dd669",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pessoal/Financeiro.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2ee9b27497e7c0ad",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PI/Artigo.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "6e94e944706bdd7f",
             "type": "leaf",
             "state": {
@@ -102,33 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "0c00ac4154a12776",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Robótica/Robótica.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c97117c2e61dc3a1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Robótica/Projeto Final.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 9
+        ]
       }
     ],
     "direction": "vertical"
@@ -276,12 +167,12 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "c97117c2e61dc3a1",
+  "active": "6e94e944706bdd7f",
   "lastOpenFiles": [
-    "Robótica/Filtro de Kalman.md",
-    "Robótica/Robótica.md",
     "Robótica/Bug Algorithm.md",
     "Robótica/Projeto Final.md",
+    "Robótica/Filtro de Kalman.md",
+    "Robótica/Robótica.md",
     "Robótica/Sem título.md",
     "Robótica/Controle PID.md",
     "PI/Detecção de Círculos.md",
