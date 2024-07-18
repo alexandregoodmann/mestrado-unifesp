@@ -15,15 +15,26 @@ def pararSimulacao(clientID):
     sim.simxFinish(clientID)
 
 # ---------------------------------------------------------------------------------------
-def getAngulo(vetA, vetB):
-    vet = vetB - vetA
-    print(vet)
-    ang = math.atan(vet[1]/vet[0])
-    return np.rad2deg(ang)
+def getFuncaoReta(origem, destino):
+    x = np.array([origem[0], destino[0]])
+    y = np.array([origem[1], destino[1]])
+    coefficients = np.polyfit(x, y, 1)
+    a, b = coefficients
+    print(f"Equação da linha ajustada: y = {a:.2f}x + {b:.2f}")
+    return a, b
+
+def isOnLine(x, y, a, b):
+    fx = a*x + b
+    inf = fx - 0.1
+    sup = fx + 0.1
+    if (y >= inf and y <= sup):
+        return True
+    return False
+'''
+origem = np.array([1, 2])
+destino = np.array([3, 4])
+a, b = getFuncaoReta(origem, destino)
+
+print(isOnLine(1.5, 2.5))
+'''
 # ---------------------------------------------------------------------------------------
-'''
-a = np.array([0, 0, 0])
-b = np.array([30, -30, 30])
-resp = getAngulo(a, b)
-print(b, resp)
-'''

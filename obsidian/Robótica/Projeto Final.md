@@ -1,14 +1,10 @@
 
-- [ ] Como pegar informação do sensor (LIDAR)
+- [x] Como pegar informação do sensor (LIDAR)
 - [ ] Mapeamento Grid (Técnica de Occupancy Probability Mapping ou Histograma)
 - [ ] Tamanho de celula
-- [ ] Modelo inverso do sensor
-- [ ] Controle PID
-- [ ] Bug Algorithm
-
-#### Tasks
-- [ ] Girar robo de frente pro destino
-
+- [x] Modelo inverso do sensor
+- [x] Controle PID
+- [x] Bug Algorithm
 
 - Na medida em que o robô se move pelo ambiente para acessar
 cada objetivo, o mapeamento em grid deve ser realizado e mostrado
