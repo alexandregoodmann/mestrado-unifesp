@@ -7,6 +7,7 @@ import os
 import logging
 import time
 import mylib
+import cv2
 
 logging.basicConfig(level=logging.INFO, filename="/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/lidar.log", format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -53,7 +54,18 @@ def getCoordenadaObstaculo(x, y, th, D):
     Y = np.sin(th) * D + y
     return X, Y
 # ---------------------------------------------------------------------------------------
-
+def criarImagem(grid):
+    print('INFO - criando imagem')
+    imagem = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/grid.png')
+    imagem[::] = 255
+    for item in grid:
+        x = int(10 * item[0])
+        y = int(10 * item[1])
+        if (x > 0 and y > 0):
+            imagem[x, y] = 0
+    cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/grid.png', imagem)
+    print('INFO - imagem criada')
+# ---------------------------------------------------------------------------------------
 print ('Program started')
 sim.simxFinish(-1) # just in case, close all opened connections
 clientID=sim.simxStart('127.0.0.1',19999,True,True,5000,5) # Connect to CoppeliaSim
@@ -81,12 +93,12 @@ if clientID!=-1:
     goal_1 = np.array([3, 3, np.deg2rad(90)])
     
     # Específico do robô
-    L = 0.331
+    L = 0.331   
     r = 0.09751
     maxv = 0.4
     maxw = np.deg2rad(45)
     distancia = np.inf
-    lidar_data = []
+    grid = []
     while distancia > .05:
 
         returnCode, detected_front, point_front, *_ = sim.simxReadProximitySensor(clientID, sonar_front, sim.simx_opmode_oneshot_wait)
@@ -96,6 +108,7 @@ if clientID!=-1:
         # lidar_data.append(readSensorData(clientID, laser_range_data, laser_angle_data))
         angulo_lidar, distancia_lidar, pos = getLidar(clientID, laser_range_data, laser_angle_data)
         X, Y = getCoordenadaObstaculo(pos[0], pos[1], pos[2], distancia_lidar)
+        grid.append([X, Y])
 
         if (pos[1] > 0):
             print(distancia_lidar, pos[:2], np.rad2deg(pos[2]), X, Y)
@@ -132,14 +145,9 @@ if clientID!=-1:
         sim.simxSetJointTargetVelocity(clientID, robotLeftMotorHandle, wl, sim.simx_opmode_oneshot_wait)
 
     mylib.pararSimulacao(clientID)
-    '''
-    for data in lidar_data:
-        medida = data[0]
-        angulo = data[1]
-        meio = int(medida.__len__()/2)
-        print('angulo medida', meio, angulo[meio], medida[meio], getPosition())
-    '''
 
+    criarImagem(grid)
+    
 else:
     print ('Failed connecting to remote API server')
     
