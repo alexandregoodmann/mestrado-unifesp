@@ -79,38 +79,34 @@ goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
 goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
-goals = [goal_2, goal_3, goal_4, goal_1]
+goals = [goal_1, goal_2, goal_3, goal_4]
 
 for goal in goals:
     setFrameGoal(goal)
-    rho = np.inf
-    while rho > 0.5:
-
+    distancia = np.inf
+    while distancia > 0.5:
         # Busca pelo destino
         position = getPosition()
         dx, dy, dth = goal - position
-
-        rho = np.sqrt(dx**2 + dy**2)
+        distancia = np.sqrt(dx**2 + dy**2)
         alpha = normalizeAngle(-position[2] + np.arctan2(dy,dx))
         beta = normalizeAngle(goal[2] - np.arctan2(dy,dx))
-
         kr = 4 / 20
         ka = 8 / 20
         kb = -1.5 / 20
-
-        v = kr*rho
+        v = kr*distancia
         w = ka*alpha + kb*beta
         
         # Limit v,w to +/- max
         v = max(min(v, maxv), -maxv)
-        w = max(min(w, maxw), -maxw)  
+        w = max(min(w, maxw), -maxw)        
 
-        # ------------------------------------------------------------------------
-        # BUG ALGORITHM
-        # ------------------------------------------------------------------------
+        # ----------------------------------------------------------------------
+        # Identifica Obstaculos
         obstacle_in_front, obstacle_in_right, obstacle_in_left = getObstacle()
         following = obstacle_in_front
-        # Controle
+
+        # Desvia dos obstaculos
         if obstacle_in_front:
             v = 0
             w = np.deg2rad(30)
@@ -121,8 +117,8 @@ for goal in goals:
             elif following:
                 v = .1
                 w = np.deg2rad(-30)
-        # ------------------------------------------------------------------------
-
+        # ----------------------------------------------------------------------
+        
         wr = ((2.0*v) + (w*L))/(2.0*r)
         wl = ((2.0*v) - (w*L))/(2.0*r)
 
