@@ -30,9 +30,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "a3ba037c12171fef",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.7"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -180,7 +190,7 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "73461b30fd522669",
+  "active": "a3ba037c12171fef",
   "lastOpenFiles": [
     "Robótica/Bug Algorithm.md",
     "Regressão Linear.md",

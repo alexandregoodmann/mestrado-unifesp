@@ -82,9 +82,15 @@ def criarImagem(grid):
     imagem = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/grid.png')
     imagem[::] = 255
     for item in grid:
-        x = int(10 * item[0] + 50)
-        y = int(10 * item[1] + 50)
-        writeLine(0, 0, x, y, imagem)
+        x0 = int(item[0]*100) + 499
+        y0 = int(item[1]*100) + 499
+        xn = int(item[2]*100) + 499
+        yn = int(item[3]*100) + 499
+        if (x0 > 999): x0 = 999
+        if (y0 > 999): y0 = 999
+        if (xn > 999): xn = 999
+        if (yn > 999): yn = 999
+        writeLine(x0, y0, xn, yn, imagem)
     cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/grid.png', imagem)
     print('INFO - imagem criada')
 # ---------------------------------------------------------------------------------------
@@ -120,7 +126,7 @@ goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
 goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
-goals = [goal_4]
+goals = [goal_2, goal_3, goal_4, goal_1]
 grid = []
 
 for goal in goals:
@@ -138,7 +144,7 @@ for goal in goals:
         # lidar_data.append(readSensorData(clientID, laser_range_data, laser_angle_data))
         angulo_lidar, distancia_lidar = getLidar(clientID, laser_range_data, laser_angle_data)
         X, Y = getCoordenadaObstaculo(position[0], position[1], position[2], distancia_lidar)
-        grid.append([X, Y])
+        grid.append([position[0], position[1],  X, Y])
         # ------------------------------------------------------------------------
 
         rho = np.sqrt(dx**2 + dy**2)
