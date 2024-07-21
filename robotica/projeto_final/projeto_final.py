@@ -126,8 +126,11 @@ goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
 goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
-goals = [goal_2, goal_3, goal_4, goal_1]
-grid = []
+
+goal = np.array([0, 1, np.deg2rad(0)])
+
+goals = [goal]
+lidar_data = []
 
 for goal in goals:
     setFrameGoal(goal)
@@ -137,17 +140,14 @@ for goal in goals:
         # Busca pelo destino
         position = getPosition()
         dx, dy, dth = goal - position
+        rho = np.sqrt(dx**2 + dy**2)
 
         # ------------------------------------------------------------------------
         # LIDAR
         # ------------------------------------------------------------------------
-        # lidar_data.append(readSensorData(clientID, laser_range_data, laser_angle_data))
-        angulo_lidar, distancia_lidar = getLidar(clientID, laser_range_data, laser_angle_data)
-        X, Y = getCoordenadaObstaculo(position[0], position[1], position[2], distancia_lidar)
-        grid.append([position[0], position[1],  X, Y])
+        if (rho > 1):
+            lidar_data.append(readSensorData(clientID, laser_range_data, laser_angle_data))
         # ------------------------------------------------------------------------
-
-        rho = np.sqrt(dx**2 + dy**2)
         alpha = normalizeAngle(-position[2] + np.arctan2(dy,dx))
         beta = normalizeAngle(goal[2] - np.arctan2(dy,dx))
 
@@ -189,8 +189,8 @@ for goal in goals:
 
 
 # --- Fim dos 4 Blocos de execucao------------------------------------------------------------------------
-print(grid)
-criarImagem(grid)
+for par_coord in lidar_data:
+    print(par_coord)
 
 mylib.pararSimulacao(clientID)
 exit()
