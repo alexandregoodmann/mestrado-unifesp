@@ -122,11 +122,12 @@ w = 0
 maxv = 0.4
 maxw = np.deg2rad(45)
 
+goals = []
 goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
 goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
-goals = [goal_2, goal_3, goal_4, goal_1]
+goals = np.array([goal_2, goal_3, goal_4, goal_1])
 grid = []
 
 for goal in goals:
@@ -173,7 +174,7 @@ for goal in goals:
             w = np.deg2rad(30)
             following = True
         else: 
-            if obstacle_in_right:
+            if (obstacle_in_right or obstacle_in_right):
                 w = np.deg2rad(10)
             elif following:
                 v = .1
@@ -186,11 +187,11 @@ for goal in goals:
         sim.simxSetJointTargetVelocity(clientID, r_wheel, wr, sim.simx_opmode_oneshot_wait)
         sim.simxSetJointTargetVelocity(clientID, l_wheel, wl, sim.simx_opmode_oneshot_wait)
         # --- Fim de um trecho (goal)
-
+    print('trecho: ', getPosition())
+    #print(grid)
+    criarImagem(grid)
 
 # --- Fim dos 4 Blocos de execucao------------------------------------------------------------------------
-print(grid)
-criarImagem(grid)
 
 mylib.pararSimulacao(clientID)
 exit()
