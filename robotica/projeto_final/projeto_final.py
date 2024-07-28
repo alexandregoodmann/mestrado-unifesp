@@ -94,12 +94,6 @@ def criarImagem(grid):
     cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/grid.png', imagem)
     print('INFO - imagem criada')
 # ---------------------------------------------------------------------------------------
-def getLidar(clientID, laser_range_data, laser_angle_data):
-    lidar = readSensorData(clientID, laser_range_data, laser_angle_data)
-    angulo, medida = lidar[1], lidar[0]
-    meio = int(medida.__len__()/2)
-    return angulo[meio], medida[meio]
-# ---------------------------------------------------------------------------------------
 def getCoordenadaObstaculo(x, y, th, D):
     X = np.cos(th) * D + x
     Y = np.sin(th) * D + y
@@ -112,7 +106,7 @@ def readSensorData(clientId, rangeid="hokuyo_range_data", angleid="hokuyo_angle_
     if (returnCodeRanges == 0 and returnCodeAngles == 0):
         range = sim.simxUnpackFloats(string_range)
         angle = sim.simxUnpackFloats(string_angle)
-    return np.array([range, np.rad2deg(angle)])
+    return np.array([angle, range])
 # ----------------------------------------------------------------------------------------------
 # BLOCO IMPLEMENTAÇÃO BUT ALGORITHM
 # ----------------------------------------------------------------------------------------------
@@ -127,10 +121,9 @@ goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
 
-goal = np.array([0, 1, np.deg2rad(0)])
-
-goals = [goal]
+goals = [goal_3, goal_1, goal_4, goal_2]
 lidar_data = []
+last_distance = 0
 
 for goal in goals:
     setFrameGoal(goal)
@@ -145,9 +138,12 @@ for goal in goals:
         # ------------------------------------------------------------------------
         # LIDAR
         # ------------------------------------------------------------------------
-        if (rho > 1):
-            lidar_data.append(readSensorData(clientID, laser_range_data, laser_angle_data))
-        # ------------------------------------------------------------------------
+        if (abs(rho - last_distance) > 0.5):
+            lidar_read = readSensorData(clientID, laser_range_data, laser_angle_data)
+            lidar_coord = mylib.prepararLidar(lidar_read)
+            mylib.gravarArquivoLidar(np.array([dx, dy, np.rad2deg(dth)]), lidar_coord)
+            last_distance = rho
+        # --------------------------    ----------------------------------------------
         alpha = normalizeAngle(-position[2] + np.arctan2(dy,dx))
         beta = normalizeAngle(goal[2] - np.arctan2(dy,dx))
 
@@ -187,10 +183,6 @@ for goal in goals:
         sim.simxSetJointTargetVelocity(clientID, l_wheel, wl, sim.simx_opmode_oneshot_wait)
         # --- Fim de um trecho (goal)
 
-
 # --- Fim dos 4 Blocos de execucao------------------------------------------------------------------------
-for par_coord in lidar_data:
-    print(par_coord)
-
 mylib.pararSimulacao(clientID)
 exit()
