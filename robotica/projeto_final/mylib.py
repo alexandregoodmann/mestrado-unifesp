@@ -2,6 +2,7 @@ import sim
 import math
 import numpy as np
 import json
+import time
 
 def pararSimulacao(clientID):
     
@@ -49,10 +50,10 @@ def prepararLidar(lidar_read):
             coordenadas.append(xy)
     return coordenadas
 # ---------------------------------------------------------------------------------------
-def gravarArquivoLidar(position, lidar_coord):
-    file_path = "/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/exemplo.txt"
+def gravarArquivoLidar(position, lidar_coord, shotlidar):
+    file_path = "/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/lidar/teste2.txt"
     for c in lidar_coord:
-        linha = str(position[0]) + ',' + str(position[1]) + ',' + str(position[2]) + ',' + str(np.rad2deg(c[0])) + ',' + str(c[1]) + '\n' 
+        linha = str(position[0]) + ',' + str(position[1]) + ',' + str(position[2]) + ',' + str(c[0]) + ',' + str(c[1]) + ',' + str(shotlidar) + '\n' 
         with open(file_path, 'a') as arquivo:
             #json.dump(data, arquivo, ensure_ascii=False, indent=4)
             arquivo.write(linha)

@@ -121,28 +121,33 @@ goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
 
-goals = [goal_3, goal_1, goal_4, goal_2]
+goal_5 = np.array([0, 1, np.deg2rad(0)])
+goal_6 = np.array([1, 1, np.deg2rad(90)])
+
+goals = [goal_5, goal_6]
 lidar_data = []
-last_distance = 0
+passo = 0
 
 for goal in goals:
     setFrameGoal(goal)
     rho = np.inf
-    while rho > 0.5:
+    while rho > 0.1:
 
         # Busca pelo destino
         position = getPosition()
         dx, dy, dth = goal - position
         rho = np.sqrt(dx**2 + dy**2)
 
+        resto = (np.sqrt(position[0]**2 + position[1]**2)) % 0.5
         # ------------------------------------------------------------------------
         # LIDAR
         # ------------------------------------------------------------------------
-        if (abs(rho - last_distance) > 0.5):
+        if (position[1] > 0.1 and resto > 0 and resto < 0.05):
+            passo += 1
+            print('[INFO] - Shot lidar', passo, position[1])
             lidar_read = readSensorData(clientID, laser_range_data, laser_angle_data)
             lidar_coord = mylib.prepararLidar(lidar_read)
-            mylib.gravarArquivoLidar(np.array([dx, dy, np.rad2deg(dth)]), lidar_coord)
-            last_distance = rho
+            mylib.gravarArquivoLidar(position, lidar_coord, passo)
         # --------------------------    ----------------------------------------------
         alpha = normalizeAngle(-position[2] + np.arctan2(dy,dx))
         beta = normalizeAngle(goal[2] - np.arctan2(dy,dx))

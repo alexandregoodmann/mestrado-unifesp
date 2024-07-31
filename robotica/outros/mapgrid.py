@@ -11,7 +11,7 @@ def Rz(theta):
                       [ 0            ,  0            , 1 ]])
 # --------------------------------------------------------------------------
 def calcularB(B, Borig, th):
-    Rab = Rz(np.deg2rad(th))
+    Rab = Rz(th)
     Tab = np.column_stack((Rab, Borig))
     aux = np.array([0, 0, 0, 1])
     Tab = np.row_stack((Tab, aux))
@@ -19,21 +19,20 @@ def calcularB(B, Borig, th):
     return A
 # --------------------------------------------------------------------------
 def getLidarCoords(angle, range):
-    angle = abs(float(angle) - 90)
-    if (angle > 180):
-        angle = 180
-    elif(angle < 0):
-        angle = 0
-    x = np.cos(np.deg2rad(angle)) * float(range)
-    y = np.sin(np.deg2rad(angle)) * float(range)
-    return x, y
+    s_angle = angle*(-1) + np.deg2rad(90)
+    d_angle = int(np.rad2deg(s_angle))
+    if (d_angle >= 0 and d_angle <= 180):
+        x = np.cos(s_angle) * float(range)
+        y = np.sin(s_angle) * float(range)
+        return x, y
 # --------------------------------------------------------------------------
 def writeLine(x0, y0, xn, yn):
     vetor_x, vetor_y = line(int(x0), int(y0), int(xn), int(yn))
     for i in range(0, vetor_x.__len__()):
         x = vetor_x[i]
         y = vetor_y[i]
-        imagem[x,y] = 0
+        if (x < 1000 and y < 1000):
+            imagem[x,y] = 0
 # --------------------------------------------------------------------------
 
 #           x-robot-position   y-robot-position    z-rotation(deg)   laser-angle        laser-distance
@@ -41,20 +40,21 @@ def writeLine(x0, y0, xn, yn):
 
 print('[INFO] - Inicio da Execucao')
 
-imagem = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/robotica/outros/grid.png')
+imagem = cv2.imread('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/lidar/grid.png')
 imagem[::] = 255
 
-file_path = "/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/exemplo.txt"
+file_path = "/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/lidar/teste2_2.txt"
 with open(file_path, 'r') as arquivo:
     linhas = arquivo.readlines()
     for linha in linhas:
         # Lê a linha do arquivo e Encontra XY do laser
+        # -0.03499177470803261,1.986708402633667,7.981695087896203,-90.00000250447816,4.952520847320557
         vet = linha.split(',')
         X_robo, Y_robo = float(vet[0]), float(vet[1])
-        Xb, Yb = getLidarCoords(vet[3], vet[4])
+        Xb, Yb = getLidarCoords(float(vet[3]), float(vet[4]))
         B = np.array([Xb, Yb, 0, 1])
         Borig = np.array([X_robo, Y_robo, 0])
-        A = calcularB(B, Borig, 0)
+        A = calcularB(B, Borig, float(np.deg2rad(-90)))
         Ax, Ay = A[0], A[1]
 
         #Desenhar a linha na imagem. Origem é a posição do robo e destino é Ax, Ay
@@ -62,11 +62,7 @@ with open(file_path, 'r') as arquivo:
         y0 = int(Y_robo*100) + 499
         xn = int(Ax*100) + 499
         yn = int(Ay*100) + 499
-        if (x0 > 999): x0 = 999
-        if (y0 > 999): y0 = 999
-        if (xn > 999): xn = 999
-        if (yn > 999): yn = 999
         writeLine(x0, y0, xn, yn)
 
-cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/robotica/outros/grid.png', imagem)
+cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/lidar/grid2.png', imagem)
 print('INFO - Fim')

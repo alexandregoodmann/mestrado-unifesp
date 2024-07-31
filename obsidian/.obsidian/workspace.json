@@ -11,8 +11,24 @@
             "id": "475bc53d68691cde",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Mestrado/Mestrado UFRGS.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2e9440a0fe758859",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mestrado/Lattes.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Mestrado/Mestrado UFRGS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Mestrado/Mestrado UFRGS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Mestrado/Mestrado UFRGS.md"
+              }
             }
           },
           {
@@ -161,9 +181,11 @@
   },
   "active": "475bc53d68691cde",
   "lastOpenFiles": [
+    "Mestrado/Lattes.md",
+    "Mestrado/Mestrado UFRGS.md",
+    "Robótica/Regressão Linear.md",
     "PI/Artigo PI.md",
     "Mestrado Unifesp/Anotações Mestrado Unifesp.md",
-    "Regressão Linear.md",
     "PI/Artigo.md",
     "Mestrado/Normalidade dos Dados.md",
     "Mestrado/Estatística.md",
@@ -174,7 +196,6 @@
     "Mestrado Unifesp/Estatística.md",
     "Robótica/Bug Algorithm.md",
     "Robótica/Projeto Final.md",
-    "Robótica/Regressão Linear.md",
     "Pessoal/Financeiro.md",
     "Robótica/Filtro de Kalman.md",
     "Robótica/Robótica.md",
@@ -190,7 +211,6 @@
     "Python.md",
     "machine learning.md",
     "Mestrado Unifesp",
-    "PI/Sem título.md",
     "Pessoal",
     "Metodologia",
     "PI",

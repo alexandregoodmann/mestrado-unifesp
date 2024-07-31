@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+print(np.rad2deg(1.7620601654052734))
+exit()
 # --------------------------------------------------------------------------
 def Rz(theta):
     return np.array([[  np.cos(theta), -np.sin(theta), 0 ],
