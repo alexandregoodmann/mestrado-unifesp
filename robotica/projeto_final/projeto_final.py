@@ -94,12 +94,6 @@ def criarImagem(grid):
     cv2.imwrite('/home/alexandre/projetos/mestrado-unifesp/robotica/projeto_final/grid.png', imagem)
     print('INFO - imagem criada')
 # ---------------------------------------------------------------------------------------
-def getLidar(clientID, laser_range_data, laser_angle_data):
-    lidar = readSensorData(clientID, laser_range_data, laser_angle_data)
-    angulo, medida = lidar[1], lidar[0]
-    meio = int(medida.__len__()/2)
-    return angulo[meio], medida[meio]
-# ---------------------------------------------------------------------------------------
 def getCoordenadaObstaculo(x, y, th, D):
     X = np.cos(th) * D + x
     Y = np.sin(th) * D + y
@@ -112,7 +106,7 @@ def readSensorData(clientId, rangeid="hokuyo_range_data", angleid="hokuyo_angle_
     if (returnCodeRanges == 0 and returnCodeAngles == 0):
         range = sim.simxUnpackFloats(string_range)
         angle = sim.simxUnpackFloats(string_angle)
-    return np.array([range, np.rad2deg(angle)])
+    return np.array([angle, range])
 # ----------------------------------------------------------------------------------------------
 # BLOCO IMPLEMENTAÇÃO BUT ALGORITHM
 # ----------------------------------------------------------------------------------------------
@@ -127,28 +121,35 @@ goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
 goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
 goal_4 = np.array([3.25, 3, np.deg2rad(0)])
-goals = np.array([goal_2, goal_3, goal_4, goal_1])
-grid = []
+
+goal_5 = np.array([0, 1, np.deg2rad(0)])
+goal_6 = np.array([1, 1, np.deg2rad(90)])
+
+goals = [goal_5, goal_6]
+lidar_data = []
+passo = 0
 
 for goal in goals:
     setFrameGoal(goal)
     rho = np.inf
-    while rho > 0.5:
+    while rho > 0.1:
 
         # Busca pelo destino
         position = getPosition()
         dx, dy, dth = goal - position
+        rho = np.sqrt(dx**2 + dy**2)
 
+        resto = (np.sqrt(position[0]**2 + position[1]**2)) % 0.5
         # ------------------------------------------------------------------------
         # LIDAR
         # ------------------------------------------------------------------------
-        # lidar_data.append(readSensorData(clientID, laser_range_data, laser_angle_data))
-        angulo_lidar, distancia_lidar = getLidar(clientID, laser_range_data, laser_angle_data)
-        X, Y = getCoordenadaObstaculo(position[0], position[1], position[2], distancia_lidar)
-        grid.append([position[0], position[1],  X, Y])
-        # ------------------------------------------------------------------------
-
-        rho = np.sqrt(dx**2 + dy**2)
+        if (position[1] > 0.1 and resto > 0 and resto < 0.05):
+            passo += 1
+            print('[INFO] - Shot lidar', passo, position[1])
+            lidar_read = readSensorData(clientID, laser_range_data, laser_angle_data)
+            lidar_coord = mylib.prepararLidar(lidar_read)
+            mylib.gravarArquivoLidar(position, lidar_coord, passo)
+        # --------------------------    ----------------------------------------------
         alpha = normalizeAngle(-position[2] + np.arctan2(dy,dx))
         beta = normalizeAngle(goal[2] - np.arctan2(dy,dx))
 
@@ -187,11 +188,7 @@ for goal in goals:
         sim.simxSetJointTargetVelocity(clientID, r_wheel, wr, sim.simx_opmode_oneshot_wait)
         sim.simxSetJointTargetVelocity(clientID, l_wheel, wl, sim.simx_opmode_oneshot_wait)
         # --- Fim de um trecho (goal)
-    print('trecho: ', getPosition())
-    #print(grid)
-    criarImagem(grid)
 
 # --- Fim dos 4 Blocos de execucao------------------------------------------------------------------------
-
 mylib.pararSimulacao(clientID)
 exit()
