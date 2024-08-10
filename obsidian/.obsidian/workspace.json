@@ -13,7 +13,31 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mestrado/Mestrado UFRGS.md",
+                "file": "Mestrado/Lattes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fec382273f90c3d3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mestrado/Normalidade dos Dados.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c732e205814d48aa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pessoal/Emprego.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,7 +55,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -81,7 +106,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 287.5
+    "width": 231.5
   },
   "right": {
     "id": "8bc4d1d2fc21978b",
@@ -97,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Mestrado/Mestrado UFRGS.md",
+                "file": "Pessoal/Emprego.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Mestrado/Mestrado UFRGS.md",
+                "file": "Pessoal/Emprego.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Mestrado/Mestrado UFRGS.md"
+                "file": "Pessoal/Emprego.md"
               }
             }
           },
@@ -147,7 +172,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PI/intensidade de cada pixel.md",
+                "file": "Unifesp/PI/intensidade de cada pixel.md",
                 "mode": "source",
                 "source": false
               }
@@ -179,42 +204,43 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "475bc53d68691cde",
+  "active": "c732e205814d48aa",
   "lastOpenFiles": [
+    "Unifesp/Seminários/Seminários.md",
+    "Pendências.md",
+    "Sem título.canvas",
+    "2024-08-05.md",
+    "Unifesp/Robótica/Projeto Final.md",
+    "Unifesp/Metodologia/Atividades Mestrado Unifesp.md",
+    "Unifesp/Seminários",
+    "Mestrado/Normalidade dos Dados.md",
     "Mestrado/Lattes.md",
+    "Mestrado/Mestrado UFSC.md",
     "Mestrado/Mestrado UFRGS.md",
-    "Robótica/Regressão Linear.md",
+    "Unifesp/Metodologia/Estatística.md",
+    "Pessoal/Pós Graduação.md",
+    "Unifesp",
+    "Pessoal/Emprego.md",
+    "Unifesp/Robótica/Robótica.md",
+    "Unifesp/Robótica/Regressão Linear.md",
     "PI/Artigo PI.md",
     "Mestrado Unifesp/Anotações Mestrado Unifesp.md",
-    "PI/Artigo.md",
-    "Mestrado/Normalidade dos Dados.md",
-    "Mestrado/Estatística.md",
-    "Mestrado/Atividades Mestrado Unifesp.md",
+    "Unifesp/PI/Artigo.md",
     "Mestrado",
     "Mestrado Unifesp/Atividades Mestrado Unifesp.md",
     "Mestrado Unifesp/Normalidade dos Dados.md",
     "Mestrado Unifesp/Estatística.md",
-    "Robótica/Bug Algorithm.md",
-    "Robótica/Projeto Final.md",
+    "Unifesp/Robótica/Bug Algorithm.md",
     "Pessoal/Financeiro.md",
-    "Robótica/Filtro de Kalman.md",
-    "Robótica/Robótica.md",
+    "Unifesp/Robótica/Filtro de Kalman.md",
     "Robótica/Sem título.md",
-    "Robótica/Controle PID.md",
-    "PI/Detecção de Círculos.md",
-    "Robótica/Seminário.md",
-    "Pessoal/Pós Graduação.md",
-    "Deep Learning.md",
+    "Unifesp/Robótica/Controle PID.md",
     "IA",
-    "Robótica/TinyML.md",
-    "Sem título.canvas",
-    "Python.md",
-    "machine learning.md",
     "Mestrado Unifesp",
     "Pessoal",
-    "Metodologia",
-    "PI",
-    "Robótica",
+    "Unifesp/Metodologia",
+    "Unifesp/PI",
+    "Unifesp/Robótica",
     "Untitled.canvas"
   ]
 }

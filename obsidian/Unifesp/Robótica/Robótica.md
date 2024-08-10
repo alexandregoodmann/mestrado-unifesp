@@ -77,3 +77,64 @@ Direct entry is possible after studying/training (even without professional expe
 - [ ] Familiar with motion control experience with motion control card of Googoltech，Leadshine, etc.
 - [ ] Familiar with image processing - hands-on experience with Halcon, OpenCV, VisionPro and other image processing libraries- 
 - [ ] Familiar with robotic arm programming, project experience in FANUC, KUKA, ABB, Yaskawa etc.
+___________________________
+
+https://www.theconstruct.ai/robotics-developer/?utm_source=The+Construct+-+SuperApp+Master&utm_campaign=9c763beec3-EMAIL_CAMPAIGN_masterclass-b5-early-last-48h&utm_medium=email&utm_term=0_5f17ebd98f-9c763beec3-222532574&ct=t(EMAIL_CAMPAIGN_masterclass-b5-early-last-48h)&mc_cid=9c763beec3&mc_eid=8ffa64c45d
+
+### Phase 1 – **Robotics Developer Novice**
+
+#### 200 hours
+
+Build a robot programming foundation and get started with ROS.  
+Acquired Skills:
+
+- Collaborative software development with Git
+- C++ programming skills for robotics
+- ROS2 basics
+- Robot modeling with URDF – ROS2
+- Robot frame transformations with TF ROS2
+- Create robot simulations with Gazebo (Ignition)
+- ROS1 basics
+
+### Phase 2 – **Robotics Developer Beginner**
+
+#### 200 hours
+
+#### Understand how to program mobile manipulator skills, including navigation, perception of the environment, and manipulation of objects.
+
+Acquired Skills:
+
+- Advanced ROS2 concepts
+- Robot navigation with ROS2
+- Robot perception with ROS2
+- Object manipulation with ROS2
+- Build robot controllers with ROS2
+
+
+### Phase 3 – **Robotics Developer Experienced**
+
+#### 200 hours
+
+#### Understand any robotic system’s physics and mathematical principles, from simple kinematics to advanced planning and control algorithms.
+
+Acquired Skills:
+
+- Essential math for robotics
+- Mobile robot kinematics
+- Robot arm kinematics
+- Robot dynamics
+- Kalman filters
+- Path planning algorithms
+
+### Phase 4 – **Robotics Developer Competent**
+
+#### 200 hours
+
+#### Understand the development tools for robot programming in a corporate environment. Then, prepare to bear the day-to-day work of a robotics developer.
+
+Acquired Skills:
+
+- Program web interfaces for ROS2
+- Containerize your software with Docker
+- Automate development tasks with Jenkins
+- Check the integrity of the code with continuous integration (CI)

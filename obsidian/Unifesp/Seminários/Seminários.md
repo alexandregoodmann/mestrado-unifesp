@@ -1,0 +1,3 @@
+Ela mostrou em um slide como começar a Tese
+Pegar o livro do Raul
+Fazer uma pesquisa sobre um assunto específico
