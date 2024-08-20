@@ -116,6 +116,7 @@ w = 0
 maxv = 0.4
 maxw = np.deg2rad(45)
 
+goals = []
 goal_1 = np.array([3.75, -3.75, np.deg2rad(0)])
 goal_2 = np.array([-3.25, -3.75, np.deg2rad(0)])
 goal_3 = np.array([-2.75, 3.25, np.deg2rad(0)])
@@ -174,7 +175,7 @@ for goal in goals:
             w = np.deg2rad(30)
             following = True
         else: 
-            if obstacle_in_right:
+            if (obstacle_in_right or obstacle_in_right):
                 w = np.deg2rad(10)
             elif following:
                 v = .1

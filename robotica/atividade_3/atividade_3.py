@@ -114,7 +114,9 @@ for goal in goals:
         sim.simxSetJointTargetVelocity(clientID, r_wheel, wr, sim.simx_opmode_oneshot_wait)
         sim.simxSetJointTargetVelocity(clientID, l_wheel, wl, sim.simx_opmode_oneshot_wait)
 
+    print('[INFO] - Chegada no Goal: ', goal)
 # --- Fim Bloco execucao------------------------------------------------------------------------
 
+print('[INFO] - Fim da simulacao')
 mylib.pararSimulacao(clientID)
 exit()
