@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Unifesp/Robótica/Filtro de Kalman.md",
+                "file": "Unifesp/Seminários/Seminários.md",
                 "mode": "source",
                 "source": false
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Unifesp/Robótica/Filtro de Kalman.md",
+                "file": "Unifesp/Seminários/Seminários.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Unifesp/Robótica/Filtro de Kalman.md",
+                "file": "Unifesp/Seminários/Seminários.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Unifesp/Robótica/Filtro de Kalman.md"
+                "file": "Unifesp/Seminários/Seminários.md"
               }
             }
           },
@@ -206,9 +206,13 @@
   },
   "active": "c732e205814d48aa",
   "lastOpenFiles": [
-    "Pessoal/Emprego.md",
-    "Unifesp/Seminários/Seminários.md",
+    "Unifesp/PAD/PAD.md",
     "Pendências.md",
+    "Unifesp/PAD",
+    "Unifesp/Seminários/Seminários.md",
+    "Unifesp/Seminários/Seminário 1.md",
+    "Unifesp/Robótica/Filtro de Kalman.md",
+    "Pessoal/Emprego.md",
     "Sem título.canvas",
     "2024-08-05.md",
     "Unifesp/Robótica/Projeto Final.md",
@@ -232,9 +236,7 @@
     "Mestrado Unifesp/Estatística.md",
     "Unifesp/Robótica/Bug Algorithm.md",
     "Pessoal/Financeiro.md",
-    "Unifesp/Robótica/Filtro de Kalman.md",
     "Robótica/Sem título.md",
-    "Unifesp/Robótica/Controle PID.md",
     "IA",
     "Mestrado Unifesp",
     "Pessoal",
