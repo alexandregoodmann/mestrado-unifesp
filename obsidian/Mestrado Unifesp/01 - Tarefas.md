@@ -6,8 +6,9 @@
 	- Visão computacional está dentro de Sistemas Inteligentes
 	- Escrever projeto de Mestrado
 	- Cancelar Disciplina alto desempenho
+	- Fazer diagrama de Gantt
 - AAED - Algorítimo
-	- Seminário
+	- Seminário - Algotítimo específico para preparar apresentação. Comparar com outro algorítimo (implementar os dois). Estudar qual algorítimo está implementado em uma linguagem específica.
 	- Exercícios Atrasados
 	- Exercício da Semana
 	- Seminários
