@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Unifesp/Seminários/Seminários.md",
+                "file": "Pessoal/Pós Graduação.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Unifesp/Seminários/Seminários.md",
+                "file": "Pessoal/Pós Graduação.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Unifesp/Seminários/Seminários.md",
+                "file": "Pessoal/Pós Graduação.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Unifesp/Seminários/Seminários.md"
+                "file": "Pessoal/Pós Graduação.md"
               }
             }
           },
@@ -169,6 +169,7 @@
   },
   "active": "c732e205814d48aa",
   "lastOpenFiles": [
+    "Unifesp/Seminários/Seminários.md",
     "Mestrado/Normalidade dos Dados.md",
     "Mestrado/Mestrado UFSC.md",
     "Mestrado/Mestrado UFRGS.md",
@@ -187,7 +188,6 @@
     "Unifesp/PAD/PAD.md",
     "Pendências.md",
     "Unifesp/PAD",
-    "Unifesp/Seminários/Seminários.md",
     "Unifesp/Seminários/Seminário 1.md",
     "Unifesp/Robótica/Filtro de Kalman.md",
     "Pessoal/Emprego.md",
