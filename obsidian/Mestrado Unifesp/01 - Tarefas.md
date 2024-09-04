@@ -1,0 +1,26 @@
+- Gerais
+	- Terminar GridMap
+	- Definir linha de pesquisa
+	- Buscar empresa para aplicar o mestrado
+	- Pedir declaração da disciplina de Robótica
+	- Visão computacional está dentro de Sistemas Inteligentes
+	- Escrever projeto de Mestrado
+	- Cancelar Disciplina alto desempenho
+- AAED - Algorítimo
+	- Seminário
+	- Exercícios Atrasados
+	- Exercício da Semana
+	- Seminários
+	- Livro Linguagem C, C++
+	- Baixar Livro disciplina
+	- Métodos quicksort heatsort mergesort
+- Seminário
+	- Resumo Palestra 1
+	- Resumo Palestra 2
+	- Resumo Palestra 3
+- Controle ITA
+- UTFPR - Pós IA
+- UFSC - Redes Industriais
+	- Livro Protocolo IP
+	- Exercícios
+

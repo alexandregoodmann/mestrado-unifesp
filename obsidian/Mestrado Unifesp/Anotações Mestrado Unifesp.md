@@ -21,10 +21,12 @@ __________________________
 
 Mestrado Unifesp Anotações 
 
-56 créditos no total
-30 monografia
-14 Obrigatório
-12 Eletiva
+  56 créditos no total
+-30 monografia = 26
+-6 Estudos dirigidos 1 e 2 = 20
+-12 Eletiva = 8
+-8 Obrigatorias = 0
+Tem que fazer 20 creditos, sendo 12 Eletrivas (quaisquer) e 8 obrigatórias (Algorítimo e Seminário). Os 6 créditos de estudos dirigidos são durante a tese, orientação. 
 
 Definir linha de pesquisa 
 Fazer publicação 

@@ -84,7 +84,7 @@ O teste de Shapiro-Wilk é amplamente utilizado devido à sua robustez e capacid
 
 4. ~~**"Statistical Methods for Psychology"** de David C. Howell. Este livro é direcionado especificamente para estudantes e pesquisadores de psicologia, oferecendo uma cobertura detalhada de métodos estatísticos com foco em aplicações práticas, incluindo a análise de normalidade.~~
 
-5. ~~**"Discovering Statistics Using R"** de Andy Field, Jeremy Miles e Zoe Field. Este livro é uma introdução prática e orientada por software ao uso do R para análise [[Estatística]]. Ele inclui informações sobre testes de normalidade e técnicas para lidar com dados não normais.~~
+5. ~~**"Discovering Statistics Using R"** de Andy Field, Jeremy Miles e Zoe Field. Este livro é uma introdução prática e orientada por software ao uso do R para análise [[Mestrado Unifesp/Estatística]]. Ele inclui informações sobre testes de normalidade e técnicas para lidar com dados não normais.~~
 
 6. ~~**"Statistical Methods in Education and Psychology"** de Gene V. Glass, Kenneth D. Hopkins e Donald B. Stamey. Este livro é uma referência clássica que aborda métodos estatísticos comuns em educação e psicologia, incluindo discussões sobre normalidade de dados e testes de normalidade.~~
 
