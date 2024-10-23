@@ -15,22 +15,22 @@ Para me matricular em uma pós precisa ter:
 - Deep Learning
 - Visão Computacional
 
-PUCMinas
-Cada Pós é focada em um assunto específico. Vai estudar somente Visão Compucional ou somente ML. 
-A visão computacionais flerta com a robótica, se tornando mais interessante pro que eu gosto, além de abrir oportunidades para o mercado externo. 
-Desvantagens: Não tem o valor da pós; começa somente em setembro
-290 x 20 = 5800
-https://vemprapuc.pucminas.br/inteligencia-artificial-e-aprendizado-de-maquina-2685
+~~PUCMinas~~
+~~Cada Pós é focada em um assunto específico. Vai estudar somente Visão Compucional ou somente ML.~~ 
+~~A visão computacionais flerta com a robótica, se tornando mais interessante pro que eu gosto, além de abrir oportunidades para o mercado externo.~~ 
+~~Desvantagens: Não tem o valor da pós; começa somente em setembro~~
+~~290 x 20 = 5800~~
+~~https://vemprapuc.pucminas.br/inteligencia-artificial-e-aprendizado-de-maquina-2685~~
 
 ~~PUCRS~~
 ~~Promete foto em ML e DL. Interessante porque o curso tem 3 pilares: Negócios, Liderança e Técnica. Parece-me que procurar formar líderes dentro de empresas, até mesmo empreendedores com a parte técnica junto. Valor mais baixo no momento.~~
 ~~24x de 422 = 10.128~~
 ~~https://online.pucrs.br/mba/mba-em-tecnologia-para-negocios-ai-data-science-e-big-data-edicao-2024~~
 
-UFV
-É o curso que está na mídia no momento. Tem uma propaganda muito forte. Procurar formar grandes técnicos, o currículo do curso é muito interessante. Não tenho dúvidas de que formará grandes técnicos. Parece-me que vai trazer o retorno mais rápido.
-12x de R$600 = 7200
-https://portalead.cead.ufv.br/site/curso/pos-graduacao-latto-sensu-em-inteligencia-artificial-e-computacional/
+~~UFV~~
+~~É o curso que está na mídia no momento. Tem uma propaganda muito forte. Procurar formar grandes técnicos, o currículo do curso é muito interessante. Não tenho dúvidas de que formará grandes técnicos. Parece-me que vai trazer o retorno mais rápido.~~
+~~12x de R$600 = 7200~~
+~~https://portalead.cead.ufv.br/site/curso/pos-graduacao-latto-sensu-em-inteligencia-artificial-e-computacional/~~
 
 ~~USP~~
 ~~Conteúdo muito extenso, 18 meses de curso com TCC. O conteúdo programático parece ser bem completo, bem embasado e atual. Forte em Data Science e ML, mas fraco em DL. Achei o mais completo de todos se o foco não for Visão Computacional.~~

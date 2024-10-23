@@ -16,7 +16,9 @@
                 "file": "Mestrado Unifesp/01 - Tarefas.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "01 - Tarefas"
             }
           },
           {
@@ -28,11 +30,27 @@
                 "file": "Seminário 1.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Seminário 1"
+            }
+          },
+          {
+            "id": "fddb729b7a5d009a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pessoal/Pós Graduação.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Pós Graduação"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -52,7 +70,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -67,7 +87,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -75,14 +97,17 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 271.5
+    "width": 271.5,
+    "collapsed": true
   },
   "right": {
     "id": "8bc4d1d2fc21978b",
@@ -106,7 +131,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Seminário 1"
             }
           },
           {
@@ -118,7 +145,9 @@
                 "file": "Seminário 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Seminário 1"
             }
           },
           {
@@ -129,7 +158,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -139,7 +170,9 @@
               "type": "outline",
               "state": {
                 "file": "Seminário 1.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Seminário 1"
             }
           },
           {
@@ -151,7 +184,9 @@
                 "file": "Mestrado Unifesp/PI/intensidade de cada pixel.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "intensidade de cada pixel"
             }
           },
           {
@@ -159,7 +194,9 @@
             "type": "leaf",
             "state": {
               "type": "graph",
-              "state": {}
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
@@ -180,10 +217,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e4d8d16a1afe40cb",
+  "active": "fddb729b7a5d009a",
   "lastOpenFiles": [
-    "Mestrado Unifesp/01 - Tarefas.md",
     "Seminário 1.md",
+    "Carreira TI.md",
+    "Mestrado Unifesp/01 - Tarefas.md",
     "Mestrado Unifesp/Anotações Mestrado Unifesp.md",
     "Mestrado Unifesp/Atividades Mestrado Unifesp.md",
     "Mestrado Unifesp/PI/Artigo PI.md",
@@ -213,7 +251,6 @@
     "Mestrado Unifesp/Robótica/Filtro de Kalman.md",
     "Sem título.canvas",
     "2024-08-05.md",
-    "Mestrado Unifesp/Robótica/Projeto Final.md",
     "Mestrado Unifesp/Seminários",
     "Unifesp",
     "IA",
