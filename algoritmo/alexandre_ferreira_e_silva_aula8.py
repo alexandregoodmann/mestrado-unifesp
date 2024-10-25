@@ -11,6 +11,7 @@ import os
 import time
 import numpy as np
 import matplotlib.pyplot as plt
+from avl import inserir, altura_esquerda, altura_direita
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -61,27 +62,32 @@ def counting_sort(arr):
     for i in range(len(arr)):
         arr[i] = output[i]
 
-class Node:
-    def __init__(self, data):
-        self.left = self.right = None
-        self.data = data
-
-def altura(node):
+def altura_esquerda_binaria(node):
     if node is None:
-        return -1
-    else:
-        altura_esquerda = altura(node.left)
+        return 0
+    altura = 0
+    atual = node.left  # Focando apenas no lado esquerdo
+    while atual is not None:
+        altura += 1
+        atual = atual.left  # Desce pela subárvore esquerda
+    return altura
 
-        altura_direita = altura(node.right)
+def altura_direita_binaria(node):
+    if node is None:
+        return 0
+    altura = 0
+    atual = node.right  # Focando apenas no lado direito
+    while atual is not None:
+        altura += 1
+        atual = atual.right  # Desce pela subárvore direita
+    return altura
 
-        return 1 + max(altura_esquerda, altura_direita)
 # -----------------------------------------------
 # vetores aleatorios
 # -----------------------------------------------
-qtd = 10**5
 # -- inserção -- 
 start_time = time.time()
-numeros_aleatorios = [random.randint(0, qtd) for _ in range(qtd)]
+numeros_aleatorios = [random.randint(0, 100000) for _ in range(100000)]
 tempo_insercao_aleatorio =  {time.time() - start_time}
 # print(f"Tempo inserção aleatórios: {time.time() - start_time} segundos")
 
@@ -103,31 +109,6 @@ tempo_50mil_aleatorio =  {time.time() - start_time}
 print("Aleatórios: ", tempo_insercao_aleatorio, tempo_50_aleatorio, tempo_50mil_aleatorio)
 
 # -----------------------------------------------
-# vetor ordenado + binario
-# -----------------------------------------------
-'''
-vetor_ordenado = numeros_aleatorios.copy()
-counting_sort(vetor_ordenado)
-
-# -- tempo insercao binaria --
-start_time = time.time()
-ordenado = None
-for num in vetor_ordenado:
-    ordenado = insert(ordenado, num)
-tempo_insercao_ordenado =  {time.time() - start_time}
-
-# -- pesquisa 50 --
-start_time = time.time()
-buscar(ordenado, 50)
-tempo_50_ordenado =  {time.time() - start_time}
-
-# -- pesquisa 50000 --
-start_time = time.time()
-buscar(ordenado, 50000)
-tempo_50mil_ordenado =  {time.time() - start_time}
-print("Ordenado:    ", tempo_insercao_ordenado, tempo_50_ordenado, tempo_50mil_ordenado)
-'''
-# -----------------------------------------------
 # árvore binária
 # -----------------------------------------------
 # -- tempo insercao binaria --
@@ -147,10 +128,8 @@ start_time = time.time()
 buscar(root, 50000)
 tempo_50mil_binaria =  {time.time() - start_time}
 print("Binária:    ", tempo_insercao_binaria, tempo_50_binaria, tempo_50mil_binaria)
+print("Altura esquerda e direita (Binária): ", altura_esquerda_binaria(root), altura_direita_binaria(root))
 
-# -- altura --
-print(root._len__())
-#print(altura(root))
 # -----------------------------------------------
 # árvore binária balanceada
 # -----------------------------------------------
