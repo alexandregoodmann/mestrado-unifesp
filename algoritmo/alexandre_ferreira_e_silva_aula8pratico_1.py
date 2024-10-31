@@ -11,35 +11,29 @@ import os
 import time
 import numpy as np
 import matplotlib.pyplot as plt
-from avl import inserir, altura_esquerda, altura_direita
+from alexandre_ferreira_e_silva_aula8pratico_2 import Node, avl_inserir, avl_altura_esquerda, avl_altura_direita
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
 # --------------------------------------------------------------------------------------
-class Node:
-    def __init__(self, key):
-        self.left = None
-        self.right = None
-        self.val = key
-
 def insert(root, key):
     if root is None:
         return Node(key)
-    if key < root.val:
+    if key < root.value:
         root.left = insert(root.left, key)
     else:
         root.right = insert(root.right, key)
     return root
 
 def inorder_traversal(root):
-    return inorder_traversal(root.left) + [root.val] + inorder_traversal(root.right) if root else []
+    return inorder_traversal(root.left) + [root.value] + inorder_traversal(root.right) if root else []
 
 def buscar(root, key):
     if not root:
         return None
-    if root.val == key:
+    if root.value == key:
         return root
-    if key < root.val:
+    if key < root.value:
         return buscar(root.left, key)
     return buscar(root.right, key)
 
@@ -133,23 +127,11 @@ print("Altura esquerda e direita (Binária): ", altura_esquerda_binaria(root), a
 # -----------------------------------------------
 # árvore binária balanceada
 # -----------------------------------------------
-def sorted_array_to_bst(arr):
-    if not arr:
-        return None
-
-    # Escolher o elemento do meio para ser a raiz
-    mid = len(arr) // 2
-    root = Node(arr[mid])
-
-    # Recursivamente construir a subárvore esquerda e direita
-    root.left = sorted_array_to_bst(arr[:mid])  # Metade esquerda
-    root.right = sorted_array_to_bst(arr[mid+1:])  # Metade direita
-
-    return root
-
 # -- tempo insercao balanceada --
+root = None
 start_time = time.time()
-root = sorted_array_to_bst(numeros_aleatorios)
+for valor in numeros_aleatorios:
+    root = avl_inserir(root, valor)
 tempo_insercao_balanceada =  {time.time() - start_time}
 
 # -- pesquisa 50 --
@@ -161,4 +143,5 @@ tempo_50_balanceada =  {time.time() - start_time}
 start_time = time.time()
 buscar(root, 50000)
 tempo_50mil_balanceada =  {time.time() - start_time}
-print("Balanceada: ", tempo_insercao_balanceada, tempo_50_balanceada, tempo_50mil_balanceada);
+print("Balanceada: ", tempo_insercao_balanceada, tempo_50_balanceada, tempo_50mil_balanceada)
+print("Altura esquerda e direita (AVL): ", avl_altura_esquerda(root), avl_altura_direita(root))

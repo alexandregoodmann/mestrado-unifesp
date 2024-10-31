@@ -15,12 +15,12 @@ def obter_altura(node):
     return node.height
 
 # Função para calcular a altura da subárvore esquerda
-def altura_esquerda(node):
+def avl_altura_esquerda(node):
     if node is None:
         return 0
     return obter_altura(node.left)
 
-def altura_direita(node):
+def avl_altura_direita(node):
     if node is None:
         return 0
     return obter_altura(node.right)
@@ -52,14 +52,14 @@ def fator_balanceamento(node):
     return obter_altura(node.left) - obter_altura(node.right)
 
 # Função para inserir um nó na árvore AVL e manter o balanceamento
-def inserir(node, value):
+def avl_inserir(node, value):
     if node is None:
         return Node(value)
     
     if value < node.value:
-        node.left = inserir(node.left, value)
+        node.left = avl_inserir(node.left, value)
     elif value > node.value:
-        node.right = inserir(node.right, value)
+        node.right = avl_inserir(node.right, value)
     else:
         return node
     
@@ -90,6 +90,6 @@ if __name__ == "__main__":
     root = None
     valores = [random.randint(0, 100000) for _ in range(100000)]
     for valor in valores:
-        root = inserir(root, valor)
+        root = avl_inserir(root, valor)
 
-    print("Altura da subárvore esquerda da árvore AVL:", altura_esquerda(root), altura_direita(root))
+    print("Altura da subárvore esquerda da árvore AVL:", avl_altura_esquerda(root), avl_altura_direita(root))
