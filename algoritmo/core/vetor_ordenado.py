@@ -3,7 +3,7 @@ import os
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-def pesquisar(lista, elemento):
+def pesquisar_ordenada(lista, elemento):
     inicio = 0
     fim = len(lista) - 1
     
@@ -21,7 +21,7 @@ def pesquisar(lista, elemento):
     
     return -1
 
-def inserir(lista, valor):
+def inserir_ordenada(lista, valor):
 
     if len(lista) == 0:
         lista.append(valor)

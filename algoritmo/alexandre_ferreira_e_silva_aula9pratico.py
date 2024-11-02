@@ -12,7 +12,9 @@ import os
 import time
 import random
 from tabulate import tabulate # >>>>>> pip install tabulate 
-from core import inserir, pesquisar
+from core.vetor_ordenado import inserir_ordenada, pesquisar_ordenada
+from core.arvore_binaria import inserirBinaria, pesquisarBinaria
+from core.arvore_avl import inserirAVL
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -38,7 +40,7 @@ for i in (numeros_aleatorios):
         break
 tempo_50mil_aleatorio =  {time.time() - start_time}
 
-vet_valor_aleatorio = ['Vetor aleatorio', tempo_insercao_aleatorio, tempo_50_aleatorio, tempo_50mil_aleatorio]
+tempos_vetor_aleatorio = ['Vetor Aleatório', tempo_insercao_aleatorio, tempo_50_aleatorio, tempo_50mil_aleatorio]
 
 # ------------------------------------------------------------------------------------------------------
 # VETOR ORDENADO
@@ -47,30 +49,73 @@ vet_valor_aleatorio = ['Vetor aleatorio', tempo_insercao_aleatorio, tempo_50_ale
 vetor_ordenado = []
 start_time = time.time()
 for item in numeros_aleatorios:
-    inserir(vetor_ordenado, item)
+    inserir_ordenada(vetor_ordenado, item)
 tempo_insert_ordenado =  {time.time() - start_time}
 
 # -- pesquisa 50 --
 start_time = time.time()
-index = pesquisar(vetor_ordenado, 50)
-if (index == -1):
-    raise Exception('Nao encontrou 50')
+index = pesquisar_ordenada(vetor_ordenado, 50)
 tempo_50_ordenado =  {time.time() - start_time}
 
 # -- pesquisa 50000 --
 start_time = time.time()
-index = pesquisar(vetor_ordenado, 50000)
-if (index == -1):
-    raise Exception('Nao encontrou 50000')
+index = pesquisar_ordenada(vetor_ordenado, 50000)
 tempo_50mil_ordenado =  {time.time() - start_time}
 
-vet_valor_ordenado = ['Vetor ordenado', tempo_insert_ordenado, tempo_50_ordenado, tempo_50mil_ordenado]
+tempos_vetor_ordenado = ['Vetor Ordenado', tempo_insert_ordenado, tempo_50_ordenado, tempo_50mil_ordenado]
+
+# ------------------------------------------------------------------------------------------------------
+# ÁRVORE BINÁRIA
+# ------------------------------------------------------------------------------------------------------
+# -- tempo insercao binaria --
+start_time = time.time()
+root = None
+for num in numeros_aleatorios:
+    root = inserirBinaria(root, num)
+tempo_insercao_binaria =  {time.time() - start_time}
+
+# -- pesquisa 50 --
+start_time = time.time()
+pesquisarBinaria(root, 50)
+tempo_50_binaria =  {time.time() - start_time}
+
+# -- pesquisa 50000 --
+start_time = time.time()
+pesquisarBinaria(root, 50000)
+tempo_50mil_binaria =  {time.time() - start_time}
+
+tempos_arvore_binaria = ['Árvore Binária', tempo_insercao_binaria, tempo_50_binaria, tempo_50mil_binaria]
+
+# -----------------------------------------------
+# ÁRVORE BINÁRIA AVL
+# -----------------------------------------------
+# -- tempo insercao balanceada --
+root = None
+start_time = time.time()
+for valor in numeros_aleatorios:
+    root = inserirAVL(root, valor)
+tempo_insercao_avl =  {time.time() - start_time}
+
+# -- pesquisa 50 --
+start_time = time.time()
+pesquisarBinaria(root, 50)
+tempo_50_avl =  {time.time() - start_time}
+
+# -- pesquisa 50000 --
+start_time = time.time()
+pesquisarBinaria(root, 50000)
+tempo_50mil_avl =  {time.time() - start_time}
+
+tempos_arvore_avl = ['Árvore AVL', tempo_insercao_avl, tempo_50_avl, tempo_50mil_avl]
+
 # ------------------------------------------------------------------------------------------------------
 # RESULTADOS
 # ------------------------------------------------------------------------------------------------------
 table = [
-            ['', 'Tempo insercao', 'Pesquisa 50', 'Pesquisa 50.000'],
-            vet_valor_aleatorio,
-            vet_valor_ordenado
+            ['', 'Tempo Inserção', 'Pesquisa 50', 'Pesquisa 50000'],
+            tempos_vetor_aleatorio,
+            tempos_vetor_ordenado,
+            tempos_arvore_binaria,
+            tempos_arvore_avl
         ]
 print(tabulate(table))
