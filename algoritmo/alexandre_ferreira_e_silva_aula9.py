@@ -5,16 +5,16 @@
 # Aluno: Alexandre Ferreira e Silva
 # Atividade Aula 9
 # Fonte: ChatGPT, Google Gemini
-# Obs.: Caso ocorra exception ao buscar os números 50 e 50000, 
-#       rodar o algorítmo algumas vezes pois os números são gerados randomicamente
 # --------------------------------------------------------------------------------------
+
 import os
 import time
 import random
 from tabulate import tabulate # >>>>>> pip install tabulate 
 from core.vetor_ordenado import inserir_ordenada, pesquisar_ordenada
 from core.arvore_binaria import inserirBinaria, pesquisarBinaria
-from core.arvore_avl import inserirAVL
+from core.arvore_avl import inserirAVL, getAlturaEsquerdaAVL, getAlturaDireitaAVL
+from core.arvore_vermelho_preto import RedBlackTree
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -107,15 +107,44 @@ pesquisarBinaria(root, 50000)
 tempo_50mil_avl =  {time.time() - start_time}
 
 tempos_arvore_avl = ['Árvore AVL', tempo_insercao_avl, tempo_50_avl, tempo_50mil_avl]
+altura_avl = ['AVL', getAlturaEsquerdaAVL(root), getAlturaDireitaAVL(root)]
+
+# -----------------------------------------------
+# ÁRVORE VERMELHO PRETO
+# -----------------------------------------------
+# -- insert --
+vermelho_preto = RedBlackTree()
+start_time = time.time()
+for item in numeros_aleatorios:
+    vermelho_preto.insert(item)
+tempo_insert_vp = {time.time() - start_time}
+
+# -- pesquisa 50 --
+start_time = time.time()
+vermelho_preto.search(50)
+tempo_50_vp =  {time.time() - start_time}
+
+# -- pesquisa 50000 --
+start_time = time.time()
+vermelho_preto.search(50000)
+tempo_50mil_vp =  {time.time() - start_time}
+
+tempos_arvore_vp = ['Árvore Vermelho Preto', tempo_insert_vp, tempo_50_vp, tempo_50mil_vp]
+altura_vp = ['Vermelho Preto', vermelho_preto.left_subtree_height(), vermelho_preto.right_subtree_height()]
 
 # ------------------------------------------------------------------------------------------------------
 # RESULTADOS
 # ------------------------------------------------------------------------------------------------------
-table = [
-            ['', 'Tempo Inserção', 'Pesquisa 50', 'Pesquisa 50000'],
+table = [['', 'Tempo Inserção', 'Pesquisa 50', 'Pesquisa 50000'],
             tempos_vetor_aleatorio,
             tempos_vetor_ordenado,
             tempos_arvore_binaria,
-            tempos_arvore_avl
-        ]
+            tempos_arvore_avl,
+            tempos_arvore_vp]
 print(tabulate(table))
+
+altura = [['', 'Altura Subarvore Esquerda', 'Altura Subarvore Direita'],
+            altura_avl,
+            altura_vp]
+print(tabulate(altura))
+

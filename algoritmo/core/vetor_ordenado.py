@@ -1,3 +1,11 @@
+# --------------------------------------------------------------------------------------
+# UNIFESP - Programa de Pós Graduação em Ciência da Computação
+# AAED 2 sem 2024
+# Professora: LILIAN BERTON
+# Aluno: Alexandre Ferreira e Silva
+# Fonte: ChatGPT, Google Gemini
+# --------------------------------------------------------------------------------------
+
 import random
 import os
 
@@ -6,7 +14,6 @@ os.system('cls' if os.name == 'nt' else 'clear')
 def pesquisar_ordenada(lista, elemento):
     inicio = 0
     fim = len(lista) - 1
-    
     while inicio <= fim:
         meio = (inicio + fim) // 2
         

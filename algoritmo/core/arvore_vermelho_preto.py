@@ -3,9 +3,9 @@
 # AAED 2 sem 2024
 # Professora: LILIAN BERTON
 # Aluno: Alexandre Ferreira e Silva
-# Atividade Aula 05
 # Fonte: ChatGPT, Google Gemini
 # --------------------------------------------------------------------------------------
+
 class RBNode:
     def __init__(self, key, color="R"):
         self.key = key
@@ -118,10 +118,30 @@ class RedBlackTree:
             self.pre_order(node.left)
             self.pre_order(node.right)
 
-# Uso
-rb_tree = RedBlackTree()
-for key in [41, 38, 31, 12, 19, 8, 50, 1, 100, 101]:
-    rb_tree.insert(key)
+    def search_tree_helper(self, node, key):
+        if node == self.TNULL or key == node.key:
+            return node
 
-print("Pre-ordem da árvore Vermelho-Preto:")
-rb_tree.pre_order(rb_tree.root)
+        if key < node.key:
+            return self.search_tree_helper(node.left, key)
+        return self.search_tree_helper(node.right, key)
+
+    def search(self, key):
+        node = self.search_tree_helper(self.root, key)
+        if node != self.TNULL:
+            return f"Nó com chave {key} encontrado. Cor: {node.color}"
+        else:
+            return f"Nó com chave {key} não encontrado."
+        
+    def height(self, node):
+        if node == self.TNULL:
+            return 0
+        left_height = self.height(node.left)
+        right_height = self.height(node.right)
+        return 1 + max(left_height, right_height)
+
+    def left_subtree_height(self):
+        return self.height(self.root.left) if self.root != self.TNULL else 0
+
+    def right_subtree_height(self):
+        return self.height(self.root.right) if self.root != self.TNULL else 0

@@ -1,4 +1,11 @@
-# Definição da classe de nó para a árvore AVL
+# --------------------------------------------------------------------------------------
+# UNIFESP - Programa de Pós Graduação em Ciência da Computação
+# AAED 2 sem 2024
+# Professora: LILIAN BERTON
+# Aluno: Alexandre Ferreira e Silva
+# Fonte: ChatGPT, Google Gemini
+# --------------------------------------------------------------------------------------
+
 class Node:
     def __init__(self, value):
         self.value = value
