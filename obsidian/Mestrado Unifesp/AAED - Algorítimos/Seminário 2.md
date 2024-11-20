@@ -1,0 +1,17 @@
+- [x] TAD HashTree
+- [x] Teoria baseada no ChatGPT
+- [ ] Artigo de Exemplo
+- [ ] Referência Bibliográfica
+- [x] Roteiro Apresentação
+	- [x] Conceito
+	- [x] Montagem passo a passo
+	- [x] EXemplo Simples
+	- [x] Função complexidade comgráfico
+	- [x] Código de exemplo
+- [ ] Aplicação Real
+	- [ ] Blockchain
+	- [ ] Buscar no GitHub
+	- [ ] Descrever a aplicação
+	- [ ] Tipo e quanidade de dados
+	- [ ] Se possível executar o código
+	
