@@ -30,7 +30,7 @@ arquivo.close()  # Fecha o arquivo
 # Inserir as chaves em uma tabela Hash
 # ------------------------------------------------------------------------------------------------------
 tempo_insercao = []
-tabela_encadeamento = HashEncadeamento(500000)
+tabela_encadeamento = HashEncadeamento(100000)
 start_time = time.time()
 for linha in linhas:
     time_low = uuid.UUID(str(linha).replace('\n', '')).time_low
