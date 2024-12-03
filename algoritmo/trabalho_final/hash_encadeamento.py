@@ -21,8 +21,8 @@ class HashEncadeamento:
         # Percorre a lista encadeada para encontrar o valor correspondente à chave
         for k, v in self.table[index]:
             if k == key:
-                return v
-        return None  # Retorna None se a chave não for encontrada
+                return k, v, index
+        return 0, 0, 0  # Retorna None se a chave não for encontrada
     
     def delete(self, key):
         # Calcula o índice usando a função hash
