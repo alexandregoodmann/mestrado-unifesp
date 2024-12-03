@@ -8,8 +8,8 @@
 # --------------------------------------------------------------------------------------
 
 import os
-import hashlib
 import time
+import csv
 from hash_encadeamento import HashEncadeamento
 from arvore_avl import inserirAVL, pesquisarAVL
 from tabulate import tabulate # >>>>>> pip install tabulate 
@@ -19,11 +19,13 @@ import uuid
 
 # ------------------------------------------------------------------------------------------------------
 # ABRIR MASSA DE DADOS
-# Arquivo com 10 mil chaves UUID
+# Arquivo com 296 mil registros
 # ------------------------------------------------------------------------------------------------------
-arquivo = open("C:\\projetos\\mestrado-unifesp\\algoritmo\\trabalho_final\\base_dados.txt", "r")  # Abre o arquivo para escrita
-linhas = arquivo.readlines()
-arquivo.close()  # Fecha o arquivo
+linhas = []
+with open("trabalho_final\Emendas-Parlamentares.csv", "r") as arquivo:
+    arquivo_csv = csv.reader(arquivo, delimiter=";")
+    for i, linha in enumerate(arquivo_csv):
+        linhas.append(uuid.uuid1(None, int(linha[9])))
 
 # ------------------------------------------------------------------------------------------------------
 # HASH ENCADEAMENTO
