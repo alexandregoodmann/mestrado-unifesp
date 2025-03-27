@@ -4,123 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "0f96a0ae4179fee9",
+        "id": "82e1dd96a00971a8",
         "type": "tabs",
         "children": [
           {
-            "id": "21d75cbc12413869",
+            "id": "2181348c381a8080",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mestrado Unifesp/Inscrição Mestrado PPCC Unifesp.md",
+                "file": "Pessoal/WEG.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Inscrição Mestrado PPCC Unifesp"
-            }
-          },
-          {
-            "id": "2217da7684557d7a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mestrado Unifesp/Inscrição Mestrado PPCC Unifesp.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Inscrição Mestrado PPCC Unifesp"
-            }
-          },
-          {
-            "id": "077ae0bf08aac01d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mestrado Unifesp/Seminários/Seminários.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Seminários"
-            }
-          },
-          {
-            "id": "1189d93ebfda9056",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mestrado Unifesp/AAED - Algorítimos/Seminário 2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Seminário 2"
-            }
-          },
-          {
-            "id": "66339ede14ec8c27",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pessoal/Angular.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Angular"
-            }
-          },
-          {
-            "id": "f171a0f0a354a14e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "UTFPR/Linguagem de Programação.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Linguagem de Programação"
-            }
-          },
-          {
-            "id": "92bb68b9c8c87685",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pessoal/Angular.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Angular"
-            }
-          },
-          {
-            "id": "ba185afae359cc18",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mestrado Unifesp/Inscrição Mestrado PPCC Unifesp.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Inscrição Mestrado PPCC Unifesp"
+              "title": "WEG"
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "vertical"
@@ -139,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -176,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 271.5
+    "width": 271.5,
+    "collapsed": true
   },
   "right": {
     "id": "8bc4d1d2fc21978b",
@@ -286,12 +189,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "92bb68b9c8c87685",
+  "active": "2181348c381a8080",
   "lastOpenFiles": [
+    "Pessoal/Mercado Livre.md",
+    "Pessoal/WEG.md",
+    "Pessoal/Perfis de Vagas.md",
+    "Pessoal/Pós Graduação.md",
+    "Pessoal/Angular.md",
+    "Pessoal/Carreira TI.md",
     "Mestrado Unifesp/AAED - Algorítimos/Atividades.md",
     "Mestrado Unifesp/AAED - Algorítimos/Seminário 2.md",
     "Mestrado Unifesp/AAED - Algorítimos/Seminário 1.md",
-    "Pessoal/Angular.md",
     "UTFPR/Introdução à Inteligência Artificial.md",
     "UTFPR/Linguagem de Programação.md",
     "UTFPR/Gerais.md",
@@ -299,10 +207,7 @@
     "Mestrado Unifesp/Seminários/Seminários.md",
     "Mestrado Unifesp/Seminários/Seminário 1.md",
     "Mestrado Unifesp/Inscrição Mestrado PPCC Unifesp.md",
-    "Pessoal/Carreira TI.md",
-    "Pessoal/Pós Graduação.md",
     "Pessoal/Financeiro.md",
-    "Pessoal/Emprego.md",
     "Mestrado Unifesp/Metodologia/Normalidade dos Dados.md",
     "Mestrado Unifesp/Lattes.md",
     "Mestrado Unifesp/Mestrado UFSC.md",
@@ -313,9 +218,7 @@
     "Mestrado Unifesp/01 - Tarefas.md",
     "Mestrado Unifesp/PI/Artigo PI.md",
     "Mestrado Unifesp/PI/Detecção de Bordas.md",
-    "Mestrado Unifesp/PI/Convolução.md",
     "Mestrado Unifesp/AAED - Algorítimos",
-    "Unifesp/PAD/PAD.md",
     "Mestrado",
     "PI",
     "Mestrado Unifesp",

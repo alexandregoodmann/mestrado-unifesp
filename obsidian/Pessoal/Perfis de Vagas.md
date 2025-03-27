@@ -1,13 +1,3 @@
-Graduado em Engenharia Mecânica com grande interesse e atuação em Robótica. Envolvido em projetos que combinam hardware e software, o que me proporcionou uma visão multidisciplinar e uma abordagem integrada para a solução de desafios técnicos. Na Engenharia Mecânica, trabalhei em projetos de design e análise de sistemas mecânicos, na Robótica incluiu o desenvolvimento e a programação de sistemas robóticos para aplicações industriais e acadêmicas.
-
-Minha monografia na Mecânica foi o projeto de um braço robótico colaborativo com seis graus de liberdade. Atuação profissional na Instor Robótica no projeto e construção do primeiro robô a prova de explosão para Petrobrás.
-
-Tenho um profundo interesse e experiência na Computação. Graduado em Análise e Desenvolvimento de Sistemas, onde desenvolvi uma base robusta em algoritmos, estruturas de dados e desenvolvimento de software. Tive a oportunidade de trabalhar em diversos projetos, nacionais e internacionais, que aprimoraram minhas habilidades técnicas e minha capacidade de resolver problemas complexos de maneira criativa e eficaz. Atualmente sou aluno de mestrado da Unifesp e minha linha de pesquisa está dentro da robótica.
-
-Estou entusiasmado com a oportunidade de trazer minha experiência técnica e capacidade de trabalhar em equipe. Acredito que minha combinação única de habilidades em Computação, Engenharia Mecânica e Robótica serão valiosas para contribuir com soluções inovadoras e eficientes para os desafios da empresa.
-
-_________________________________________________
-
 ### Visao computacional 
 
 #### Analista Sênior em Inteligência Artificial (Visão Computacional) - Curitiba PR
@@ -37,4 +27,16 @@ Venha trabalhar na BRF! Uma empresa que está presente na vida de milhares de fa
   
 ****Ciência da Computação, Engenharia Elétrica, Eletrônica ou Mecânica ou área similar  
   
-Inscreva-se agora e faça parte da BRF!
+_______________________
+
+## Java
+
+- 7+ years of experience in software development
+- Proficiency in Kotlin, Java, and Kafka, with expertise in frameworks such as Spring Boot
+- Familiarity with AWS and EKS
+- Strong knowledge of CI/CD pipelines and related tools
+- Hands-on experience in designing, building, and deploying scalable, highly available systems
+- Experienced with event-driven architectures and a deep understanding of at least one event streaming solution (e.g., Kafka, SNS)
+- Proficient in working with both SQL and NoSQL databases
+- Familiarity with cloud platforms such as AWS, Azure, or Google Cloud
+- Analytical and problem-solving skills

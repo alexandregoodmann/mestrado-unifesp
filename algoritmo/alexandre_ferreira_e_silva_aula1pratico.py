@@ -114,5 +114,3 @@ plt.plot(qtd, iterativo, color='blue')
 plt.grid(axis = 'y')
 plt.legend(('Recursivo', 'Iterativo'))
 plt.show()
-
-# 

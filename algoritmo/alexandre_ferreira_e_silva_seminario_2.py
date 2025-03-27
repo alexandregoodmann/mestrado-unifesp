@@ -15,6 +15,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 # Função para calcular o hash de um dado usando SHA-256
 def hash_data(data):
+    print('valor de data---->>>>', data)
     hash = hashlib.sha256(data.encode('utf-8')).hexdigest()
     print(data, '-> ' + hash)
     return hash
