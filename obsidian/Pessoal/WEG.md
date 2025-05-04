@@ -39,3 +39,24 @@
 - 🔸Realizar os testes e avaliações previstas;
 - 🔸Realizar um planejamento para otimizações e refinamentos e implementá-lo;
 - 🔸Elaborar um relatório final.
+
+----------------
+
+### Preparação Entrevista
+
+Baixar relatório WEG
+Baixar Currículo PDF
+Ler perfil dos entrevistadores
+
+Engenharia Mecânica
+	Graduação: Relatório de Estágio, Monografia, Trabalho com braço
+	Instor: Falar do projeto Tupã EX, Trabalhava com modelagem no Solid Edge
+Computação
+	Usar Currículo, falar dos pontos fortes
+Futuro
+	Investir em embarcados; engenharia elétrica
+Mestrado
+	Falar das cadeiras: Processamento Imagem, Robótica, Visão Computacional, AAED
+	Filtro de Kalman
+Futuro
+	ROS, C++, Robot Modelling, Gazebo, Fusão de Sensores, IA

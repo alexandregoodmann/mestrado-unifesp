@@ -1,0 +1,7 @@
+id, nome_completo, sexo, renda_mensal, profissão
+1, John Locks, M, 2500, Programador
+2, Juma Lee, F, 3800, Analista
+3, Stainer Silva, M, 5700, Analista Senior
+4, Marina Young, F, 6300, Analista Senior
+5, Zyon Lord, M, 1800, Suporte
+6, Armindo Znah, 9500, Gerente de Projetos
