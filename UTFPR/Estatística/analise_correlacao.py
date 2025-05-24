@@ -1,5 +1,9 @@
 import pandas as pd
 from scipy.stats import ttest_ind
+import os
+
+# Para Windows
+os.system('cls')
 
 # Carrega o arquivo CSV
 df = pd.read_csv("country_emissions.csv")
