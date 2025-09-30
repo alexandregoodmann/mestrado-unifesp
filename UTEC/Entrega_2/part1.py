@@ -26,5 +26,23 @@ class ContaBancaria:
 
     def depositar(self, valor):
         self.saldo += valor
+        return self.saldo
+
+    def sacar(self, valor):
+        if self.saldo < valor:
+            return 'Saldo insuficiente'
+        self.saldo -= valor
+        return self.saldo
+    
+conta = ContaBancaria("Alexandre Ferreira")
+saldo = conta.depositar(10)
+print(conta.titular + ' - Saldo: ', saldo)
+
+saldo = conta.sacar(5)
+print(conta.titular + ' - Saldo: ', saldo)
+
+saldo = conta.sacar(10)
+print(conta.titular + ' - Saldo: ', saldo)
+        
 
     
