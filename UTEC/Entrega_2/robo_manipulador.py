@@ -5,73 +5,87 @@
 # Atividade 02
 # --------------------------------------------------------------------------------------
 
-import math
+# --------------------------------------------------------------------------------------
+# Exercício para os alunos: Crie subclasses Manipulador2D (planar) e Manipulador3D (espacial) a partir da classe Manipulador, implementando o cálculo da posição final em cada caso.
+# © Especialização em Robótica e IA — Materiais didáticos POO em Python Los que NO tengan accesso al Moodle hasta la fecha limite de entrega, DEBEN enviar sus soluciones a mi
+# correo: andre.dasilva@utec.edu.uySlds
+# --------------------------------------------------------------------------------------
 
-class Junta:
-    def __init__(self, nome, angulo=0, limite_min=-180, limite_max=180):
+import math
+import matplotlib.pyplot as plt
+import os
+
+#limpar console
+os.system('cls' if os.name == 'nt' else 'clear')
+
+class Componente:
+    x_inicial = 0
+    y_inicial = 0
+    x_final = 0
+    y_final = 0
+    x_deslocamento = 0
+    y_deslocamento = 0
+
+    def __init__(self, nome, angulo=0, comprimento=5, limite_min=-180, limite_max=180):
         self.nome = nome
         self.angulo = angulo
+        self.comprimento = comprimento
         self.limite_min = limite_min
         self.limite_max = limite_max
 
-    def mover(self, novo_angulo):
-        if self.limite_min <= novo_angulo <= self.limite_max:
-            self.angulo = novo_angulo
-            print(f"Junta {self.nome} movida para {self.angulo}°")
+    def __str__(self):
+        return f"{self.angulo, self.x_inicial, self.y_inicial, self.x_final, self.y_final}"
+
+class Manipulador2D:
+    componentes = []
+    def __init__(self):
+        pass
+
+    def addComponente(self, componente):
+        if (self.componentes.__len__() == 0): # se for o primeiro elemento da lista
+            componente.x_final = math.cos(math.radians(componente.angulo)) * componente.comprimento
+            componente.y_final = math.sin(math.radians(componente.angulo)) * componente.comprimento
+            componente.x_deslocamento = componente.x_final
+            componente.y_deslocamento = componente.y_final
         else:
-            print(f"Movimento inválido para {self.nome}! Fora dos limites.")
+            anterior = self.componentes[self.componentes.__len__() - 1] # pega o elemento anterior da lista
+            componente.angulo = anterior.angulo + componente.angulo
+            componente.x_inicial = anterior.x_final # o x inicial deste vetor é o final do anterior
+            componente.y_inicial = anterior.y_final
+            componente.x_deslocamento = math.cos(math.radians(componente.angulo)) * componente.comprimento # o x final deste vetor é o final do anterior + seu componente x
+            componente.y_deslocamento = math.sin(math.radians(componente.angulo)) * componente.comprimento
+            componente.x_final = componente.x_inicial + componente.x_deslocamento
+            componente.y_final = componente.y_inicial + componente.y_deslocamento
+        print('add componente', componente)
+        self.componentes.append(componente)
 
-class Elo:
-    def __init__(self, comprimento):
-        self.comprimento = comprimento
+    def exibir_grafico2D(self):
 
-class Manipulador:
-    def __init__(self, nome):
-        self.nome = nome
-        self.juntas = []
-        self.elos = []
+        if (self.componentes.__len__() == 0):
+            raise ValueError("[ERROR] - Adicione componentes usando o método addComponente()")
+        
+        plt.figure(figsize=(6, 6)) # Define o tamanho da figura
+        for item in self.componentes:
+            plt.quiver(item.x_inicial, item.y_inicial, item.x_deslocamento, item.y_deslocamento, angles='xy', scale_units='xy', scale=1)
 
-    def adicionar_junta(self, junta):
-        self.juntas.append(junta)
+        plt.xlim([0, 50]) # Limites do eixo X
+        plt.ylim([0, 50]) # Limites do eixo Y
+        plt.xlabel("Eixo X")
+        plt.ylabel("Eixo Y")
+        plt.title("Posição do Robo")
+        plt.grid(True)
+        plt.axhline(0, color='black', linewidth=0.5) # Eixo X
+        plt.axvline(0, color='black', linewidth=0.5) # Eixo Y
+        plt.gca().set_aspect('equal', adjustable='box') # Garante que a escala seja igual para os eixos
+        plt.show()
 
-    def adicionar_elo(self, elo):
-        self.elos.append(elo)
+j1 = Componente('J1', 30, 30)
+j2 = Componente('J2', 30, 20)
+j3 = Componente('J3', -30, 12)
 
-    def mover_junta(self, indice, angulo):
-        if 0 <= indice < len(self.juntas):
-            self.juntas[indice].mover(angulo)
-
-    def status(self):
-        print(f"Manipulador {self.nome}:")
-        for i, j in enumerate(self.juntas):
-            print(f"  Junta {i} ({j.nome}): {j.angulo}°")
-        for i, e in enumerate(self.elos):
-            print(f"  Elo {i}: {e.comprimento} unidades")
-
-    def calcular_posicao_final(self):
-        """Cinemática direta simples para manipulador planar 2D."""
-        x, y, angulo_total = 0.0, 0.0, 0.0
-        for junta, elo in zip(self.juntas, self.elos):
-            angulo_total += math.radians(junta.angulo)
-            x += elo.comprimento * math.cos(angulo_total)
-            y += elo.comprimento * math.sin(angulo_total)
-        return (x, y)
-
-# Exemplo de uso
-if __name__ == "__main__":
-    j1 = Junta("Base", 0, -90, 90)
-    j2 = Junta("Cotovelo", 0, -135, 135)
-
-    e1 = Elo(5)
-    e2 = Elo(3)
-
-    robo = Manipulador("Robo2D")
-    robo.adicionar_junta(j1)
-    robo.adicionar_elo(e1)
-    robo.adicionar_junta(j2)
-    robo.adicionar_elo(e2)
-
-    robo.status()
-    robo.mover_junta(0, 45)
-    robo.mover_junta(1, 60)
-    print("Posição final do efetuador:", robo.calcular_posicao_final())
+manipulador2D = Manipulador2D()
+manipulador2D.addComponente(j1)
+manipulador2D.addComponente(j2)
+manipulador2D.addComponente(j3)
+print('Posição Final: ', j3.x_final, j3.y_final)
+manipulador2D.exibir_grafico2D()
