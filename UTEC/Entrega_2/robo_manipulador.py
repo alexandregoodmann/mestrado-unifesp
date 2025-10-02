@@ -18,7 +18,10 @@ import os
 #limpar console
 os.system('cls' if os.name == 'nt' else 'clear')
 
-class Componente:
+# --------------------------------------------------------------------------------------
+# Eu subistitui as classes de exemplo e criei somente uma que representa o elo e a junta
+# --------------------------------------------------------------------------------------
+class Componente2D:
     x_inicial = 0
     y_inicial = 0
     x_final = 0
@@ -35,7 +38,27 @@ class Componente:
 
     def __str__(self):
         return f"{self.angulo, self.x_inicial, self.y_inicial, self.x_final, self.y_final}"
+    
+class Componente3D(Componente2D):
+    z_inicial = 0
+    z_final = 0
+    z_deslocamento = 0
 
+    def __init__(self, nome, angulo=0, comprimento=5, limite_min=-180, limite_max=180):
+        self.nome = nome
+        self.angulo = angulo
+        self.comprimento = comprimento
+        self.limite_min = limite_min
+        self.limite_max = limite_max
+
+    def __str__(self):
+        return f"{self.angulo, self.x_inicial, self.y_inicial, self.x_final, self.y_final}"
+
+# --------------------------------------------------------------------------------------
+# Classe para manipular um robô 2D com demonstração gráfica
+# Serve para vários elementos (elos e juntas)
+# No momento de adicionar um elemento no manipulador, já calcula todos os parâmetros considerando a posição do anterior
+# --------------------------------------------------------------------------------------
 class Manipulador2D:
     componentes = []
     def __init__(self):
@@ -79,9 +102,9 @@ class Manipulador2D:
         plt.gca().set_aspect('equal', adjustable='box') # Garante que a escala seja igual para os eixos
         plt.show()
 
-j1 = Componente('J1', 30, 30)
-j2 = Componente('J2', 30, 20)
-j3 = Componente('J3', -30, 12)
+j1 = Componente2D('J1', 30, 30)
+j2 = Componente2D('J2', 30, 20)
+j3 = Componente2D('J3', -30, 12)
 
 manipulador2D = Manipulador2D()
 manipulador2D.addComponente(j1)
@@ -89,3 +112,10 @@ manipulador2D.addComponente(j2)
 manipulador2D.addComponente(j3)
 print('Posição Final: ', j3.x_final, j3.y_final)
 manipulador2D.exibir_grafico2D()
+
+class Manipulador3D(Manipulador2D):
+    def __init__(self):
+        super().__init__()
+        self.
+
+    
