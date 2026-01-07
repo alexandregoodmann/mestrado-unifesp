@@ -16,7 +16,9 @@
                 "file": "2024-09-04.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "2024-09-04"
             }
           }
         ]
@@ -38,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -54,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
             }
           },
           {
@@ -62,7 +69,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
             }
           }
         ]
@@ -93,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos para 2024-09-04"
             }
           },
           {
@@ -105,7 +116,9 @@
                 "file": "2024-09-04.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída para 2024-09-04"
             }
           },
           {
@@ -115,8 +128,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-09-04.md"
-              }
+                "file": "2024-09-04.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário de 2024-09-04"
             }
           }
         ]
@@ -138,22 +160,29 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
     }
   },
   "active": "f4b3235e3d00f9e2",
   "lastOpenFiles": [
+    "obsidian/Deep Learning.md",
+    "obsidian/Sem título.md",
+    "obsidian/UTFPR/Deep Learning",
+    "obsidian/Deep Learning",
+    "obsidian/Sem título",
+    "obsidian/UTFPR/Introdução à Inteligência Artificial.md",
+    "2024-09-04.md",
     "obsidian/Unifesp/AAED - Algorítimos/Atividades.md",
     "obsidian/Unifesp/AAED - Algorítimos/Untitled.md",
     "obsidian/Unifesp/AAED - Algorítimos",
     "obsidian/Unifesp/Untitled",
     "Untitled.canvas",
-    "2024-09-04.md",
     "pi/artigo/imgs/partes/parte_3.png",
     "pi/artigo/imgs/partes/parte_2.png"
   ]

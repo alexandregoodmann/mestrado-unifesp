@@ -83,12 +83,54 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FURG/Disrupção de Mercado.md",
+                "file": "UTFPR/Gerais.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Disrupção de Mercado"
+              "title": "Gerais"
+            }
+          },
+          {
+            "id": "a7863f1a1bc1e19f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Deep Learning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Deep Learning"
+            }
+          },
+          {
+            "id": "97ccbb72ec08f57a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Deep Learning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Deep Learning"
+            }
+          },
+          {
+            "id": "897b598ca112c0eb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Funções de ativação.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Funções de ativação"
             }
           },
           {
@@ -104,7 +146,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -127,7 +169,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -263,22 +305,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
     }
   },
-  "active": "2558966ec6297d2a",
+  "active": "897b598ca112c0eb",
   "lastOpenFiles": [
+    "Deep Learning.md",
+    "Funções de ativação.md",
+    "Pasted image 20260107151954.png",
+    "UTFPR/Gerais.md",
+    "UTFPR/Deep Learning",
+    "UTFPR/Introdução à Inteligência Artificial.md",
+    "UTFPR/Linguagem de Programação.md",
+    "UTFPR/Redes Neurais.md",
+    "FURG/Disrupção de Mercado.md",
     "FURG/Modelagem de Negócios.md",
     "FURG/Visão Empreendedora.md",
-    "FURG/Disrupção de Mercado.md",
     "Pessoal/Pós Graduação.md",
     "FURG",
-    "UTFPR/Redes Neurais.md",
     "Pessoal/WEG.md",
     "Pessoal/Perfis de Vagas.md",
     "Mestrado Unifesp/Robótica/Filtro de Kalman.md",
@@ -290,17 +340,12 @@
     "Mestrado Unifesp/AAED - Algorítimos/Atividades.md",
     "Mestrado Unifesp/AAED - Algorítimos/Seminário 2.md",
     "Mestrado Unifesp/AAED - Algorítimos/Seminário 1.md",
-    "UTFPR/Introdução à Inteligência Artificial.md",
-    "UTFPR/Linguagem de Programação.md",
-    "UTFPR/Gerais.md",
     "UTFPR",
     "Mestrado Unifesp/Seminários/Seminários.md",
     "Mestrado Unifesp/Seminários/Seminário 1.md",
     "Pessoal/Financeiro.md",
     "Mestrado Unifesp/Metodologia/Normalidade dos Dados.md",
     "Mestrado Unifesp/Lattes.md",
-    "Mestrado Unifesp/Mestrado UFSC.md",
-    "Mestrado Unifesp/Mestrado UFRGS.md",
     "Mestrado Unifesp/AAED - Algorítimos",
     "Mestrado",
     "PI",
@@ -309,7 +354,6 @@
     "Sem título.canvas",
     "Mestrado Unifesp/Seminários",
     "Unifesp",
-    "IA",
     "Untitled.canvas"
   ]
 }

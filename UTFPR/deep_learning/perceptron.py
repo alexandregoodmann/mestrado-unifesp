@@ -13,10 +13,9 @@ tabela = np.array([
 
 def perceptron(entrada):
     soma = 0
-    peso = [6, 5, 2]
+    peso = [6, 4, 2]
     for i in range(0, 3):
         soma += entrada[i] * peso[i]
-    print(soma)
     if (soma > 8):
         return 1
     else:
