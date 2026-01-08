@@ -33,7 +33,7 @@ tempos_busca = [['Tamanho', 'Chave 1', 'Chave 2', 'Chave 3', 'Chave 4', 'Chave 5
 
 print('--- Fazendo a leitura dos dados ---')
 
-with open("trabalho_final\Emendas-Parlamentares.csv", "r") as arquivo:
+with open("C:\\projetos\\mestrado-unifesp\\algoritmo\\alexandre_ferreira_e_silva_trabalho_final\\Emendas-Parlamentares.csv", "r") as arquivo:
     arquivo_csv = csv.reader(arquivo, delimiter=";")
     for qtd, linha in enumerate(arquivo_csv):
         key = uuid.uuid1(int(linha[9]))
