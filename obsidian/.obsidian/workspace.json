@@ -8,20 +8,145 @@
         "type": "tabs",
         "children": [
           {
-            "id": "eecb7eac671d02d5",
+            "id": "2181348c381a8080",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UTFPR/Visão Computacional.md",
+                "file": "Pessoal/Pós Graduação.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Visão Computacional"
+              "title": "Pós Graduação"
+            }
+          },
+          {
+            "id": "4975f82bfdc5f2c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FURG/Modelagem de Negócios.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Modelagem de Negócios"
+            }
+          },
+          {
+            "id": "e3e96aa263f08f80",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FURG/Disrupção de Mercado.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Disrupção de Mercado"
+            }
+          },
+          {
+            "id": "1f9b0665e6237e99",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FURG/Visão Empreendedora.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Visão Empreendedora"
+            }
+          },
+          {
+            "id": "17559f4460918508",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FURG/Modelagem de Negócios.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Modelagem de Negócios"
+            }
+          },
+          {
+            "id": "150d73ecd29a068a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "UTFPR/Gerais.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Gerais"
+            }
+          },
+          {
+            "id": "a7863f1a1bc1e19f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Deep Learning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Deep Learning"
+            }
+          },
+          {
+            "id": "97ccbb72ec08f57a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Deep Learning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Deep Learning"
+            }
+          },
+          {
+            "id": "897b598ca112c0eb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Funções de ativação.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Funções de ativação"
+            }
+          },
+          {
+            "id": "9e5218502a37cc59",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.10"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.10"
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -44,7 +169,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -180,22 +305,24 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:Create new base": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
     }
   },
-  "active": "eecb7eac671d02d5",
+  "active": "897b598ca112c0eb",
   "lastOpenFiles": [
-    "Pasted image 20260106212228.png",
-    "Pasted image 20260106211958.png",
-    "Pasted image 20260105211102.png",
-    "UTFPR/Visão Computacional.md",
-    "RNA - Aula 1 - Introdução.pdf",
+    "Deep Learning.md",
+    "Funções de ativação.md",
+    "Pasted image 20260107151954.png",
+    "UTFPR/Gerais.md",
+    "UTFPR/Deep Learning",
+    "UTFPR/Introdução à Inteligência Artificial.md",
+    "UTFPR/Linguagem de Programação.md",
     "UTFPR/Redes Neurais.md",
     "FURG/Disrupção de Mercado.md",
     "FURG/Modelagem de Negócios.md",
@@ -213,9 +340,6 @@
     "Mestrado Unifesp/AAED - Algorítimos/Atividades.md",
     "Mestrado Unifesp/AAED - Algorítimos/Seminário 2.md",
     "Mestrado Unifesp/AAED - Algorítimos/Seminário 1.md",
-    "UTFPR/Introdução à Inteligência Artificial.md",
-    "UTFPR/Linguagem de Programação.md",
-    "UTFPR/Gerais.md",
     "UTFPR",
     "Mestrado Unifesp/Seminários/Seminários.md",
     "Mestrado Unifesp/Seminários/Seminário 1.md",
