@@ -125,12 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Funções de ativação.md",
+                "file": "Deep Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Funções de ativação"
+              "title": "Deep Learning"
             }
           },
           {
@@ -203,7 +203,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 271.5
+    "width": 271.5,
+    "collapsed": true
   },
   "right": {
     "id": "8bc4d1d2fc21978b",
@@ -316,8 +317,8 @@
   },
   "active": "897b598ca112c0eb",
   "lastOpenFiles": [
-    "Deep Learning.md",
     "Funções de ativação.md",
+    "Deep Learning.md",
     "Pasted image 20260107151954.png",
     "UTFPR/Gerais.md",
     "UTFPR/Deep Learning",
